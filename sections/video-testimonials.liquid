@@ -1,0 +1,138 @@
+{% comment %}
+  Section: Video Testimonials
+  Temoignages video format vertical (TikTok/Reels style)
+{% endcomment %}
+
+<div id="shopify-section-{{ section.id }}">
+  <section class="fh-video-section" style="background:{{ section.settings.bg_color }}">
+    <div class="fh-section-header">
+      <div class="fh-section-overline" style="color:{{ section.settings.accent_color }}">{{ section.settings.overline }}</div>
+      <div class="fh-section-title">{{ section.settings.title }}</div>
+      <div class="fh-section-subtitle">{{ section.settings.subtitle }}</div>
+    </div>
+    <div class="fh-video-grid">
+      {% for block in section.blocks %}
+        <div class="fh-vid-card" {{ block.shopify_attributes }}>
+          {% if block.settings.thumbnail != blank %}
+            {{ block.settings.thumbnail | image_url: width: 400 | image_tag: loading: 'lazy', class: 'fh-vid-thumb-img' }}
+          {% endif %}
+          {% if block.settings.video_url != blank %}
+            <div class="fh-play" data-video-url="{{ block.settings.video_url }}"></div>
+          {% else %}
+            <div class="fh-play"></div>
+          {% endif %}
+          <div class="fh-vid-info">
+            <div class="fh-vid-name">{{ block.settings.name }}</div>
+            <div class="fh-vid-stars">{% for i in (1..5) %}{% if i <= block.settings.stars %}&#9733;{% else %}&#9734;{% endif %}{% endfor %}</div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </section>
+
+  <style>
+    #shopify-section-{{ section.id }} .fh-video-section{padding:100px 48px;position:relative}
+    #shopify-section-{{ section.id }} .fh-video-section::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,{{ section.settings.accent_color }},#f0d78c,{{ section.settings.accent_color }});opacity:.5}
+    #shopify-section-{{ section.id }} .fh-section-header{text-align:center;margin-bottom:56px}
+    #shopify-section-{{ section.id }} .fh-section-overline{font-size:11px;text-transform:uppercase;letter-spacing:4px;font-weight:700;margin-bottom:12px}
+    #shopify-section-{{ section.id }} .fh-section-title{font-family:'Bebas Neue',Impact,sans-serif;font-size:48px;letter-spacing:2px;text-transform:uppercase;color:#0d1b2a}
+    #shopify-section-{{ section.id }} .fh-section-subtitle{font-size:14px;color:#777;margin-top:8px;font-weight:300;font-family:'Inter',sans-serif}
+    #shopify-section-{{ section.id }} .fh-video-grid{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;max-width:900px;margin:0 auto}
+    #shopify-section-{{ section.id }} .fh-vid-card{width:155px;height:275px;background:#1a1a1a;border-radius:16px;overflow:hidden;position:relative;cursor:pointer;transition:all .3s;border:1px solid rgba(0,0,0,0.1)}
+    #shopify-section-{{ section.id }} .fh-vid-card:hover{transform:translateY(-6px);box-shadow:0 16px 48px rgba(0,0,0,0.15)}
+    #shopify-section-{{ section.id }} .fh-vid-thumb-img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
+    #shopify-section-{{ section.id }} .fh-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:48px;height:48px;background:rgba(13,27,42,0.3);border-radius:50%;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(8px);z-index:2}
+    #shopify-section-{{ section.id }} .fh-play::after{content:'';border-left:14px solid #fff;border-top:8px solid transparent;border-bottom:8px solid transparent;margin-left:3px}
+    #shopify-section-{{ section.id }} .fh-vid-info{position:absolute;bottom:0;left:0;right:0;padding:16px;background:linear-gradient(transparent,rgba(0,0,0,0.9));z-index:2}
+    #shopify-section-{{ section.id }} .fh-vid-name{color:#fff;font-size:13px;font-weight:600;font-family:'Inter',sans-serif}
+    #shopify-section-{{ section.id }} .fh-vid-stars{color:{{ section.settings.accent_color }};font-size:11px;margin-top:2px}
+    @media(max-width:900px){
+      #shopify-section-{{ section.id }} .fh-video-section{padding:64px 20px}
+      #shopify-section-{{ section.id }} .fh-section-title{font-size:32px}
+    }
+  </style>
+</div>
+
+{% schema %}
+{
+  "name": "Témoignages vidéo",
+  "tag": "section",
+  "class": "fh-video-testimonials-section",
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Couleur de fond",
+      "default": "#f5f5f3"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Couleur accent",
+      "default": "#d4a843"
+    },
+    {
+      "type": "text",
+      "id": "overline",
+      "label": "Surtitre",
+      "default": "🎬 Témoignages"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Titre",
+      "default": "Ils sont prêts pour 2026"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Sous-titre",
+      "default": "Des vrais supporters, des vrais retours"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "video_card",
+      "name": "Vidéo témoignage",
+      "settings": [
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Nom",
+          "default": "Youssef K."
+        },
+        {
+          "type": "range",
+          "id": "stars",
+          "label": "Etoiles",
+          "min": 1,
+          "max": 5,
+          "default": 5
+        },
+        {
+          "type": "image_picker",
+          "id": "thumbnail",
+          "label": "Miniature"
+        },
+        {
+          "type": "url",
+          "id": "video_url",
+          "label": "URL vidéo"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Témoignages vidéo",
+      "blocks": [
+        { "type": "video_card", "settings": { "name": "Youssef K.", "stars": 5 } },
+        { "type": "video_card", "settings": { "name": "Amina B.", "stars": 5 } },
+        { "type": "video_card", "settings": { "name": "Ibrahim D.", "stars": 5 } },
+        { "type": "video_card", "settings": { "name": "Fatou S.", "stars": 5 } },
+        { "type": "video_card", "settings": { "name": "Mehdi R.", "stars": 4 } }
+      ]
+    }
+  ]
+}
+{% endschema %}

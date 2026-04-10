@@ -1,260 +1,156 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
-    "image_banner": {
-      "type": "image-banner",
-      "blocks": {
-        "heading": {
-          "type": "heading",
-          "settings": {
-            "heading": "<strong>Unleash Your Inner Chill<\/strong>",
-            "heading_size": "h1"
-          }
-        },
-        "text": {
-          "type": "text",
-          "settings": {
-            "text": "Step into the Night Club and unwind with our inactive wear, accessories and supplements",
-            "text_style": "body"
-          }
-        },
-        "button": {
-          "type": "buttons",
-          "settings": {
-            "button_label_1": "Shop all",
-            "button_link_1": "shopify:\/\/collections\/all",
-            "button_style_secondary_1": true,
-            "button_label_2": "",
-            "button_link_2": "",
-            "button_style_secondary_2": false
-          }
-        }
+    "hero": {
+      "type": "hero-world-cup",
+      "settings": {
+        "bg_color": "#0d1b2a",
+        "accent_color": "#d4a843",
+        "show_countdown": true,
+        "countdown_date": "2026-06-11T00:00:00",
+        "line1": "Coupe du Monde 2026",
+        "line2": "Porte tes",
+        "line3": "Origines",
+        "subtitle": "Jerseys fan premium pour la diaspora. Design exclusif, tissu respirant, fabriqu\u00e9 en Europe. Sois pr\u00eat pour le coup d'envoi.",
+        "cta_text": "Shopper la collection",
+        "cta2_text": "Notre histoire"
       },
-      "block_order": [
-        "heading",
-        "text",
-        "button"
-      ],
-      "settings": {
-        "image": "shopify:\/\/shop_images\/Screenshot_2023-07-26_at_3.54.40_p.m..png",
-        "image_overlay_opacity": 20,
-        "image_height": "medium",
-        "desktop_content_position": "top-right",
-        "show_text_box": false,
-        "desktop_content_alignment": "right",
-        "color_scheme": "background-2",
-        "image_behavior": "none",
-        "mobile_content_alignment": "center",
-        "stack_images_on_mobile": false,
-        "show_text_below": false
-      }
-    },
-    "featured_collection": {
-      "type": "featured-collection",
-      "settings": {
-        "title": "Selling Fast...",
-        "heading_size": "h2",
-        "description": "",
-        "show_description": false,
-        "description_style": "body",
-        "collection": "frontpage",
-        "products_to_show": 4,
-        "columns_desktop": 4,
-        "full_width": false,
-        "show_view_all": false,
-        "view_all_style": "outline",
-        "enable_desktop_slider": true,
-        "color_scheme": "background-1",
-        "image_ratio": "square",
-        "image_shape": "round",
-        "show_secondary_image": true,
-        "show_vendor": false,
-        "show_rating": false,
-        "enable_quick_add": false,
-        "columns_mobile": "2",
-        "swipe_on_mobile": true,
-        "padding_top": 0,
-        "padding_bottom": 0
-      }
-    },
-    "ded2df98-4469-471b-9747-292216a685ef": {
-      "type": "multirow",
       "blocks": {
-        "template--16744384266296__ded2df98-4469-471b-9747-292216a685ef-row-1": {
-          "type": "row",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/pexels-photo-9558768.jpg",
-            "caption": "",
-            "heading": "Fresh Looks",
-            "text": "<p>Fresh looks exude a sense of dynamism and contemporary style, keeping you on the forefront of fashion trends. These looks are all about embracing modernity and infusing a refreshing touch into your outfits. From vibrant colours to innovative designs, fresh looks breathe new life into your wardrobe.<\/p>",
-            "button_label": "Shop Now",
-            "button_link": "shopify:\/\/collections\/all"
-          }
-        },
-        "template--16744384266296__ded2df98-4469-471b-9747-292216a685ef-row-2": {
-          "type": "row",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/Screenshot_2023-07-26_at_4.43.40_p.m..png",
-            "caption": "",
-            "heading": "Comfortable Styles",
-            "text": "<p>These styles are designed to provide the utmost comfort without compromising on aesthetic appeal. Whether it's loungewear, activewear, or everyday casual outfits, comfortable styles use fabrics that feel soft against the skin and offer freedom of movement. From relaxed fits to breathable materials, these styles ensure you not only look good but also feel at ease throughout the day.<\/p>",
-            "button_label": "Shop Now",
-            "button_link": "shopify:\/\/collections\/all"
-          }
-        },
-        "e18974a2-939a-4b87-9109-67e209d0945b": {
-          "type": "row",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/triadoftees.png",
-            "caption": "",
-            "heading": "Retail Opportunities",
-            "text": "<p>Are you a Business owner looking to stock a Sustainable but affordable brand? Reach out to our team about opportunities to become a stockist.<\/p>",
-            "button_label": "Contact Us",
-            "button_link": "shopify:\/\/pages\/contact"
-          }
-        }
+        "trust_1": { "type": "trust_badge", "settings": { "text": "Rembours\u00e9 30j" } },
+        "trust_2": { "type": "trust_badge", "settings": { "text": "Made in Europe" } },
+        "trust_3": { "type": "trust_badge", "settings": { "text": "3-5 jours" } },
+        "card_1": { "type": "hero_card", "settings": { "flag_emoji": "\ud83c\udde8\ud83c\uddee", "gradient": "linear-gradient(160deg,#FF8200,#cc6500)", "country_name": "C\u00f4te d'Ivoire", "price": "34,99 \u20ac" } },
+        "card_2": { "type": "hero_card", "settings": { "flag_emoji": "\ud83c\udde9\ud83c\uddff", "gradient": "linear-gradient(160deg,#006233,#003d1f)", "country_name": "Alg\u00e9rie", "price": "34,99 \u20ac" } },
+        "card_3": { "type": "hero_card", "settings": { "flag_emoji": "\ud83c\uddf2\ud83c\udde6", "gradient": "linear-gradient(160deg,#c1272d,#7a1018)", "country_name": "Maroc", "price": "34,99 \u20ac" } }
       },
-      "block_order": [
-        "template--16744384266296__ded2df98-4469-471b-9747-292216a685ef-row-1",
-        "template--16744384266296__ded2df98-4469-471b-9747-292216a685ef-row-2",
-        "e18974a2-939a-4b87-9109-67e209d0945b"
-      ],
-      "settings": {
-        "image_height": "small",
-        "desktop_image_width": "medium",
-        "heading_size": "h1",
-        "text_style": "body",
-        "button_style": "primary",
-        "desktop_content_position": "middle",
-        "desktop_content_alignment": "left",
-        "image_layout": "alternate-left",
-        "section_color_scheme": "",
-        "row_color_scheme": "",
-        "mobile_content_alignment": "left",
-        "padding_top": 12,
-        "padding_bottom": 12
-      }
+      "block_order": ["trust_1", "trust_2", "trust_3", "card_1", "card_2", "card_3"]
     },
-    "b7110073-2007-4743-a518-6707edde53b4": {
-      "type": "rich-text",
+    "testimonials": {
+      "type": "testimonials-social-proof",
+      "settings": {
+        "bg_color": "#f5f5f3",
+        "accent_color": "#d4a843",
+        "overline": "\u2605 Avis clients",
+        "title": "Ils sont pr\u00eats",
+        "subtitle": "4,8/5 sur plus de 300 avis v\u00e9rifi\u00e9s"
+      },
       "blocks": {
-        "template--16744384266296__b7110073-2007-4743-a518-6707edde53b4-heading-1": {
-          "type": "heading",
-          "settings": {
-            "heading": "Rooted in Sustainability...",
-            "heading_size": "h1"
-          }
-        },
-        "template--16744384266296__b7110073-2007-4743-a518-6707edde53b4-text-1": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Join the Night Club, and embrace a conscious lifestyle, the vegan way! This sustainable lifestyle fosters ethical consumption and strengthens the bond with nature. Opting for plant-based alternatives and avoiding animal products contribute to a sustainable, cruelty-free world. By adopting a conscious lifestyle, you can align your values and recognise the transformative power of small actions in creating meaningful change!<\/p>"
-          }
-        },
-        "template--16744384266296__b7110073-2007-4743-a518-6707edde53b4-button-1": {
-          "type": "button",
-          "settings": {
-            "button_label": "Learn More",
-            "button_link": "shopify:\/\/pages\/about-us",
-            "button_style_secondary": false,
-            "button_label_2": "",
-            "button_link_2": "",
-            "button_style_secondary_2": false
-          }
-        }
+        "t1": { "type": "testimonial", "settings": { "stars": 5, "text": "J'ai port\u00e9 le jersey Maroc pendant le match et l'ambiance \u00e9tait folle. Tout le monde me demandait o\u00f9 je l'avais trouv\u00e9. Un truc de ouf.", "initials": "YK", "name": "Youssef K.", "location": "Paris", "verified": true } },
+        "t2": { "type": "testimonial", "settings": { "stars": 5, "text": "Le pack famille Alg\u00e9rie est arriv\u00e9 en 4 jours. On est tous \u00e9quip\u00e9s pour supporter les Fennecs \u00e0 la Coupe du Monde. Qualit\u00e9 dingue.", "initials": "AB", "name": "Amina B.", "location": "Lyon", "verified": true } },
+        "t3": { "type": "testimonial", "settings": { "stars": 5, "text": "Ce jersey c'est pas un maillot g\u00e9n\u00e9rique, c'est une d\u00e9claration. Je repr\u00e9sente mes origines avec style. Vivement les matchs !", "initials": "ID", "name": "Ibrahim D.", "location": "Bruxelles", "verified": true } }
       },
-      "block_order": [
-        "template--16744384266296__b7110073-2007-4743-a518-6707edde53b4-heading-1",
-        "template--16744384266296__b7110073-2007-4743-a518-6707edde53b4-text-1",
-        "template--16744384266296__b7110073-2007-4743-a518-6707edde53b4-button-1"
-      ],
-      "settings": {
-        "desktop_content_position": "center",
-        "content_alignment": "center",
-        "color_scheme": "",
-        "full_width": true,
-        "padding_top": 40,
-        "padding_bottom": 52
-      }
+      "block_order": ["t1", "t2", "t3"]
     },
-    "3b230c5b-0c27-427a-95be-b9bec7aeb2b5": {
-      "type": "image-banner",
+    "brand": {
+      "type": "brand-presentation",
       "settings": {
-        "image": "shopify:\/\/shop_images\/wild-plants.jpg",
-        "image_overlay_opacity": 0,
-        "image_height": "small",
-        "desktop_content_position": "middle-center",
-        "show_text_box": false,
-        "desktop_content_alignment": "center",
-        "color_scheme": "",
-        "image_behavior": "none",
-        "mobile_content_alignment": "center",
-        "stack_images_on_mobile": true,
-        "show_text_below": true
-      }
-    },
-    "multicolumn": {
-      "type": "multicolumn",
+        "bg_color": "#ffffff",
+        "accent_color": "#d4a843",
+        "divider_color": "#0d1b2a",
+        "overline": "Notre mission"
+      },
       "blocks": {
-        "column1": {
-          "type": "column",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/vegan_1.png",
-            "title": "Vegan",
-            "text": "<p>Express yourself in style while supporting animal rights. Explore our selection of inactive vegan wear.<\/p>",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "column2": {
-          "type": "column",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/cruelty-free.png",
-            "title": "Cruelty Free",
-            "text": "<p>Feel secure in your purchase knowing that all Night Club products are cruelty free and our cosmetics are NEVER tested on animals.<\/p>",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "column3": {
-          "type": "column",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/planet-earth.png",
-            "title": "Sustainable",
-            "text": "<p>Shop guilt-free knowing that all our products are sustainably sourced, allowing you to make conscious choices for a better future.<\/p>",
-            "link_label": "",
-            "link": ""
-          }
-        }
+        "tl1": { "type": "title_line", "settings": { "text": "Le foot, c'est", "accent": false } },
+        "tl2": { "type": "title_line", "settings": { "text": "plus qu'un sport", "accent": true } },
+        "p1": { "type": "paragraph", "settings": { "text": "C'est la fiert\u00e9 de tout un peuple. C'est 90 minutes o\u00f9 tout un pays vibre ensemble. C'est les cris dans les salons, les klaxons dans les rues, les larmes de joie." } },
+        "p2": { "type": "paragraph", "settings": { "text": "On a cr\u00e9\u00e9 Football Heritage pour capturer cette \u00e9nergie. Chaque jersey est con\u00e7u pour que tu ressentes cette fiert\u00e9 \u00e0 chaque fois que tu l'enfiles." } },
+        "p3": { "type": "paragraph", "settings": { "text": "Coupe du Monde 2026, on y sera. Et toi ?" } }
       },
-      "block_order": [
-        "column1",
-        "column2",
-        "column3"
-      ],
+      "block_order": ["tl1", "tl2", "p1", "p2", "p3"]
+    },
+    "cta-product": {
+      "type": "cta-product",
       "settings": {
-        "title": "",
-        "heading_size": "h1",
-        "image_width": "third",
-        "image_ratio": "square",
-        "columns_desktop": 3,
-        "column_alignment": "center",
-        "background_style": "none",
-        "button_label": "",
-        "button_link": "",
-        "color_scheme": "background-1",
-        "columns_mobile": "1",
-        "swipe_on_mobile": false,
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
+        "bg_color": "#f5f5f3",
+        "accent_color": "#d4a843",
+        "overline": "\ud83d\udd25 Best-seller",
+        "title": "Jersey Maroc Heritage",
+        "reviews_count": "127 avis",
+        "price": "34,99\u20ac",
+        "compare_price": "49,99\u20ac",
+        "flag_emoji": "\ud83c\uddf2\ud83c\udde6",
+        "product_gradient": "linear-gradient(160deg,#c1272d,#7a1018)",
+        "button_text": "Voir le produit"
+      },
+      "blocks": {
+        "b1": { "type": "benefit", "settings": { "text": "Design exclusif inspir\u00e9 du Maroc" } },
+        "b2": { "type": "benefit", "settings": { "text": "Tissu jersey premium respirant" } },
+        "b3": { "type": "benefit", "settings": { "text": "Sublimation \u2014 couleurs qui durent \u00e0 vie" } },
+        "b4": { "type": "benefit", "settings": { "text": "Fabriqu\u00e9 en Europe, chez toi en 3-5j" } },
+        "b5": { "type": "benefit", "settings": { "text": "Satisfait ou rembours\u00e9 30 jours" } }
+      },
+      "block_order": ["b1", "b2", "b3", "b4", "b5"]
+    },
+    "collections": {
+      "type": "collection-grid",
+      "settings": {
+        "bg_color": "#ffffff",
+        "accent_color": "#d4a843",
+        "overline": "\ud83c\udfc6 Collections",
+        "title": "Choisis ton camp",
+        "subtitle": "5 pays, 5 designs exclusifs \u2014 \u00c9dition Coupe du Monde 2026"
+      },
+      "blocks": {
+        "ma": { "type": "country_card", "settings": { "flag_emoji": "\ud83c\uddf2\ud83c\udde6", "country": "Maroc", "price_from": "D\u00e8s 34,99\u20ac", "gradient": "linear-gradient(180deg,#c1272d,#5a0f14)" } },
+        "dz": { "type": "country_card", "settings": { "flag_emoji": "\ud83c\udde9\ud83c\uddff", "country": "Alg\u00e9rie", "price_from": "D\u00e8s 34,99\u20ac", "gradient": "linear-gradient(180deg,#006233,#002614)" } },
+        "ci": { "type": "country_card", "settings": { "flag_emoji": "\ud83c\udde8\ud83c\uddee", "country": "C\u00f4te d'Ivoire", "price_from": "D\u00e8s 34,99\u20ac", "gradient": "linear-gradient(180deg,#FF8200,#7a3e00)" } },
+        "fr": { "type": "country_card", "settings": { "flag_emoji": "\ud83c\uddeb\ud83c\uddf7", "country": "France", "price_from": "D\u00e8s 34,99\u20ac", "gradient": "linear-gradient(180deg,#0055A4,#002952)" } },
+        "br": { "type": "country_card", "settings": { "flag_emoji": "\ud83c\udde7\ud83c\uddf7", "country": "Br\u00e9sil", "price_from": "D\u00e8s 34,99\u20ac", "gradient": "linear-gradient(180deg,#009C3B,#FFDF00)" } }
+      },
+      "block_order": ["ma", "dz", "ci", "fr", "br"]
+    },
+    "story": {
+      "type": "our-story",
+      "settings": {
+        "bg_color": "#f5f5f3",
+        "accent_color": "#d4a843",
+        "overline": "Notre histoire",
+        "title_line1": "N\u00e9s entre",
+        "title_line2_before": "deux",
+        "title_line2_accent": "cultures",
+        "emoji": "\u26bd\ud83c\udf0d",
+        "link_text": "Lire toute notre histoire"
+      },
+      "blocks": {
+        "p1": { "type": "paragraph", "settings": { "text": "On a grandi en vibrant pour deux \u00e9quipes. En criant devant la t\u00e9l\u00e9 avec nos parents pour un match, puis en c\u00e9l\u00e9brant dans la rue avec nos potes pour l'autre." } },
+        "p2": { "type": "paragraph", "settings": { "text": "Football Heritage est n\u00e9 de cette double fiert\u00e9. Chaque jersey raconte l'histoire d'un pays, d'une diaspora, d'une passion partag\u00e9e." } }
+      },
+      "block_order": ["p1", "p2"]
+    },
+    "faq": {
+      "type": "faq-section",
+      "settings": {
+        "bg_color": "#ffffff",
+        "accent_color": "#d4a843",
+        "overline": "FAQ",
+        "title": "Questions fr\u00e9quentes"
+      },
+      "blocks": {
+        "q1": { "type": "faq_item", "settings": { "question": "Quels sont les d\u00e9lais de livraison ?", "answer": "Production 1-2j + livraison 3-5j ouvr\u00e9s en Europe. Suivi par email en temps r\u00e9el." } },
+        "q2": { "type": "faq_item", "settings": { "question": "Quelle taille choisir ?", "answer": "Taille normalement. H\u00e9sitation ? Taille au-dessus pour d\u00e9contract\u00e9, en-dessous pour ajust\u00e9." } },
+        "q3": { "type": "faq_item", "settings": { "question": "C'est un maillot officiel ?", "answer": "Non. Designs originaux ind\u00e9pendants, non affili\u00e9s aux f\u00e9d\u00e9rations, FIFA ou \u00e9quipementiers." } },
+        "q4": { "type": "faq_item", "settings": { "question": "Politique de retour ?", "answer": "30 jours satisfait ou rembours\u00e9, sans conditions." } },
+        "q5": { "type": "faq_item", "settings": { "question": "Livraison hors France ?", "answer": "Oui ! Toute l'Europe : Belgique, Allemagne, Espagne, Italie, Pays-Bas, Portugal..." } },
+        "q6": { "type": "faq_item", "settings": { "question": "Comment sont imprim\u00e9s les jerseys ?", "answer": "Sublimation : couleurs int\u00e9gr\u00e9es dans le tissu. Durable, r\u00e9sistant, couleurs \u00e9ternelles." } }
+      },
+      "block_order": ["q1", "q2", "q3", "q4", "q5", "q6"]
     }
   },
   "order": [
-    "image_banner",
-    "featured_collection",
-    "ded2df98-4469-471b-9747-292216a685ef",
-    "b7110073-2007-4743-a518-6707edde53b4",
-    "3b230c5b-0c27-427a-95be-b9bec7aeb2b5",
-    "multicolumn"
+    "hero",
+    "testimonials",
+    "brand",
+    "cta-product",
+    "collections",
+    "story",
+    "faq"
   ]
 }

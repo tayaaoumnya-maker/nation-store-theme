@@ -1,0 +1,152 @@
+{% comment %}
+  Section: Product FAQ
+  FAQ pour la page produit avec CTA en bas
+{% endcomment %}
+
+<div id="shopify-section-{{ section.id }}">
+  <section class="fh-pfaq" style="background:{{ section.settings.bg_color }}">
+    <div class="fh-section-header">
+      <div class="fh-section-overline" style="color:{{ section.settings.accent_color }}">{{ section.settings.overline }}</div>
+      <div class="fh-section-title">{{ section.settings.title }}</div>
+    </div>
+    <div class="fh-pfaq-inner">
+      {% for block in section.blocks %}
+        {% if block.type == 'faq_item' %}
+          <div class="fh-pfaq-item" {{ block.shopify_attributes }}>
+            <button class="fh-pfaq-q" data-pfaq-toggle aria-expanded="false">
+              {{ block.settings.question }}
+              <span class="fh-pfaq-icon">+</span>
+            </button>
+            <div class="fh-pfaq-a" aria-hidden="true">{{ block.settings.answer }}</div>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+    {% if section.settings.cta_text != blank %}
+      <div class="fh-pfaq-cta">
+        <a href="{{ section.settings.cta_link }}">{{ section.settings.cta_text }}</a>
+      </div>
+    {% endif %}
+  </section>
+
+  <style>
+    #shopify-section-{{ section.id }} .fh-pfaq{padding:100px 48px}
+    #shopify-section-{{ section.id }} .fh-section-header{text-align:center;margin-bottom:56px}
+    #shopify-section-{{ section.id }} .fh-section-overline{font-size:11px;text-transform:uppercase;letter-spacing:4px;font-weight:700;margin-bottom:12px}
+    #shopify-section-{{ section.id }} .fh-section-title{font-family:'Bebas Neue',Impact,sans-serif;font-size:48px;letter-spacing:2px;text-transform:uppercase;color:#0d1b2a}
+    #shopify-section-{{ section.id }} .fh-pfaq-inner{max-width:680px;margin:0 auto}
+    #shopify-section-{{ section.id }} .fh-pfaq-item{border-bottom:1px solid #e0e0dc}
+    #shopify-section-{{ section.id }} .fh-pfaq-q{width:100%;background:none;border:none;text-align:left;padding:22px 0;font-size:16px;font-weight:600;color:#0d1b2a;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-family:'Inter',sans-serif;transition:color .3s}
+    #shopify-section-{{ section.id }} .fh-pfaq-q:hover{color:{{ section.settings.accent_color }}}
+    #shopify-section-{{ section.id }} .fh-pfaq-icon{width:28px;height:28px;border-radius:50%;border:1.5px solid #e0e0dc;display:flex;align-items:center;justify-content:center;font-size:14px;color:#777;transition:all .3s;flex-shrink:0}
+    #shopify-section-{{ section.id }} .fh-pfaq-q.open .fh-pfaq-icon{background:#0d1b2a;border-color:{{ section.settings.accent_color }};color:#fff}
+    #shopify-section-{{ section.id }} .fh-pfaq-a{display:none;padding:0 0 22px;font-size:15px;color:#777;line-height:1.7;font-weight:300;font-family:'Inter',sans-serif}
+    #shopify-section-{{ section.id }} .fh-pfaq-a.open{display:block}
+    #shopify-section-{{ section.id }} .fh-pfaq-cta{text-align:center;margin-top:48px}
+    #shopify-section-{{ section.id }} .fh-pfaq-cta a{background:linear-gradient(135deg,#0d1b2a,#162d4a);color:#fff;padding:18px 40px;border-radius:8px;font-size:14px;font-weight:800;text-decoration:none;text-transform:uppercase;letter-spacing:2px;display:inline-block;transition:all .3s;box-shadow:0 8px 30px rgba(13,27,42,0.25);font-family:'Inter',sans-serif}
+    #shopify-section-{{ section.id }} .fh-pfaq-cta a:hover{transform:translateY(-2px);box-shadow:0 16px 48px rgba(13,27,42,0.4)}
+    @media(max-width:900px){
+      #shopify-section-{{ section.id }} .fh-pfaq{padding:64px 20px}
+      #shopify-section-{{ section.id }} .fh-section-title{font-size:32px}
+    }
+  </style>
+
+  <script>
+    (function(){
+      var section = document.getElementById('shopify-section-{{ section.id }}');
+      section.querySelectorAll('[data-pfaq-toggle]').forEach(function(btn){
+        btn.addEventListener('click', function(){
+          var open = this.classList.toggle('open');
+          this.setAttribute('aria-expanded', open);
+          var icon = this.querySelector('.fh-pfaq-icon');
+          if(icon) icon.textContent = open ? '−' : '+';
+          var answer = this.nextElementSibling;
+          if(answer){
+            answer.classList.toggle('open');
+            answer.setAttribute('aria-hidden', !open);
+          }
+        });
+      });
+    })();
+  </script>
+</div>
+
+{% schema %}
+{
+  "name": "FAQ Produit",
+  "tag": "section",
+  "class": "fh-product-faq-section",
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Couleur de fond",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Couleur accent",
+      "default": "#d4a843"
+    },
+    {
+      "type": "text",
+      "id": "overline",
+      "label": "Surtitre",
+      "default": "FAQ"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Titre",
+      "default": "Questions fréquentes"
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "Texte CTA",
+      "default": "⚽ Ajouter au panier"
+    },
+    {
+      "type": "url",
+      "id": "cta_link",
+      "label": "Lien CTA"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "faq_item",
+      "name": "Question/Réponse",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question",
+          "default": "Délais de livraison ?"
+        },
+        {
+          "type": "textarea",
+          "id": "answer",
+          "label": "Réponse",
+          "default": "Production 1-2j + livraison 3-5j ouvrés en Europe. Suivi email en temps réel."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "FAQ Produit",
+      "blocks": [
+        { "type": "faq_item", "settings": { "question": "Délais de livraison ?", "answer": "Production 1-2j + livraison 3-5j ouvrés en Europe. Suivi email en temps réel." } },
+        { "type": "faq_item", "settings": { "question": "Quelle taille ?", "answer": "Taille normalement à légèrement grand. Hésitation ? Au-dessus pour décontracté." } },
+        { "type": "faq_item", "settings": { "question": "Maillot officiel ?", "answer": "Non. Design original indépendant. Non affilié FIFA / fédérations / équipementiers." } },
+        { "type": "faq_item", "settings": { "question": "Retours ?", "answer": "30 jours satisfait ou remboursé, sans conditions." } },
+        { "type": "faq_item", "settings": { "question": "Matériau ?", "answer": "Coton premium 180g/m², impression DTG haute définition. Couleurs vives et durables, résistant aux lavages." } },
+        { "type": "faq_item", "settings": { "question": "Hors France ?", "answer": "Oui ! Toute l'Europe : Belgique, Allemagne, Espagne, Italie, Pays-Bas..." } },
+        { "type": "faq_item", "settings": { "question": "Paiement ?", "answer": "CB, Apple Pay, Google Pay, PayPal. Paiement sécurisé Shopify." } },
+        { "type": "faq_item", "settings": { "question": "Pack famille ?", "answer": "Oui ! Adulte, femme cintré, enfant, bébé. Packs avec réduction dans Collections." } }
+      ]
+    }
+  ]
+}
+{% endschema %}
