@@ -13,7 +13,7 @@
             {% assign links = block.settings.links_text | split: '|' %}
             {% assign urls = block.settings.links_url | split: '|' %}
             {% for link_text in links %}
-              {% assign raw_url = urls[forloop.index0] %}
+              {% assign raw_url = urls[forloop.index0] | strip %}
               {% if raw_url == '/pages/guide-tailles' or raw_url == '/pages/guide-des-tailles' %}
                 {% assign final_url = '/pages/page-produit' %}
               {% elsif raw_url == '/pages/livraison-retours' or raw_url == '/pages/livraison-et-retours' %}
