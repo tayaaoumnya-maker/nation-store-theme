@@ -50,6 +50,11 @@
               {% if block.settings.featured %}
                 <div class="fhr-card-badge" style="background:{{ section.settings.accent }}">Coup de coeur</div>
               {% endif %}
+              {% if block.settings.image != blank %}
+                <div class="fhr-card-img">
+                  {{ block.settings.image | image_url: width: 600 | image_tag: loading: 'lazy', class: 'fhr-img' }}
+                </div>
+              {% endif %}
               <div class="fhr-card-stars" style="color:{{ section.settings.accent }}">
                 {% for i in (1..block.settings.stars) %}★{% endfor %}{% assign empty = 5 | minus: block.settings.stars %}{% for i in (1..empty) %}☆{% endfor %}
               </div>
@@ -123,6 +128,8 @@
     #shopify-section-{{ section.id }} .fhr-card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,0.08)}
     #shopify-section-{{ section.id }} .fhr-card--featured{border-color:rgba(212,168,67,0.3);background:linear-gradient(135deg,#fffdf5,#fff)}
     #shopify-section-{{ section.id }} .fhr-card-badge{position:absolute;top:16px;right:16px;color:#0d1b2a;font-size:10px;font-weight:700;padding:4px 10px;border-radius:20px;text-transform:uppercase;letter-spacing:.5px}
+    #shopify-section-{{ section.id }} .fhr-card-img{margin:-28px -28px 16px;border-radius:16px 16px 0 0;overflow:hidden}
+    #shopify-section-{{ section.id }} .fhr-card-img .fhr-img{width:100%;height:auto;display:block;aspect-ratio:4/3;object-fit:cover}
     #shopify-section-{{ section.id }} .fhr-card-stars{font-size:16px;letter-spacing:2px;margin-bottom:12px}
     #shopify-section-{{ section.id }} .fhr-card-title{font-family:'Inter',sans-serif;font-size:16px;font-weight:700;color:#0d1b2a;margin-bottom:8px}
     #shopify-section-{{ section.id }} .fhr-card-text{font-family:'Inter',sans-serif;font-size:14px;color:#555;line-height:1.7;font-weight:300;font-style:italic;margin-bottom:20px}
@@ -183,6 +190,7 @@
       "type": "review",
       "name": "Avis",
       "settings": [
+        { "type": "image_picker", "id": "image", "label": "Photo client (optionnel)" },
         { "type": "range", "id": "stars", "min": 1, "max": 5, "default": 5, "label": "Étoiles" },
         { "type": "text", "id": "title", "label": "Titre avis" },
         { "type": "textarea", "id": "text", "label": "Texte" },
