@@ -6,11 +6,6 @@
 <div id="shopify-section-{{ section.id }}">
   <section class="fh-hero" style="background:{{ section.settings.bg_color }}">
     <div class="fh-hero-bg"></div>
-    <div class="fh-smoke-layer">
-      <div class="fh-smoke fh-smoke-1"></div>
-      <div class="fh-smoke fh-smoke-2"></div>
-      <div class="fh-smoke fh-smoke-3"></div>
-    </div>
     <div class="fh-hero-lights">
       <div class="fh-light-beam"></div><div class="fh-light-beam"></div><div class="fh-light-beam"></div><div class="fh-light-beam"></div><div class="fh-light-beam"></div>
     </div>
@@ -82,14 +77,6 @@
   <style>
     #shopify-section-{{ section.id }} .fh-hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden}
     #shopify-section-{{ section.id }} .fh-hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse at 20% 80%,rgba(13,27,42,0.15) 0%,transparent 50%),radial-gradient(ellipse at 80% 20%,rgba(212,168,67,0.1) 0%,transparent 50%),radial-gradient(ellipse at 50% 50%,rgba(29,53,87,0.2) 0%,transparent 60%)}
-    #shopify-section-{{ section.id }} .fh-smoke-layer{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:1}
-    #shopify-section-{{ section.id }} .fh-smoke{position:absolute;border-radius:50%;opacity:0.8}
-    #shopify-section-{{ section.id }} .fh-smoke-1{width:900px;height:600px;background:radial-gradient(ellipse,rgba(212,168,67,0.8) 0%,rgba(212,168,67,0.35) 40%,transparent 70%);filter:blur(100px);top:0;left:-15%;animation:fhSmoke1 12s ease-in-out infinite}
-    #shopify-section-{{ section.id }} .fh-smoke-2{width:800px;height:700px;background:radial-gradient(ellipse,rgba(220,40,40,0.75) 0%,rgba(220,40,40,0.3) 40%,transparent 70%);filter:blur(90px);bottom:-10%;right:-10%;animation:fhSmoke2 15s ease-in-out 2s infinite}
-    #shopify-section-{{ section.id }} .fh-smoke-3{width:1000px;height:550px;background:radial-gradient(ellipse,rgba(0,140,60,0.65) 0%,rgba(0,140,60,0.25) 40%,transparent 70%);filter:blur(110px);top:30%;left:20%;animation:fhSmoke3 18s ease-in-out 4s infinite}
-    @keyframes fhSmoke1{0%{transform:translate(0,0) scale(1);opacity:0.8}50%{transform:translate(80px,-40px) scale(1.2);opacity:1}100%{transform:translate(0,0) scale(1);opacity:0.8}}
-    @keyframes fhSmoke2{0%{transform:translate(0,0) scale(1);opacity:0.75}50%{transform:translate(-60px,30px) scale(1.25);opacity:0.95}100%{transform:translate(0,0) scale(1);opacity:0.75}}
-    @keyframes fhSmoke3{0%{transform:translate(0,0) scale(1);opacity:0.7}50%{transform:translate(50px,-35px) scale(1.15);opacity:0.9}100%{transform:translate(0,0) scale(1);opacity:0.7}}
     #shopify-section-{{ section.id }} .fh-hero-lights{position:absolute;inset:0;overflow:hidden;pointer-events:none}
     #shopify-section-{{ section.id }} .fh-light-beam{position:absolute;width:2px;height:120vh;background:linear-gradient(180deg,transparent,rgba(255,255,255,0.03),transparent);transform:rotate(-15deg);animation:fhBeam 8s ease-in-out infinite}
     #shopify-section-{{ section.id }} .fh-light-beam:nth-child(1){left:10%;animation-delay:0s}
