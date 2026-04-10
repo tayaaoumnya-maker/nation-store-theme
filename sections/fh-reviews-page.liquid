@@ -1,0 +1,201 @@
+{% comment %}
+  Section: Page Avis — Design immersif premium
+{% endcomment %}
+
+<div id="shopify-section-{{ section.id }}">
+  <!-- Hero -->
+  <section class="fhr-hero" style="background:{{ section.settings.hero_bg }}">
+    <div class="fhr-hero-inner">
+      <div class="fhr-hero-overline" style="color:{{ section.settings.accent }}">{{ section.settings.overline }}</div>
+      <h1 class="fhr-hero-title">{{ section.settings.title }}</h1>
+      <p class="fhr-hero-sub">{{ section.settings.subtitle }}</p>
+      <div class="fhr-stats">
+        <div class="fhr-stat">
+          <div class="fhr-stat-num" style="color:{{ section.settings.accent }}">{{ section.settings.score }}</div>
+          <div class="fhr-stat-label">Note moyenne</div>
+          <div class="fhr-stat-stars">★★★★★</div>
+        </div>
+        <div class="fhr-stat-sep"></div>
+        <div class="fhr-stat">
+          <div class="fhr-stat-num" style="color:{{ section.settings.accent }}">{{ section.settings.total_reviews }}</div>
+          <div class="fhr-stat-label">Avis vérifiés</div>
+        </div>
+        <div class="fhr-stat-sep"></div>
+        <div class="fhr-stat">
+          <div class="fhr-stat-num" style="color:{{ section.settings.accent }}">{{ section.settings.satisfaction }}</div>
+          <div class="fhr-stat-label">Taux de satisfaction</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Barre de distribution -->
+  <section class="fhr-distribution">
+    <div class="fhr-dist-inner">
+      <div class="fhr-dist-row"><span class="fhr-dist-label">5 ★</span><div class="fhr-dist-bar"><div class="fhr-dist-fill" style="width:82%;background:{{ section.settings.accent }}"></div></div><span class="fhr-dist-pct">82%</span></div>
+      <div class="fhr-dist-row"><span class="fhr-dist-label">4 ★</span><div class="fhr-dist-bar"><div class="fhr-dist-fill" style="width:12%;background:{{ section.settings.accent }}"></div></div><span class="fhr-dist-pct">12%</span></div>
+      <div class="fhr-dist-row"><span class="fhr-dist-label">3 ★</span><div class="fhr-dist-bar"><div class="fhr-dist-fill" style="width:4%;background:{{ section.settings.accent }}"></div></div><span class="fhr-dist-pct">4%</span></div>
+      <div class="fhr-dist-row"><span class="fhr-dist-label">2 ★</span><div class="fhr-dist-bar"><div class="fhr-dist-fill" style="width:1%;background:{{ section.settings.accent }}"></div></div><span class="fhr-dist-pct">1%</span></div>
+      <div class="fhr-dist-row"><span class="fhr-dist-label">1 ★</span><div class="fhr-dist-bar"><div class="fhr-dist-fill" style="width:1%;background:{{ section.settings.accent }}"></div></div><span class="fhr-dist-pct">1%</span></div>
+    </div>
+  </section>
+
+  <!-- Grille avis -->
+  <section class="fhr-grid-section">
+    <div class="fhr-grid-inner">
+      <div class="fhr-grid">
+        {% for block in section.blocks %}
+          {% if block.type == 'review' %}
+            <div class="fhr-card {% if block.settings.featured %}fhr-card--featured{% endif %}" {{ block.shopify_attributes }}>
+              {% if block.settings.featured %}
+                <div class="fhr-card-badge" style="background:{{ section.settings.accent }}">Coup de coeur</div>
+              {% endif %}
+              <div class="fhr-card-stars" style="color:{{ section.settings.accent }}">
+                {% for i in (1..block.settings.stars) %}★{% endfor %}{% assign empty = 5 | minus: block.settings.stars %}{% for i in (1..empty) %}☆{% endfor %}
+              </div>
+              {% if block.settings.title != blank %}
+                <h3 class="fhr-card-title">{{ block.settings.title }}</h3>
+              {% endif %}
+              <p class="fhr-card-text">"{{ block.settings.text }}"</p>
+              <div class="fhr-card-footer">
+                <div class="fhr-card-author">
+                  <div class="fhr-avatar" style="background:linear-gradient(135deg,{{ section.settings.hero_bg }},{{ section.settings.accent }})">{{ block.settings.initials }}</div>
+                  <div>
+                    <div class="fhr-author-name">{{ block.settings.name }}</div>
+                    <div class="fhr-author-meta">{{ block.settings.location }}{% if block.settings.verified %} · <span class="fhr-verified">✓ Achat vérifié</span>{% endif %}</div>
+                  </div>
+                </div>
+              </div>
+              {% if block.settings.product != blank %}
+                <div class="fhr-card-product">
+                  <span class="fhr-product-icon">👕</span> {{ block.settings.product }}
+                </div>
+              {% endif %}
+              {% if block.settings.date != blank %}
+                <div class="fhr-card-date">{{ block.settings.date }}</div>
+              {% endif %}
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="fhr-cta" style="background:{{ section.settings.hero_bg }}">
+    <div class="fhr-cta-inner">
+      <div class="fhr-cta-overline" style="color:{{ section.settings.accent }}">Rejoins la communauté</div>
+      <h2 class="fhr-cta-title">Prêt à porter tes origines ?</h2>
+      <p class="fhr-cta-sub">Commande ton jersey et fais partie des +300 supporters déjà équipés.</p>
+      <a href="/collections/all" class="fhr-cta-btn" style="background:{{ section.settings.accent }}">Découvrir les jerseys →</a>
+    </div>
+  </section>
+
+  <style>
+    /* Hero */
+    #shopify-section-{{ section.id }} .fhr-hero{padding:80px 48px 60px;text-align:center;position:relative;overflow:hidden}
+    #shopify-section-{{ section.id }} .fhr-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 100%,rgba(212,168,67,0.08),transparent 60%)}
+    #shopify-section-{{ section.id }} .fhr-hero-inner{position:relative;z-index:2;max-width:700px;margin:0 auto}
+    #shopify-section-{{ section.id }} .fhr-hero-overline{font-size:11px;text-transform:uppercase;letter-spacing:4px;font-weight:700;margin-bottom:16px;font-family:'Inter',sans-serif}
+    #shopify-section-{{ section.id }} .fhr-hero-title{font-family:'Bebas Neue',Impact,sans-serif;font-size:64px;line-height:1;letter-spacing:3px;text-transform:uppercase;color:#fff;margin-bottom:12px}
+    #shopify-section-{{ section.id }} .fhr-hero-sub{font-family:'Inter',sans-serif;font-size:16px;color:rgba(255,255,255,0.5);font-weight:300;margin-bottom:40px}
+    #shopify-section-{{ section.id }} .fhr-stats{display:flex;align-items:center;justify-content:center;gap:40px;flex-wrap:wrap}
+    #shopify-section-{{ section.id }} .fhr-stat{text-align:center}
+    #shopify-section-{{ section.id }} .fhr-stat-num{font-family:'Bebas Neue',Impact,sans-serif;font-size:48px;line-height:1}
+    #shopify-section-{{ section.id }} .fhr-stat-label{font-family:'Inter',sans-serif;font-size:12px;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:1.5px;margin-top:4px}
+    #shopify-section-{{ section.id }} .fhr-stat-stars{color:#d4a843;font-size:18px;margin-top:4px;letter-spacing:2px}
+    #shopify-section-{{ section.id }} .fhr-stat-sep{width:1px;height:48px;background:rgba(255,255,255,0.1)}
+
+    /* Distribution */
+    #shopify-section-{{ section.id }} .fhr-distribution{padding:40px 48px;background:#f9f9f7}
+    #shopify-section-{{ section.id }} .fhr-dist-inner{max-width:500px;margin:0 auto}
+    #shopify-section-{{ section.id }} .fhr-dist-row{display:flex;align-items:center;gap:12px;margin-bottom:8px}
+    #shopify-section-{{ section.id }} .fhr-dist-label{font-family:'Inter',sans-serif;font-size:13px;color:#999;width:36px;text-align:right}
+    #shopify-section-{{ section.id }} .fhr-dist-bar{flex:1;height:8px;background:#eee;border-radius:4px;overflow:hidden}
+    #shopify-section-{{ section.id }} .fhr-dist-fill{height:100%;border-radius:4px;transition:width .6s ease}
+    #shopify-section-{{ section.id }} .fhr-dist-pct{font-family:'Inter',sans-serif;font-size:13px;color:#666;width:36px;font-weight:600}
+
+    /* Grid */
+    #shopify-section-{{ section.id }} .fhr-grid-section{padding:60px 48px 80px;background:#fff}
+    #shopify-section-{{ section.id }} .fhr-grid-inner{max-width:1200px;margin:0 auto}
+    #shopify-section-{{ section.id }} .fhr-grid{columns:3;column-gap:20px}
+    #shopify-section-{{ section.id }} .fhr-card{break-inside:avoid;background:#fff;border:1px solid #eee;border-radius:16px;padding:28px;margin-bottom:20px;transition:all .35s;position:relative;overflow:hidden}
+    #shopify-section-{{ section.id }} .fhr-card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,0.08)}
+    #shopify-section-{{ section.id }} .fhr-card--featured{border-color:rgba(212,168,67,0.3);background:linear-gradient(135deg,#fffdf5,#fff)}
+    #shopify-section-{{ section.id }} .fhr-card-badge{position:absolute;top:16px;right:16px;color:#0d1b2a;font-size:10px;font-weight:700;padding:4px 10px;border-radius:20px;text-transform:uppercase;letter-spacing:.5px}
+    #shopify-section-{{ section.id }} .fhr-card-stars{font-size:16px;letter-spacing:2px;margin-bottom:12px}
+    #shopify-section-{{ section.id }} .fhr-card-title{font-family:'Inter',sans-serif;font-size:16px;font-weight:700;color:#0d1b2a;margin-bottom:8px}
+    #shopify-section-{{ section.id }} .fhr-card-text{font-family:'Inter',sans-serif;font-size:14px;color:#555;line-height:1.7;font-weight:300;font-style:italic;margin-bottom:20px}
+    #shopify-section-{{ section.id }} .fhr-card-footer{display:flex;align-items:center;justify-content:space-between}
+    #shopify-section-{{ section.id }} .fhr-card-author{display:flex;align-items:center;gap:10px}
+    #shopify-section-{{ section.id }} .fhr-avatar{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:12px;font-weight:800;flex-shrink:0}
+    #shopify-section-{{ section.id }} .fhr-author-name{font-family:'Inter',sans-serif;font-size:13px;font-weight:600;color:#0d1b2a}
+    #shopify-section-{{ section.id }} .fhr-author-meta{font-family:'Inter',sans-serif;font-size:11px;color:#999}
+    #shopify-section-{{ section.id }} .fhr-verified{color:#2e7d32;font-weight:600}
+    #shopify-section-{{ section.id }} .fhr-card-product{margin-top:16px;padding-top:12px;border-top:1px solid #f0f0f0;font-family:'Inter',sans-serif;font-size:12px;color:#999;letter-spacing:.5px}
+    #shopify-section-{{ section.id }} .fhr-product-icon{margin-right:4px}
+    #shopify-section-{{ section.id }} .fhr-card-date{font-family:'Inter',sans-serif;font-size:11px;color:#ccc;margin-top:8px}
+
+    /* CTA */
+    #shopify-section-{{ section.id }} .fhr-cta{padding:80px 48px;text-align:center}
+    #shopify-section-{{ section.id }} .fhr-cta-inner{max-width:600px;margin:0 auto}
+    #shopify-section-{{ section.id }} .fhr-cta-overline{font-size:11px;text-transform:uppercase;letter-spacing:4px;font-weight:700;margin-bottom:12px;font-family:'Inter',sans-serif}
+    #shopify-section-{{ section.id }} .fhr-cta-title{font-family:'Bebas Neue',Impact,sans-serif;font-size:48px;color:#fff;letter-spacing:2px;text-transform:uppercase;margin-bottom:12px}
+    #shopify-section-{{ section.id }} .fhr-cta-sub{font-family:'Inter',sans-serif;font-size:15px;color:rgba(255,255,255,0.5);font-weight:300;margin-bottom:32px}
+    #shopify-section-{{ section.id }} .fhr-cta-btn{display:inline-block;color:#0d1b2a;padding:16px 36px;border-radius:8px;font-family:'Inter',sans-serif;font-size:14px;font-weight:700;text-decoration:none;text-transform:uppercase;letter-spacing:1.5px;transition:all .3s}
+    #shopify-section-{{ section.id }} .fhr-cta-btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(212,168,67,0.4)}
+
+    /* Responsive */
+    @media(max-width:1000px){
+      #shopify-section-{{ section.id }} .fhr-grid{columns:2}
+    }
+    @media(max-width:600px){
+      #shopify-section-{{ section.id }} .fhr-hero{padding:48px 20px 40px}
+      #shopify-section-{{ section.id }} .fhr-hero-title{font-size:40px}
+      #shopify-section-{{ section.id }} .fhr-stats{gap:24px}
+      #shopify-section-{{ section.id }} .fhr-stat-num{font-size:36px}
+      #shopify-section-{{ section.id }} .fhr-stat-sep{display:none}
+      #shopify-section-{{ section.id }} .fhr-distribution{padding:28px 20px}
+      #shopify-section-{{ section.id }} .fhr-grid-section{padding:40px 16px 60px}
+      #shopify-section-{{ section.id }} .fhr-grid{columns:1}
+      #shopify-section-{{ section.id }} .fhr-cta{padding:48px 20px}
+      #shopify-section-{{ section.id }} .fhr-cta-title{font-size:32px}
+    }
+  </style>
+</div>
+
+{% schema %}
+{
+  "name": "Page Avis Premium",
+  "tag": "section",
+  "settings": [
+    { "type": "color", "id": "hero_bg", "label": "Fond hero", "default": "#0d1b2a" },
+    { "type": "color", "id": "accent", "label": "Accent", "default": "#d4a843" },
+    { "type": "text", "id": "overline", "label": "Surtitre", "default": "★ Avis vérifiés" },
+    { "type": "text", "id": "title", "label": "Titre", "default": "Nos Avis Clients" },
+    { "type": "text", "id": "subtitle", "label": "Sous-titre", "default": "Des centaines de supporters satisfaits à travers l'Europe" },
+    { "type": "text", "id": "score", "label": "Note", "default": "4,8/5" },
+    { "type": "text", "id": "total_reviews", "label": "Nombre d'avis", "default": "347" },
+    { "type": "text", "id": "satisfaction", "label": "Satisfaction", "default": "97%" }
+  ],
+  "blocks": [
+    {
+      "type": "review",
+      "name": "Avis",
+      "settings": [
+        { "type": "range", "id": "stars", "min": 1, "max": 5, "default": 5, "label": "Étoiles" },
+        { "type": "text", "id": "title", "label": "Titre avis" },
+        { "type": "textarea", "id": "text", "label": "Texte" },
+        { "type": "text", "id": "initials", "label": "Initiales", "default": "AB" },
+        { "type": "text", "id": "name", "label": "Nom", "default": "Client" },
+        { "type": "text", "id": "location", "label": "Ville", "default": "Paris" },
+        { "type": "checkbox", "id": "verified", "label": "Achat vérifié", "default": true },
+        { "type": "checkbox", "id": "featured", "label": "Coup de coeur", "default": false },
+        { "type": "text", "id": "product", "label": "Produit (optionnel)" },
+        { "type": "text", "id": "date", "label": "Date (optionnel)", "info": "Ex: Mars 2026" }
+      ]
+    }
+  ],
+  "presets": [{ "name": "Page Avis Premium" }]
+}
+{% endschema %}

@@ -10,24 +10,32 @@
 {
   "sections": {
     "reviews": {
-      "type": "fh-reviews",
+      "type": "fh-reviews-page",
       "settings": {
-        "bg_color": "#ffffff",
-        "accent_color": "#d4a843",
-        "overline": "★ Avis clients",
-        "title": "Ce qu'ils en pensent",
-        "subtitle": "Des centaines de clients satisfaits à travers l'Europe",
-        "score": "4,8/5"
+        "hero_bg": "#0d1b2a",
+        "accent": "#d4a843",
+        "overline": "\u2605 Avis v\u00e9rifi\u00e9s",
+        "title": "Nos Avis Clients",
+        "subtitle": "Des centaines de supporters satisfaits \u00e0 travers l'Europe",
+        "score": "4,8/5",
+        "total_reviews": "347",
+        "satisfaction": "97%"
       },
       "blocks": {
-        "r1": { "type": "review", "settings": { "stars": 5, "text": "J'ai porté le jersey Maroc pendant le match et l'ambiance était folle. Tout le monde me demandait où je l'avais trouvé. Un truc de ouf.", "initials": "YK", "name": "Youssef K.", "location": "Paris", "verified": true, "product": "Jersey Maroc Heritage" } },
-        "r2": { "type": "review", "settings": { "stars": 5, "text": "Le pack famille Algérie est arrivé en 4 jours. On est tous équipés pour supporter les Fennecs à la Coupe du Monde. Qualité dingue.", "initials": "AB", "name": "Amina B.", "location": "Lyon", "verified": true, "product": "Pack Famille Algérie" } },
-        "r3": { "type": "review", "settings": { "stars": 5, "text": "Ce jersey c'est pas un maillot générique, c'est une déclaration. Je représente mes origines avec style. Vivement les matchs !", "initials": "ID", "name": "Ibrahim D.", "location": "Bruxelles", "verified": true, "product": "Jersey Côte d'Ivoire" } },
-        "r4": { "type": "review", "settings": { "stars": 5, "text": "La qualité est vraiment au rendez-vous. Le tissu est léger, les couleurs sont éclatantes. J'ai commandé pour toute la famille.", "initials": "SK", "name": "Sofiane K.", "location": "Marseille", "verified": true, "product": "Jersey Algérie Heritage" } },
-        "r5": { "type": "review", "settings": { "stars": 4, "text": "Super design, livraison rapide. J'aurais aimé un peu plus de choix de tailles en 3XL mais sinon c'est parfait.", "initials": "MN", "name": "Moussa N.", "location": "Bruxelles", "verified": true, "product": "Jersey France Heritage" } },
-        "r6": { "type": "review", "settings": { "stars": 5, "text": "Mon fils de 12 ans est fan. Il porte son jersey Brésil tous les weekends. Les couleurs tiennent super bien après plusieurs lavages.", "initials": "LC", "name": "Lucia C.", "location": "Paris", "verified": true, "product": "Jersey Brésil Heritage" } }
+        "r1": { "type": "review", "settings": { "stars": 5, "title": "L'ambiance au stade avec ce jersey", "text": "Je l'ai port\u00e9 pour Maroc-Espagne en fan zone. L'ambiance \u00e9tait folle et tout le monde me demandait o\u00f9 je l'avais trouv\u00e9. Qualit\u00e9 dingue, les couleurs sont \u00e9clatantes.", "initials": "YK", "name": "Youssef K.", "location": "Paris", "verified": true, "featured": true, "product": "Jersey Maroc Heritage", "date": "Mars 2026" } },
+        "r2": { "type": "review", "settings": { "stars": 5, "title": "Cadeau parfait avant le Mondial", "text": "Offert \u00e0 mon p\u00e8re pour la Coupe du Monde. Il l'a ador\u00e9, il dit que c'est le plus beau jersey qu'il ait jamais eu. Livr\u00e9 en 6 jours.", "initials": "SM", "name": "Sarah M.", "location": "Lyon", "verified": true, "featured": false, "product": "Jersey Alg\u00e9rie Heritage", "date": "Mars 2026" } },
+        "r3": { "type": "review", "settings": { "stars": 5, "title": "Un jersey qui repr\u00e9sente mes racines", "text": "Ce jersey c'est pas un maillot g\u00e9n\u00e9rique, c'est une d\u00e9claration. Je repr\u00e9sente mes origines avec style. Vivement les matchs !", "initials": "ID", "name": "Ibrahim D.", "location": "Bruxelles", "verified": true, "featured": false, "product": "Jersey C\u00f4te d'Ivoire", "date": "F\u00e9vrier 2026" } },
+        "r4": { "type": "review", "settings": { "stars": 5, "title": "Qualit\u00e9 au rendez-vous", "text": "La qualit\u00e9 est vraiment au rendez-vous. Le tissu est l\u00e9ger, les couleurs sont \u00e9clatantes. J'ai command\u00e9 pour toute la famille. On est pr\u00eats pour le Mondial.", "initials": "SK", "name": "Sofiane K.", "location": "Marseille", "verified": true, "featured": true, "product": "Pack Famille Alg\u00e9rie", "date": "Mars 2026" } },
+        "r5": { "type": "review", "settings": { "stars": 4, "title": "Super design, taille un peu grand", "text": "Super design, livraison rapide. J'aurais aim\u00e9 un peu plus de choix de tailles en 3XL mais sinon c'est parfait. Prenez votre taille ou en dessous.", "initials": "MN", "name": "Moussa N.", "location": "Bruxelles", "verified": true, "featured": false, "product": "Jersey France Heritage", "date": "F\u00e9vrier 2026" } },
+        "r6": { "type": "review", "settings": { "stars": 5, "title": "Mon fils adore", "text": "Mon fils de 12 ans est fan. Il porte son jersey Br\u00e9sil tous les weekends. Les couleurs tiennent super bien apr\u00e8s plusieurs lavages.", "initials": "LC", "name": "Lucia C.", "location": "Paris", "verified": true, "featured": false, "product": "Jersey Br\u00e9sil Enfant", "date": "Janvier 2026" } },
+        "r7": { "type": "review", "settings": { "stars": 5, "title": "Fier de mes origines", "text": "Le jersey Maroc est magnifique. Le design zellige est incroyable. Je le porte au boulot les vendredis et tout le monde kiffe. Merci Football Heritage !", "initials": "KA", "name": "Karim A.", "location": "Amsterdam", "verified": true, "featured": false, "product": "Jersey Maroc Heritage", "date": "Mars 2026" } },
+        "r8": { "type": "review", "settings": { "stars": 5, "title": "Livraison rapide et emballage soign\u00e9", "text": "Command\u00e9 dimanche, re\u00e7u vendredi. L'emballage est soign\u00e9, le jersey est exactement comme sur les photos. Taille parfaitement.", "initials": "FT", "name": "Fatou T.", "location": "Bordeaux", "verified": true, "featured": false, "product": "Jersey C\u00f4te d'Ivoire Femme", "date": "F\u00e9vrier 2026" } },
+        "r9": { "type": "review", "settings": { "stars": 5, "title": "Le meilleur jersey fan que j'ai eu", "text": "J'en ai achet\u00e9 des maillots fan, mais celui-l\u00e0 c'est un autre niveau. Le tissu est premium, la sublimation est parfaite. Aucune comparaison.", "initials": "RA", "name": "Rachid A.", "location": "Lille", "verified": true, "featured": true, "product": "Jersey Alg\u00e9rie Heritage", "date": "Mars 2026" } },
+        "r10": { "type": "review", "settings": { "stars": 4, "title": "Tr\u00e8s beau mais d\u00e9lai un peu long", "text": "Le jersey est magnifique, rien \u00e0 dire. Par contre la livraison a pris 9 jours au lieu de 7. Mais \u00e7a valait l'attente.", "initials": "AB", "name": "Ahmed B.", "location": "Toulouse", "verified": true, "featured": false, "product": "Jersey Maroc Heritage", "date": "Janvier 2026" } },
+        "r11": { "type": "review", "settings": { "stars": 5, "title": "Top pour la fan zone", "text": "Achet\u00e9 le jersey France pour les qualifs. Le bleu est profond, le coq en sublimation est magnifique. D\u00e9j\u00e0 pr\u00eat pour cet \u00e9t\u00e9.", "initials": "JM", "name": "Julien M.", "location": "Nantes", "verified": true, "featured": false, "product": "Jersey France Heritage", "date": "Mars 2026" } },
+        "r12": { "type": "review", "settings": { "stars": 5, "title": "Cadeau de groupe pour le Mondial", "text": "On a command\u00e9 \u00e0 6 potes, chacun son pays. L'effet de groupe au stade va \u00eatre incroyable. Merci pour les 5 designs diff\u00e9rents !", "initials": "ND", "name": "Nabil D.", "location": "Gen\u00e8ve", "verified": true, "featured": false, "product": "Jersey Maroc + Alg\u00e9rie", "date": "Avril 2026" } }
       },
-      "block_order": ["r1", "r2", "r3", "r4", "r5", "r6"]
+      "block_order": ["r1", "r4", "r9", "r2", "r3", "r5", "r6", "r7", "r8", "r10", "r11", "r12"]
     }
   },
   "order": ["reviews"]
