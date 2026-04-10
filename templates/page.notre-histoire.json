@@ -9,57 +9,39 @@
  */
 {
   "sections": {
-    "story-hero": {
-      "type": "our-story",
+    "histoire": {
+      "type": "fh-notre-histoire",
       "settings": {
-        "bg_color": "#0d1b2a",
-        "accent_color": "#d4a843",
-        "overline": "Notre histoire",
-        "title_line1": "N\u00e9s entre",
-        "title_line2_before": "deux",
-        "title_line2_accent": "cultures",
-        "emoji": "\u26bd\ud83c\udf0d",
-        "link_text": ""
+        "hero_overline": "Notre histoire",
+        "hero_title": "Nés entre deux cultures",
+        "hero_subtitle": "On a grandi en vibrant pour deux équipes. En criant devant la télé avec nos parents pour un match, puis en célébrant dans la rue avec nos potes pour l'autre. Football Heritage est né de cette double fierté.",
+        "origin_label": "L'origine",
+        "origin_title": "Comment tout a commencé",
+        "quote_text": "Le foot, c'est pas juste un sport. C'est 90 minutes où tout un pays vibre ensemble. C'est les cris dans les salons, les klaxons dans les rues, les larmes de joie quand ton équipe marque à la dernière minute.",
+        "quote_author": "L'équipe Football Heritage",
+        "values_label": "Nos valeurs",
+        "values_title": "Ce qui nous anime",
+        "timeline_label": "Notre parcours",
+        "timeline_title": "Les étapes clés",
+        "cta_title": "Prêt à porter tes origines ?",
+        "cta_subtitle": "Rejoins une communauté de fans passionnés à travers toute l'Europe. Coupe du Monde 2026, on y sera. Et toi ?",
+        "cta_button": "Shopper la collection",
+        "cta_link": "/collections"
       },
       "blocks": {
-        "p1": { "type": "paragraph", "settings": { "text": "On a grandi en vibrant pour deux \u00e9quipes. En criant devant la t\u00e9l\u00e9 avec nos parents pour un match, puis en c\u00e9l\u00e9brant dans la rue avec nos potes pour l'autre." } },
-        "p2": { "type": "paragraph", "settings": { "text": "Football Heritage est n\u00e9 de cette double fiert\u00e9. Chaque jersey raconte l'histoire d'un pays, d'une diaspora, d'une passion partag\u00e9e." } }
+        "o1": { "type": "origin_paragraph", "settings": { "text": "On est la génération qui a grandi entre deux mondes. Nos parents nous ont transmis l'amour d'un pays qu'on n'a parfois connu que pendant les vacances d'été. Mais chaque match de foot nous ramenait là-bas. En 90 minutes, on redevenait 100% marocain, algérien, ivoirien." } },
+        "o2": { "type": "origin_paragraph", "settings": { "text": "Sauf que les maillots qu'on trouvait, c'était soit les officiels à 120€ (et pas toujours beaux), soit les contrefaçons qui se déchirent au premier lavage. On voulait quelque chose entre les deux : un jersey fan premium, au design unique, qui capture l'essence de nos origines." } },
+        "o3": { "type": "origin_paragraph", "settings": { "text": "C'est comme ça que Football Heritage est né. Pas dans un bureau, mais dans un salon pendant un Maroc-France. Avec cette envie simple : créer les jerseys qu'on aurait voulu porter nous-mêmes." } },
+        "v1": { "type": "value_card", "settings": { "icon": "🌍", "title": "Double fierté", "text": "Chaque jersey célèbre la richesse d'avoir grandi entre deux cultures. Porter ses origines n'est pas un choix, c'est une force." } },
+        "v2": { "type": "value_card", "settings": { "icon": "🎨", "title": "Design exclusif", "text": "Nos designers intègrent des motifs culturels authentiques (zellige, kente, arabesque) dans des coupes modernes. Chaque pièce est unique." } },
+        "v3": { "type": "value_card", "settings": { "icon": "🇪🇺", "title": "Made in Europe", "text": "Tissu premium, impression par sublimation, fabrication européenne. Pas de fast-fashion. Des couleurs qui durent, un confort qui dure." } },
+        "t1": { "type": "timeline_step", "settings": { "date": "2024", "title": "L'idée naît", "text": "Pendant un match de la CAN, l'idée germe : créer des jerseys fan premium qui racontent une histoire. Premiers croquis dans un carnet." } },
+        "t2": { "type": "timeline_step", "settings": { "date": "Début 2025", "title": "Premiers prototypes", "text": "Tests de tissus, recherche de fournisseurs européens, développement des designs avec des motifs culturels authentiques." } },
+        "t3": { "type": "timeline_step", "settings": { "date": "Mi-2025", "title": "Lancement de la marque", "text": "Football Heritage ouvre ses portes. 5 pays, 5 collections. Les premiers clients sont unanimes : c'est exactement ce qui manquait." } },
+        "t4": { "type": "timeline_step", "settings": { "date": "2026", "title": "Coupe du Monde", "text": "L'objectif depuis le début. Équiper la diaspora pour le plus grand événement sportif de la planète. USA, Canada, Mexique — on arrive." } }
       },
-      "block_order": ["p1", "p2"]
-    },
-    "brand": {
-      "type": "brand-presentation",
-      "settings": {
-        "bg_color": "#ffffff",
-        "accent_color": "#d4a843",
-        "divider_color": "#0d1b2a",
-        "overline": "Notre mission"
-      },
-      "blocks": {
-        "tl1": { "type": "title_line", "settings": { "text": "Le foot, c'est", "accent": false } },
-        "tl2": { "type": "title_line", "settings": { "text": "plus qu'un sport", "accent": true } },
-        "p1": { "type": "paragraph", "settings": { "text": "C'est la fiert\u00e9 de tout un peuple. C'est 90 minutes o\u00f9 tout un pays vibre ensemble. C'est les cris dans les salons, les klaxons dans les rues, les larmes de joie." } },
-        "p2": { "type": "paragraph", "settings": { "text": "On a cr\u00e9\u00e9 Football Heritage pour capturer cette \u00e9nergie. Chaque jersey est con\u00e7u pour que tu ressentes cette fiert\u00e9 \u00e0 chaque fois que tu l'enfiles." } },
-        "p3": { "type": "paragraph", "settings": { "text": "On ne vend pas des maillots. On vend un sentiment. Celui de se lever dans un bar bond\u00e9 quand ton \u00e9quipe marque. Celui de porter tes origines avec fiert\u00e9, o\u00f9 que tu sois." } }
-      },
-      "block_order": ["tl1", "tl2", "p1", "p2", "p3"]
-    },
-    "testimonials": {
-      "type": "testimonials-social-proof",
-      "settings": {
-        "bg_color": "#f5f5f3",
-        "accent_color": "#d4a843",
-        "overline": "\u2605 La communaut\u00e9",
-        "title": "Ils portent leurs origines",
-        "subtitle": "Rejoins une communaut\u00e9 de fans passionn\u00e9s"
-      },
-      "blocks": {
-        "t1": { "type": "testimonial", "settings": { "stars": 5, "text": "Ce jersey c'est plus qu'un v\u00eatement, c'est une d\u00e9claration. Mes origines, ma fiert\u00e9.", "initials": "YK", "name": "Youssef K.", "location": "Paris", "verified": true } },
-        "t2": { "type": "testimonial", "settings": { "stars": 5, "text": "Toute la famille \u00e9quip\u00e9e pour la Coupe du Monde. Les enfants sont fous de joie.", "initials": "AB", "name": "Amina B.", "location": "Lyon", "verified": true } },
-        "t3": { "type": "testimonial", "settings": { "stars": 5, "text": "Qualit\u00e9 incroyable. Le tissu est top, les couleurs sont magnifiques. Je recommande.", "initials": "ID", "name": "Ibrahim D.", "location": "Bruxelles", "verified": true } }
-      },
-      "block_order": ["t1", "t2", "t3"]
+      "block_order": ["o1", "o2", "o3", "v1", "v2", "v3", "t1", "t2", "t3", "t4"]
     }
   },
-  "order": ["story-hero", "brand", "testimonials"]
+  "order": ["histoire"]
 }
