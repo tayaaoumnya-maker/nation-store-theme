@@ -1,0 +1,246 @@
+{% comment %}
+  Section: Livraison & Retours — Design premium
+{% endcomment %}
+
+<div id="shopify-section-{{ section.id }}">
+  <!-- Hero -->
+  <section class="fhsh-hero" style="background:{{ section.settings.hero_bg }}">
+    <div class="fhsh-hero-inner">
+      <div class="fhsh-overline" style="color:{{ section.settings.accent }}">{{ section.settings.overline }}</div>
+      <h1 class="fhsh-title">{{ section.settings.title }}</h1>
+      <p class="fhsh-sub">{{ section.settings.subtitle }}</p>
+    </div>
+  </section>
+
+  <!-- Timeline livraison -->
+  <section class="fhsh-timeline">
+    <div class="fhsh-timeline-inner">
+      <h2 class="fhsh-section-title">Comment ça marche</h2>
+      <div class="fhsh-steps">
+        <div class="fhsh-step">
+          <div class="fhsh-step-num" style="background:{{ section.settings.accent }}">1</div>
+          <div class="fhsh-step-content">
+            <h3>Commande confirmée</h3>
+            <p>Tu reçois un email de confirmation avec le récapitulatif de ta commande.</p>
+          </div>
+        </div>
+        <div class="fhsh-step-line"></div>
+        <div class="fhsh-step">
+          <div class="fhsh-step-num" style="background:{{ section.settings.accent }}">2</div>
+          <div class="fhsh-step-content">
+            <h3>Production (2-4 jours)</h3>
+            <p>Ton jersey est imprimé en sublimation HD et contrôlé qualité avant expédition.</p>
+          </div>
+        </div>
+        <div class="fhsh-step-line"></div>
+        <div class="fhsh-step">
+          <div class="fhsh-step-num" style="background:{{ section.settings.accent }}">3</div>
+          <div class="fhsh-step-content">
+            <h3>Expédition + suivi</h3>
+            <p>Tu reçois un email avec ton numéro de suivi pour tracker ton colis en temps réel.</p>
+          </div>
+        </div>
+        <div class="fhsh-step-line"></div>
+        <div class="fhsh-step">
+          <div class="fhsh-step-num" style="background:{{ section.settings.accent }}">4</div>
+          <div class="fhsh-step-content">
+            <h3>Livraison (5-10 jours)</h3>
+            <p>Ton jersey arrive chez toi. Prêt pour le stade, la fan zone ou la ville.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Infos cards -->
+  <section class="fhsh-info" style="background:#f9f9f7">
+    <div class="fhsh-info-inner">
+      <div class="fhsh-info-grid">
+        <div class="fhsh-card">
+          <div class="fhsh-card-icon">🌍</div>
+          <h3>Pays livrés</h3>
+          <p>France, Belgique, Allemagne, Espagne, Italie, Pays-Bas, Portugal, Suisse, Luxembourg, Autriche et plus encore.</p>
+        </div>
+        <div class="fhsh-card">
+          <div class="fhsh-card-icon">📦</div>
+          <h3>Livraison gratuite</h3>
+          <p>Livraison <strong>offerte dès 50€</strong> d'achat. En dessous, frais de port à 4,99€.</p>
+        </div>
+        <div class="fhsh-card">
+          <div class="fhsh-card-icon">💳</div>
+          <h3>Paiement sécurisé</h3>
+          <p>CB, Apple Pay, Google Pay, PayPal. Transaction 100% sécurisée via Shopify Payments.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Retours -->
+  <section class="fhsh-returns">
+    <div class="fhsh-returns-inner">
+      <div class="fhsh-returns-content">
+        <div class="fhsh-returns-badge" style="background:{{ section.settings.accent }}">Garantie</div>
+        <h2 class="fhsh-returns-title">Satisfait ou remboursé<br>30 jours</h2>
+        <p class="fhsh-returns-text">Pas convaincu ? Pas de souci. Tu as 30 jours pour nous retourner ton jersey, sans conditions. On te rembourse intégralement.</p>
+        <div class="fhsh-returns-steps">
+          <div class="fhsh-ret-step">
+            <div class="fhsh-ret-num" style="color:{{ section.settings.accent }}">01</div>
+            <div>
+              <strong>Contacte-nous</strong>
+              <p>Envoie un email à contact@footballheritage.com avec ton numéro de commande.</p>
+            </div>
+          </div>
+          <div class="fhsh-ret-step">
+            <div class="fhsh-ret-num" style="color:{{ section.settings.accent }}">02</div>
+            <div>
+              <strong>Retourne le jersey</strong>
+              <p>On t'envoie une étiquette retour. Emballe et dépose ton colis en point relais.</p>
+            </div>
+          </div>
+          <div class="fhsh-ret-step">
+            <div class="fhsh-ret-num" style="color:{{ section.settings.accent }}">03</div>
+            <div>
+              <strong>Remboursement</strong>
+              <p>Remboursement sous 5-7 jours ouvrés sur ton moyen de paiement original.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="fhsh-faq" style="background:#f9f9f7">
+    <div class="fhsh-faq-inner">
+      <h2 class="fhsh-section-title">Questions fréquentes</h2>
+      <div class="fhsh-faq-list" id="fhsh-faq-{{ section.id }}">
+        <div class="fhsh-faq-item">
+          <button class="fhsh-faq-q">Combien de temps pour recevoir ma commande ?<span class="fhsh-faq-chevron">+</span></button>
+          <div class="fhsh-faq-a"><p>2-4 jours de production + 5-10 jours de livraison = <strong>7-14 jours ouvrés</strong> au total.</p></div>
+        </div>
+        <div class="fhsh-faq-item">
+          <button class="fhsh-faq-q">Puis-je suivre ma commande ?<span class="fhsh-faq-chevron">+</span></button>
+          <div class="fhsh-faq-a"><p>Oui ! Tu reçois un email avec un lien de suivi dès que ta commande est expédiée.</p></div>
+        </div>
+        <div class="fhsh-faq-item">
+          <button class="fhsh-faq-q">Comment faire un retour ?<span class="fhsh-faq-chevron">+</span></button>
+          <div class="fhsh-faq-a"><p>Contacte-nous dans les 30 jours suivant la réception. On t'envoie une étiquette retour prépayée.</p></div>
+        </div>
+        <div class="fhsh-faq-item">
+          <button class="fhsh-faq-q">La livraison est-elle gratuite ?<span class="fhsh-faq-chevron">+</span></button>
+          <div class="fhsh-faq-a"><p>Oui, dès 50€ d'achat. En dessous, les frais de port sont de 4,99€.</p></div>
+        </div>
+        <div class="fhsh-faq-item">
+          <button class="fhsh-faq-q">Livrez-vous hors Europe ?<span class="fhsh-faq-chevron">+</span></button>
+          <div class="fhsh-faq-a"><p>Pour le moment, nous livrons uniquement en Europe. D'autres zones seront bientôt disponibles.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="fhsh-cta" style="background:{{ section.settings.hero_bg }}">
+    <div class="fhsh-cta-inner">
+      <h2 class="fhsh-cta-title">Une question ?</h2>
+      <p class="fhsh-cta-sub">Contacte-nous à <strong style="color:{{ section.settings.accent }}">contact@footballheritage.com</strong> — on répond en moins de 24h.</p>
+      <a href="/collections/all" class="fhsh-cta-btn" style="background:{{ section.settings.accent }}">Découvrir les jerseys →</a>
+    </div>
+  </section>
+
+  <style>
+    #shopify-section-{{ section.id }} .fhsh-hero{padding:80px 48px 60px;text-align:center;position:relative;overflow:hidden}
+    #shopify-section-{{ section.id }} .fhsh-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 100%,rgba(212,168,67,0.08),transparent 60%)}
+    #shopify-section-{{ section.id }} .fhsh-hero-inner{position:relative;z-index:2;max-width:600px;margin:0 auto}
+    #shopify-section-{{ section.id }} .fhsh-overline{font-size:11px;text-transform:uppercase;letter-spacing:4px;font-weight:700;margin-bottom:16px;font-family:'Inter',sans-serif}
+    #shopify-section-{{ section.id }} .fhsh-title{font-family:'Bebas Neue',Impact,sans-serif;font-size:64px;line-height:1;letter-spacing:3px;text-transform:uppercase;color:#fff;margin-bottom:12px}
+    #shopify-section-{{ section.id }} .fhsh-sub{font-family:'Inter',sans-serif;font-size:16px;color:rgba(255,255,255,0.5);font-weight:300}
+
+    #shopify-section-{{ section.id }} .fhsh-timeline{padding:60px 48px;background:#fff}
+    #shopify-section-{{ section.id }} .fhsh-timeline-inner{max-width:700px;margin:0 auto}
+    #shopify-section-{{ section.id }} .fhsh-section-title{font-family:'Bebas Neue',Impact,sans-serif;font-size:40px;letter-spacing:2px;text-transform:uppercase;color:#0d1b2a;text-align:center;margin-bottom:40px}
+    #shopify-section-{{ section.id }} .fhsh-steps{position:relative}
+    #shopify-section-{{ section.id }} .fhsh-step{display:flex;align-items:flex-start;gap:20px;padding:8px 0}
+    #shopify-section-{{ section.id }} .fhsh-step-num{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#0d1b2a;font-family:'Bebas Neue',Impact,sans-serif;font-size:20px;font-weight:700;flex-shrink:0}
+    #shopify-section-{{ section.id }} .fhsh-step-content{font-family:'Inter',sans-serif}
+    #shopify-section-{{ section.id }} .fhsh-step-content h3{font-size:16px;font-weight:700;color:#0d1b2a;margin-bottom:4px}
+    #shopify-section-{{ section.id }} .fhsh-step-content p{font-size:14px;color:#777;line-height:1.6;font-weight:300}
+    #shopify-section-{{ section.id }} .fhsh-step-line{width:2px;height:24px;background:#eee;margin-left:19px}
+
+    #shopify-section-{{ section.id }} .fhsh-info{padding:60px 48px}
+    #shopify-section-{{ section.id }} .fhsh-info-inner{max-width:1000px;margin:0 auto}
+    #shopify-section-{{ section.id }} .fhsh-info-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+    #shopify-section-{{ section.id }} .fhsh-card{background:#fff;border-radius:16px;padding:32px;font-family:'Inter',sans-serif;text-align:center;transition:transform .3s}
+    #shopify-section-{{ section.id }} .fhsh-card:hover{transform:translateY(-4px)}
+    #shopify-section-{{ section.id }} .fhsh-card-icon{font-size:40px;margin-bottom:16px}
+    #shopify-section-{{ section.id }} .fhsh-card h3{font-size:16px;font-weight:700;color:#0d1b2a;margin-bottom:8px}
+    #shopify-section-{{ section.id }} .fhsh-card p{font-size:14px;color:#777;line-height:1.7;font-weight:300}
+
+    #shopify-section-{{ section.id }} .fhsh-returns{padding:80px 48px;background:#fff}
+    #shopify-section-{{ section.id }} .fhsh-returns-inner{max-width:700px;margin:0 auto}
+    #shopify-section-{{ section.id }} .fhsh-returns-content{text-align:center}
+    #shopify-section-{{ section.id }} .fhsh-returns-badge{display:inline-block;color:#0d1b2a;font-family:'Inter',sans-serif;font-size:11px;font-weight:700;padding:6px 16px;border-radius:20px;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:20px}
+    #shopify-section-{{ section.id }} .fhsh-returns-title{font-family:'Bebas Neue',Impact,sans-serif;font-size:48px;letter-spacing:2px;text-transform:uppercase;color:#0d1b2a;margin-bottom:16px;line-height:1.1}
+    #shopify-section-{{ section.id }} .fhsh-returns-text{font-family:'Inter',sans-serif;font-size:15px;color:#777;line-height:1.7;font-weight:300;margin-bottom:40px;max-width:500px;margin-left:auto;margin-right:auto}
+    #shopify-section-{{ section.id }} .fhsh-returns-steps{text-align:left;max-width:500px;margin:0 auto}
+    #shopify-section-{{ section.id }} .fhsh-ret-step{display:flex;gap:16px;padding:16px 0;border-bottom:1px solid #f0f0f0;font-family:'Inter',sans-serif}
+    #shopify-section-{{ section.id }} .fhsh-ret-num{font-family:'Bebas Neue',Impact,sans-serif;font-size:28px;line-height:1}
+    #shopify-section-{{ section.id }} .fhsh-ret-step strong{font-size:14px;color:#0d1b2a;display:block;margin-bottom:4px}
+    #shopify-section-{{ section.id }} .fhsh-ret-step p{font-size:13px;color:#999;line-height:1.5;font-weight:300;margin:0}
+
+    #shopify-section-{{ section.id }} .fhsh-faq{padding:60px 48px}
+    #shopify-section-{{ section.id }} .fhsh-faq-inner{max-width:700px;margin:0 auto}
+    #shopify-section-{{ section.id }} .fhsh-faq-item{border-bottom:1px solid #ddd}
+    #shopify-section-{{ section.id }} .fhsh-faq-q{width:100%;display:flex;justify-content:space-between;align-items:center;padding:20px 0;background:none;border:none;cursor:pointer;font-family:'Inter',sans-serif;font-size:15px;font-weight:600;color:#0d1b2a;text-align:left}
+    #shopify-section-{{ section.id }} .fhsh-faq-chevron{font-size:20px;color:#999;transition:transform .3s}
+    #shopify-section-{{ section.id }} .fhsh-faq-a{max-height:0;overflow:hidden;transition:max-height .3s ease}
+    #shopify-section-{{ section.id }} .fhsh-faq-a p{font-family:'Inter',sans-serif;font-size:14px;color:#777;line-height:1.7;font-weight:300;padding-bottom:20px;margin:0}
+    #shopify-section-{{ section.id }} .fhsh-faq-item.fhsh-open .fhsh-faq-chevron{transform:rotate(45deg)}
+    #shopify-section-{{ section.id }} .fhsh-faq-item.fhsh-open .fhsh-faq-a{max-height:200px}
+
+    #shopify-section-{{ section.id }} .fhsh-cta{padding:60px 48px;text-align:center}
+    #shopify-section-{{ section.id }} .fhsh-cta-inner{max-width:500px;margin:0 auto}
+    #shopify-section-{{ section.id }} .fhsh-cta-title{font-family:'Bebas Neue',Impact,sans-serif;font-size:40px;color:#fff;letter-spacing:2px;text-transform:uppercase;margin-bottom:12px}
+    #shopify-section-{{ section.id }} .fhsh-cta-sub{font-family:'Inter',sans-serif;font-size:15px;color:rgba(255,255,255,0.5);font-weight:300;margin-bottom:28px}
+    #shopify-section-{{ section.id }} .fhsh-cta-btn{display:inline-block;color:#0d1b2a;padding:16px 36px;border-radius:8px;font-family:'Inter',sans-serif;font-size:14px;font-weight:700;text-decoration:none;text-transform:uppercase;letter-spacing:1.5px;transition:all .3s}
+    #shopify-section-{{ section.id }} .fhsh-cta-btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(212,168,67,0.4)}
+
+    @media(max-width:768px){
+      #shopify-section-{{ section.id }} .fhsh-hero{padding:48px 20px 40px}
+      #shopify-section-{{ section.id }} .fhsh-title{font-size:40px}
+      #shopify-section-{{ section.id }} .fhsh-timeline{padding:40px 20px}
+      #shopify-section-{{ section.id }} .fhsh-info{padding:40px 16px}
+      #shopify-section-{{ section.id }} .fhsh-info-grid{grid-template-columns:1fr}
+      #shopify-section-{{ section.id }} .fhsh-returns{padding:48px 20px}
+      #shopify-section-{{ section.id }} .fhsh-returns-title{font-size:36px}
+      #shopify-section-{{ section.id }} .fhsh-faq{padding:40px 16px}
+      #shopify-section-{{ section.id }} .fhsh-cta{padding:40px 16px}
+    }
+  </style>
+
+  <script>
+    (function(){
+      var list=document.getElementById('fhsh-faq-{{ section.id }}');
+      if(!list)return;
+      list.addEventListener('click',function(e){
+        var btn=e.target.closest('.fhsh-faq-q');
+        if(!btn)return;
+        btn.parentElement.classList.toggle('fhsh-open');
+      });
+    })();
+  </script>
+</div>
+
+{% schema %}
+{
+  "name": "Livraison & Retours",
+  "tag": "section",
+  "settings": [
+    { "type": "color", "id": "hero_bg", "label": "Fond hero", "default": "#0d1b2a" },
+    { "type": "color", "id": "accent", "label": "Accent", "default": "#d4a843" },
+    { "type": "text", "id": "overline", "label": "Surtitre", "default": "Informations" },
+    { "type": "text", "id": "title", "label": "Titre", "default": "Livraison & Retours" },
+    { "type": "text", "id": "subtitle", "label": "Sous-titre", "default": "Tout ce que tu dois savoir sur ta commande" }
+  ],
+  "presets": [{ "name": "Livraison & Retours" }]
+}
+{% endschema %}

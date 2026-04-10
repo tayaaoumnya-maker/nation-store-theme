@@ -393,7 +393,7 @@
     {%- endif -%}
   <script>
     document.addEventListener('DOMContentLoaded',function(){
-      var m={'/pages/guide-tailles':'/pages/page-produit','/pages/guide-des-tailles':'/pages/page-produit','/pages/livraison-retours':'/pages/livraison-retour','/pages/livraison-et-retours':'/pages/livraison-retour','/pages/nos-avis':'/pages/avis'};
+      var m={'/pages/guide-tailles':'/pages/page-produit','/pages/guide-des-tailles':'/pages/page-produit','/pages/livraison-retours':'/pages/livraison-retour','/pages/livraison-et-retours':'/pages/livraison-retour','/pages/nos-avis':'/pages/avis','/policies/terms-of-service':'/pages/cgv','/policies/privacy-policy':'/pages/confidentialite'};
       document.querySelectorAll('a[href]').forEach(function(a){var h=a.getAttribute('href');if(m[h])a.setAttribute('href',m[h]);});
     });
   </script>

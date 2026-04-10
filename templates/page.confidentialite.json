@@ -9,16 +9,15 @@
  */
 {
   "sections": {
-    "shipping": {
-      "type": "fh-shipping-page",
+    "legal": {
+      "type": "fh-legal-page",
       "settings": {
         "hero_bg": "#0d1b2a",
         "accent": "#d4a843",
-        "overline": "🚚 Informations",
-        "title": "Livraison & Retours",
-        "subtitle": "Production européenne, livraison rapide et retours gratuits sous 30 jours"
+        "overline": "🔒 Protection des données",
+        "last_update": "10 avril 2026"
       }
     }
   },
-  "order": ["shipping"]
+  "order": ["legal"]
 }

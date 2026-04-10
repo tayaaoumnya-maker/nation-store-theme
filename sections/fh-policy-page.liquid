@@ -1,0 +1,63 @@
+{% comment %}
+  Section: Policy Page — Football Heritage
+  Stylise les pages légales Shopify (CGV, Confidentialité, etc.)
+{% endcomment %}
+
+<div class="fhpol-wrap">
+  <!-- Hero -->
+  <div class="fhpol-hero" style="background:{{ section.settings.hero_bg }}">
+    <span class="fhpol-overline" style="color:{{ section.settings.accent }}">{{ section.settings.overline }}</span>
+    <h1 class="fhpol-title">{{ policy.title }}</h1>
+  </div>
+
+  <!-- Contenu -->
+  <div class="fhpol-content">
+    <div class="fhpol-body">
+      {{ policy.body }}
+    </div>
+  </div>
+</div>
+
+<style>
+  .fhpol-wrap{font-family:'Inter',sans-serif}
+  .fhpol-hero{padding:64px 24px 48px;text-align:center}
+  .fhpol-overline{display:block;font-size:11px;text-transform:uppercase;letter-spacing:3px;margin-bottom:16px;font-weight:600}
+  .fhpol-title{color:#fff;font-family:'Bebas Neue',Impact,sans-serif;font-size:clamp(32px,5vw,52px);letter-spacing:2px;margin:0}
+  .fhpol-content{max-width:800px;margin:0 auto;padding:48px 24px 80px}
+  .fhpol-body{color:#333;font-size:15px;line-height:1.8;font-weight:300}
+  .fhpol-body h1,.fhpol-body h2,.fhpol-body h3{color:#0d1b2a;font-family:'Bebas Neue',Impact,sans-serif;letter-spacing:1px;margin:32px 0 16px}
+  .fhpol-body h2{font-size:24px;padding-bottom:8px;border-bottom:2px solid #d4a843}
+  .fhpol-body h3{font-size:20px}
+  .fhpol-body p{margin-bottom:16px}
+  .fhpol-body ul,.fhpol-body ol{margin:16px 0;padding-left:24px}
+  .fhpol-body li{margin-bottom:8px}
+  .fhpol-body a{color:#d4a843;text-decoration:underline;text-underline-offset:3px}
+  .fhpol-body a:hover{color:#0d1b2a}
+  .fhpol-body strong{color:#0d1b2a;font-weight:600}
+  .fhpol-body table{width:100%;border-collapse:collapse;margin:24px 0}
+  .fhpol-body th,.fhpol-body td{padding:12px 16px;border:1px solid #e5e5e5;text-align:left;font-size:14px}
+  .fhpol-body th{background:#0d1b2a;color:#fff;font-weight:600}
+  .fhpol-body blockquote{border-left:3px solid #d4a843;padding:16px 24px;margin:24px 0;background:#f9f7f2;font-style:italic}
+
+  /* Hide default Shopify policy rendering */
+  .shopify-policy__container{display:none !important}
+
+  @media(max-width:600px){
+    .fhpol-hero{padding:48px 16px 32px}
+    .fhpol-content{padding:32px 16px 64px}
+    .fhpol-body{font-size:14px}
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Page Légale FH",
+  "tag": "section",
+  "settings": [
+    { "type": "color", "id": "hero_bg", "label": "Fond hero", "default": "#0d1b2a" },
+    { "type": "color", "id": "accent", "label": "Accent", "default": "#d4a843" },
+    { "type": "text", "id": "overline", "label": "Surtitre", "default": "⚖️ Mentions légales" }
+  ],
+  "presets": [{ "name": "Page Légale FH" }]
+}
+{% endschema %}
