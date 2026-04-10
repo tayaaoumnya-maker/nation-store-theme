@@ -1,0 +1,66 @@
+{% comment %}
+  Section: Livraison & Retours
+{% endcomment %}
+
+<div id="shopify-section-{{ section.id }}">
+  <section class="fh-shipping" style="background:{{ section.settings.bg_color }}">
+    <div class="fh-ship-inner">
+      <div class="fh-section-header">
+        <div class="fh-section-overline" style="color:{{ section.settings.accent_color }}">{{ section.settings.overline }}</div>
+        <div class="fh-ship-title">{{ section.settings.title }}</div>
+      </div>
+
+      <div class="fh-ship-grid">
+        {% for block in section.blocks %}
+          <div class="fh-ship-card" {{ block.shopify_attributes }}>
+            <div class="fh-ship-icon">{{ block.settings.icon }}</div>
+            <h3>{{ block.settings.heading }}</h3>
+            <p>{{ block.settings.text }}</p>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <style>
+    #shopify-section-{{ section.id }} .fh-shipping{padding:80px 48px}
+    #shopify-section-{{ section.id }} .fh-ship-inner{max-width:1000px;margin:0 auto}
+    #shopify-section-{{ section.id }} .fh-section-header{text-align:center;margin-bottom:56px}
+    #shopify-section-{{ section.id }} .fh-section-overline{font-size:11px;text-transform:uppercase;letter-spacing:4px;font-weight:700;margin-bottom:12px}
+    #shopify-section-{{ section.id }} .fh-ship-title{font-family:'Bebas Neue',Impact,sans-serif;font-size:48px;letter-spacing:2px;text-transform:uppercase;color:#0d1b2a}
+    #shopify-section-{{ section.id }} .fh-ship-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}
+    #shopify-section-{{ section.id }} .fh-ship-card{background:#f5f5f3;border-radius:16px;padding:32px;font-family:'Inter',sans-serif}
+    #shopify-section-{{ section.id }} .fh-ship-icon{font-size:36px;margin-bottom:16px}
+    #shopify-section-{{ section.id }} .fh-ship-card h3{font-family:'Bebas Neue',Impact,sans-serif;font-size:24px;letter-spacing:1px;color:#0d1b2a;margin-bottom:12px}
+    #shopify-section-{{ section.id }} .fh-ship-card p{font-size:15px;color:#555;line-height:1.7;font-weight:300}
+    @media(max-width:600px){
+      #shopify-section-{{ section.id }} .fh-shipping{padding:48px 16px}
+      #shopify-section-{{ section.id }} .fh-ship-title{font-size:36px}
+    }
+  </style>
+</div>
+
+{% schema %}
+{
+  "name": "Livraison & Retours",
+  "tag": "section",
+  "settings": [
+    { "type": "color", "id": "bg_color", "label": "Fond", "default": "#ffffff" },
+    { "type": "color", "id": "accent_color", "label": "Accent", "default": "#d4a843" },
+    { "type": "text", "id": "overline", "label": "Surtitre", "default": "Informations" },
+    { "type": "text", "id": "title", "label": "Titre", "default": "Livraison & Retours" }
+  ],
+  "blocks": [
+    {
+      "type": "info_card",
+      "name": "Carte info",
+      "settings": [
+        { "type": "text", "id": "icon", "label": "Emoji", "default": "\ud83d\ude9a" },
+        { "type": "text", "id": "heading", "label": "Titre", "default": "Livraison" },
+        { "type": "richtext", "id": "text", "label": "Texte" }
+      ]
+    }
+  ],
+  "presets": [{ "name": "Livraison & Retours" }]
+}
+{% endschema %}

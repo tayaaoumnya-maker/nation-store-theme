@@ -1,0 +1,47 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "shipping": {
+      "type": "shipping-returns",
+      "settings": {
+        "bg_color": "#ffffff",
+        "accent_color": "#d4a843",
+        "overline": "Informations",
+        "title": "Livraison & Retours"
+      },
+      "blocks": {
+        "b1": { "type": "info_card", "settings": { "icon": "\ud83d\ude9a", "heading": "Livraison Europe", "text": "<p>Production sous 1-2 jours ouvr\u00e9s, puis livraison en <strong>3-5 jours ouvr\u00e9s</strong> partout en Europe. Suivi en temps r\u00e9el par email.</p>" } },
+        "b2": { "type": "info_card", "settings": { "icon": "\ud83c\udf0d", "heading": "Pays livr\u00e9s", "text": "<p>France, Belgique, Allemagne, Espagne, Italie, Pays-Bas, Portugal, Suisse, Luxembourg, Autriche et plus encore.</p>" } },
+        "b3": { "type": "info_card", "settings": { "icon": "\ud83d\udce6", "heading": "Livraison gratuite", "text": "<p>Livraison <strong>offerte d\u00e8s 50\u20ac</strong> d'achat. En dessous, frais de port \u00e0 4,99\u20ac.</p>" } },
+        "b4": { "type": "info_card", "settings": { "icon": "\ud83d\udd04", "heading": "Retours 30 jours", "text": "<p><strong>Satisfait ou rembours\u00e9 30 jours</strong>, sans conditions. Contacte-nous et on s'occupe de tout.</p>" } },
+        "b5": { "type": "info_card", "settings": { "icon": "\ud83d\udcb0", "heading": "Remboursement", "text": "<p>Remboursement sous 5-7 jours ouvr\u00e9s apr\u00e8s r\u00e9ception du retour. Sur le moyen de paiement original.</p>" } },
+        "b6": { "type": "info_card", "settings": { "icon": "\ud83d\udcac", "heading": "Besoin d'aide ?", "text": "<p>Une question ? \u00c9cris-nous \u00e0 <strong>contact@footballheritage.com</strong> — on r\u00e9pond en moins de 24h.</p>" } }
+      },
+      "block_order": ["b1", "b2", "b3", "b4", "b5", "b6"]
+    },
+    "faq": {
+      "type": "faq-section",
+      "settings": {
+        "bg_color": "#f5f5f3",
+        "accent_color": "#d4a843",
+        "overline": "FAQ Livraison",
+        "title": "Questions fr\u00e9quentes"
+      },
+      "blocks": {
+        "q1": { "type": "faq_item", "settings": { "question": "Combien de temps pour recevoir ma commande ?", "answer": "1-2 jours de production + 3-5 jours de livraison = 4-7 jours ouvr\u00e9s au total." } },
+        "q2": { "type": "faq_item", "settings": { "question": "Puis-je suivre ma commande ?", "answer": "Oui ! Tu re\u00e7ois un email avec un lien de suivi d\u00e8s que ta commande est exp\u00e9di\u00e9e." } },
+        "q3": { "type": "faq_item", "settings": { "question": "Comment faire un retour ?", "answer": "Contacte-nous dans les 30 jours suivant la r\u00e9ception. On t'envoie une \u00e9tiquette retour pr\u00e9pay\u00e9e." } }
+      },
+      "block_order": ["q1", "q2", "q3"]
+    }
+  },
+  "order": ["shipping", "faq"]
+}

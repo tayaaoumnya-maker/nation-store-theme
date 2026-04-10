@@ -29,9 +29,9 @@
         "trust_1": { "type": "trust_badge", "settings": { "text": "Rembours\u00e9 30j" } },
         "trust_2": { "type": "trust_badge", "settings": { "text": "Made in Europe" } },
         "trust_3": { "type": "trust_badge", "settings": { "text": "3-5 jours" } },
-        "card_1": { "type": "hero_card", "settings": { "flag_emoji": "\ud83c\udde8\ud83c\uddee", "gradient": "linear-gradient(160deg,#FF8200,#cc6500)", "country_name": "C\u00f4te d'Ivoire", "price": "34,99 \u20ac" } },
-        "card_2": { "type": "hero_card", "settings": { "flag_emoji": "\ud83c\udde9\ud83c\uddff", "gradient": "linear-gradient(160deg,#006233,#003d1f)", "country_name": "Alg\u00e9rie", "price": "34,99 \u20ac" } },
-        "card_3": { "type": "hero_card", "settings": { "flag_emoji": "\ud83c\uddf2\ud83c\udde6", "gradient": "linear-gradient(160deg,#c1272d,#7a1018)", "country_name": "Maroc", "price": "34,99 \u20ac" } }
+        "card_1": { "type": "hero_card", "settings": { "flag_emoji": "\ud83c\udde8\ud83c\uddee", "gradient": "linear-gradient(160deg,#FF8200,#cc6500)", "country_name": "C\u00f4te d'Ivoire", "price": "34,99 \u20ac", "jersey_asset": "jersey-ci.jpg" } },
+        "card_2": { "type": "hero_card", "settings": { "flag_emoji": "\ud83c\udde9\ud83c\uddff", "gradient": "linear-gradient(160deg,#006233,#003d1f)", "country_name": "Alg\u00e9rie", "price": "34,99 \u20ac", "jersey_asset": "jersey-algerie.jpg" } },
+        "card_3": { "type": "hero_card", "settings": { "flag_emoji": "\ud83c\uddf2\ud83c\udde6", "gradient": "linear-gradient(160deg,#c1272d,#7a1018)", "country_name": "Maroc", "price": "34,99 \u20ac", "jersey_asset": "jersey-maroc.jpg" } }
       },
       "block_order": ["trust_1", "trust_2", "trust_3", "card_1", "card_2", "card_3"]
     },

@@ -1,0 +1,95 @@
+{% comment %}
+  Section: Guide des tailles
+{% endcomment %}
+
+<div id="shopify-section-{{ section.id }}">
+  <section class="fh-size-guide" style="background:{{ section.settings.bg_color }}">
+    <div class="fh-sg-inner">
+      <div class="fh-section-header">
+        <div class="fh-section-overline" style="color:{{ section.settings.accent_color }}">{{ section.settings.overline }}</div>
+        <div class="fh-sg-title">{{ section.settings.title }}</div>
+        <div class="fh-sg-subtitle">{{ section.settings.subtitle }}</div>
+      </div>
+
+      <div class="fh-sg-table-wrap">
+        <table class="fh-sg-table">
+          <thead>
+            <tr>
+              <th>Taille</th><th>Tour de poitrine</th><th>Tour de taille</th><th>Longueur</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for block in section.blocks %}
+              <tr {{ block.shopify_attributes }}>
+                <td><strong>{{ block.settings.size }}</strong></td>
+                <td>{{ block.settings.chest }}</td>
+                <td>{{ block.settings.waist }}</td>
+                <td>{{ block.settings.length }}</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+
+      <div class="fh-sg-tips">
+        <h3>Conseils</h3>
+        <ul>
+          <li>Mesure-toi avec un m&egrave;tre ruban, sans serrer</li>
+          <li>H&eacute;sitation entre deux tailles ? Prends la taille au-dessus pour un fit d&eacute;contract&eacute;</li>
+          <li>Nos jerseys sont coupe <strong>regular fit</strong> (ni slim, ni oversize)</li>
+          <li>Le tissu est l&eacute;g&egrave;rement extensible gr&acirc;ce au mesh polyester</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    #shopify-section-{{ section.id }} .fh-size-guide{padding:80px 48px}
+    #shopify-section-{{ section.id }} .fh-sg-inner{max-width:800px;margin:0 auto}
+    #shopify-section-{{ section.id }} .fh-section-header{text-align:center;margin-bottom:48px}
+    #shopify-section-{{ section.id }} .fh-section-overline{font-size:11px;text-transform:uppercase;letter-spacing:4px;font-weight:700;margin-bottom:12px}
+    #shopify-section-{{ section.id }} .fh-sg-title{font-family:'Bebas Neue',Impact,sans-serif;font-size:48px;letter-spacing:2px;text-transform:uppercase;color:#0d1b2a}
+    #shopify-section-{{ section.id }} .fh-sg-subtitle{font-size:14px;color:#777;margin-top:8px;font-weight:300}
+    #shopify-section-{{ section.id }} .fh-sg-table-wrap{overflow-x:auto;margin-bottom:40px}
+    #shopify-section-{{ section.id }} .fh-sg-table{width:100%;border-collapse:collapse;font-family:'Inter',sans-serif}
+    #shopify-section-{{ section.id }} .fh-sg-table th{background:#0d1b2a;color:#f0d78c;padding:14px 20px;text-align:left;font-size:12px;text-transform:uppercase;letter-spacing:2px;font-weight:700}
+    #shopify-section-{{ section.id }} .fh-sg-table td{padding:14px 20px;border-bottom:1px solid #e0e0dc;font-size:15px;color:#444}
+    #shopify-section-{{ section.id }} .fh-sg-table tr:hover td{background:#f5f5f3}
+    #shopify-section-{{ section.id }} .fh-sg-tips{background:#f5f5f3;border-radius:12px;padding:32px;font-family:'Inter',sans-serif}
+    #shopify-section-{{ section.id }} .fh-sg-tips h3{font-family:'Bebas Neue',Impact,sans-serif;font-size:28px;letter-spacing:1px;margin-bottom:16px;color:#0d1b2a}
+    #shopify-section-{{ section.id }} .fh-sg-tips ul{list-style:none;padding:0}
+    #shopify-section-{{ section.id }} .fh-sg-tips li{padding:8px 0;font-size:15px;color:#444;display:flex;align-items:center;gap:10px;font-weight:300}
+    #shopify-section-{{ section.id }} .fh-sg-tips li::before{content:'\2713';color:#d4a843;font-weight:800}
+    @media(max-width:600px){
+      #shopify-section-{{ section.id }} .fh-size-guide{padding:48px 16px}
+      #shopify-section-{{ section.id }} .fh-sg-title{font-size:36px}
+    }
+  </style>
+</div>
+
+{% schema %}
+{
+  "name": "Guide des tailles",
+  "tag": "section",
+  "settings": [
+    { "type": "color", "id": "bg_color", "label": "Fond", "default": "#ffffff" },
+    { "type": "color", "id": "accent_color", "label": "Accent", "default": "#d4a843" },
+    { "type": "text", "id": "overline", "label": "Surtitre", "default": "Tailles" },
+    { "type": "text", "id": "title", "label": "Titre", "default": "Guide des tailles" },
+    { "type": "text", "id": "subtitle", "label": "Sous-titre", "default": "Trouve ta taille parfaite" }
+  ],
+  "blocks": [
+    {
+      "type": "size_row",
+      "name": "Taille",
+      "settings": [
+        { "type": "text", "id": "size", "label": "Taille", "default": "M" },
+        { "type": "text", "id": "chest", "label": "Poitrine", "default": "96-101 cm" },
+        { "type": "text", "id": "waist", "label": "Taille", "default": "81-86 cm" },
+        { "type": "text", "id": "length", "label": "Longueur", "default": "72 cm" }
+      ]
+    }
+  ],
+  "presets": [{ "name": "Guide des tailles" }]
+}
+{% endschema %}
