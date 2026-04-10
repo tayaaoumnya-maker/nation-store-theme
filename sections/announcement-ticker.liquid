@@ -1,0 +1,112 @@
+{% comment %}
+  Section: Announcement Ticker
+  Bandeau defilant en haut de page
+{% endcomment %}
+
+<div id="shopify-section-{{ section.id }}" class="fh-ticker-section">
+  <div class="fh-ticker" style="background:{{ section.settings.bg_color }};color:{{ section.settings.text_color }};height:{{ section.settings.height }}px;">
+    <div class="fh-ticker-track">
+      {% for block in section.blocks %}
+        <span class="fh-ticker-item" {{ block.shopify_attributes }}>
+          {% if block.settings.icon != blank %}{{ block.settings.icon }}{% endif %}
+          {{ block.settings.text }}
+        </span>
+      {% endfor %}
+      {%- comment %}Duplicate for seamless loop{% endcomment -%}
+      {% for block in section.blocks %}
+        <span class="fh-ticker-item" aria-hidden="true">
+          {% if block.settings.icon != blank %}{{ block.settings.icon }}{% endif %}
+          {{ block.settings.text }}
+        </span>
+      {% endfor %}
+    </div>
+  </div>
+
+  <style>
+    #shopify-section-{{ section.id }} .fh-ticker{overflow:hidden;display:flex;align-items:center;position:relative}
+    #shopify-section-{{ section.id }} .fh-ticker-track{display:flex;animation:fhTickerScroll {{ section.settings.speed }}s linear infinite;white-space:nowrap}
+    #shopify-section-{{ section.id }} .fh-ticker-item{font-size:{{ section.settings.font_size }}px;font-weight:700;text-transform:uppercase;letter-spacing:2px;padding:0 48px;flex-shrink:0}
+    @keyframes fhTickerScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+  </style>
+</div>
+
+{% schema %}
+{
+  "name": "Ticker annonce",
+  "tag": "section",
+  "class": "fh-announcement-ticker",
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Couleur de fond",
+      "default": "#0d1b2a"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Couleur du texte",
+      "default": "#f0d78c"
+    },
+    {
+      "type": "range",
+      "id": "height",
+      "label": "Hauteur (px)",
+      "min": 28,
+      "max": 56,
+      "step": 2,
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "speed",
+      "label": "Vitesse defilement (secondes)",
+      "min": 10,
+      "max": 60,
+      "step": 5,
+      "default": 25
+    },
+    {
+      "type": "range",
+      "id": "font_size",
+      "label": "Taille police (px)",
+      "min": 10,
+      "max": 16,
+      "step": 1,
+      "default": 12
+    }
+  ],
+  "blocks": [
+    {
+      "type": "ticker_item",
+      "name": "Element ticker",
+      "settings": [
+        {
+          "type": "text",
+          "id": "icon",
+          "label": "Icone (emoji)",
+          "default": "⚽"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Texte",
+          "default": "Coupe du Monde 2026 — USA / Canada / Mexique"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Ticker annonce",
+      "blocks": [
+        { "type": "ticker_item", "settings": { "icon": "⚽", "text": "Coupe du Monde 2026 — USA / Canada / Mexique" } },
+        { "type": "ticker_item", "settings": { "icon": "🏆", "text": "Livraison gratuite dès 49€" } },
+        { "type": "ticker_item", "settings": { "icon": "🇲🇦🇩🇿🇨🇮🇫🇷🇧🇷", "text": "5 pays, 5 designs exclusifs" } },
+        { "type": "ticker_item", "settings": { "icon": "🔥", "text": "Édition limitée Coupe du Monde 2026" } },
+        { "type": "ticker_item", "settings": { "icon": "🚚", "text": "Fabriqué en Europe — Livré en 3-5 jours" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
