@@ -1,0 +1,100 @@
+{% comment %}
+  Section: Football Heritage Jersey Showcase
+  Grille vitrine maillots — placeholder en attendant les vrais produits
+{% endcomment %}
+
+<div id="shopify-section-{{ section.id }}">
+  <section class="fh-showcase">
+    <div class="fh-showcase-inner">
+
+      <div class="fh-showcase-toolbar">
+        <div class="fh-showcase-count">{{ section.blocks.size }} produits</div>
+        <div class="fh-showcase-views">
+          <span class="fh-view-label">Trier par</span>
+          <select class="fh-showcase-sort" onchange="return false">
+            <option>Date d'ajout : récents</option>
+            <option>Prix : croissant</option>
+            <option>Prix : décroissant</option>
+            <option>Nom : A-Z</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="fh-showcase-grid">
+        {% for block in section.blocks %}
+          <a href="{{ block.settings.link | default: '/collections/all' }}" class="fh-jersey-card" {{ block.shopify_attributes }}>
+            <div class="fh-jc-img">
+              {% if block.settings.asset != blank %}
+                <img src="{{ block.settings.asset | asset_url }}" alt="{{ block.settings.title }}" loading="lazy">
+              {% endif %}
+              {% if block.settings.badge != blank %}
+                <span class="fh-jc-badge">{{ block.settings.badge }}</span>
+              {% endif %}
+            </div>
+            <div class="fh-jc-info">
+              <h3 class="fh-jc-title">{{ block.settings.title }}</h3>
+              <div class="fh-jc-price">{{ block.settings.price }}</div>
+            </div>
+          </a>
+        {% endfor %}
+      </div>
+
+    </div>
+  </section>
+
+  <style>
+    #shopify-section-{{ section.id }} .fh-showcase{padding:40px 48px 80px;background:#fff}
+    #shopify-section-{{ section.id }} .fh-showcase-inner{max-width:1280px;margin:0 auto}
+
+    #shopify-section-{{ section.id }} .fh-showcase-toolbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:32px;padding-bottom:16px;border-bottom:1px solid #eee}
+    #shopify-section-{{ section.id }} .fh-showcase-count{font-family:'Inter',sans-serif;font-size:13px;color:#999;letter-spacing:.5px}
+    #shopify-section-{{ section.id }} .fh-showcase-views{display:flex;align-items:center;gap:10px}
+    #shopify-section-{{ section.id }} .fh-view-label{font-family:'Inter',sans-serif;font-size:12px;color:#999;text-transform:uppercase;letter-spacing:1px}
+    #shopify-section-{{ section.id }} .fh-showcase-sort{background:#fff;color:#0d1b2a;border:1px solid #ddd;border-radius:8px;padding:10px 16px;font-size:13px;font-family:'Inter',sans-serif;cursor:pointer}
+
+    #shopify-section-{{ section.id }} .fh-showcase-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+
+    #shopify-section-{{ section.id }} .fh-jersey-card{text-decoration:none;display:block;transition:transform .3s}
+    #shopify-section-{{ section.id }} .fh-jersey-card:hover{transform:translateY(-4px)}
+
+    #shopify-section-{{ section.id }} .fh-jc-img{position:relative;aspect-ratio:3/4;overflow:hidden;background:#f7f7f5;border-radius:12px;margin-bottom:14px}
+    #shopify-section-{{ section.id }} .fh-jc-img img{width:100%;height:100%;object-fit:contain;padding:12px;transition:transform .5s}
+    #shopify-section-{{ section.id }} .fh-jersey-card:hover .fh-jc-img img{transform:scale(1.05)}
+    #shopify-section-{{ section.id }} .fh-jc-badge{position:absolute;top:12px;left:12px;background:#c1272d;color:#fff;font-size:10px;font-weight:700;padding:4px 10px;border-radius:6px;text-transform:uppercase;letter-spacing:.5px}
+
+    #shopify-section-{{ section.id }} .fh-jc-info{padding:0 4px}
+    #shopify-section-{{ section.id }} .fh-jc-title{font-family:'Inter',sans-serif;font-size:14px;font-weight:500;color:#0d1b2a;margin-bottom:6px;line-height:1.4}
+    #shopify-section-{{ section.id }} .fh-jc-price{font-family:'Inter',sans-serif;font-size:15px;color:#0d1b2a;font-weight:700}
+
+    @media(max-width:1100px){
+      #shopify-section-{{ section.id }} .fh-showcase-grid{grid-template-columns:repeat(3,1fr)}
+    }
+    @media(max-width:768px){
+      #shopify-section-{{ section.id }} .fh-showcase{padding:24px 16px 60px}
+      #shopify-section-{{ section.id }} .fh-showcase-grid{grid-template-columns:repeat(2,1fr);gap:12px}
+      #shopify-section-{{ section.id }} .fh-showcase-toolbar{flex-direction:column;gap:12px;align-items:flex-start}
+    }
+  </style>
+</div>
+
+{% schema %}
+{
+  "name": "Vitrine Jerseys",
+  "tag": "section",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "jersey",
+      "name": "Jersey",
+      "settings": [
+        { "type": "text", "id": "asset", "label": "Nom fichier (asset)", "info": "Ex: jersey-maroc-home.jpg" },
+        { "type": "text", "id": "title", "label": "Nom du produit" },
+        { "type": "text", "id": "price", "label": "Prix", "default": "34,99€" },
+        { "type": "text", "id": "badge", "label": "Badge (optionnel)", "info": "Ex: NEW, -20%" },
+        { "type": "text", "id": "link", "label": "Lien", "default": "/collections/all" }
+      ]
+    }
+  ],
+  "presets": [{ "name": "Vitrine Jerseys" }]
+}
+{% endschema %}
