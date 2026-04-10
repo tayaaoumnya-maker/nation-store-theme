@@ -119,18 +119,18 @@
     #shopify-section-{{ section.id }} .fh-hero-card{position:absolute;width:300px;height:440px;border-radius:20px;overflow:hidden;display:flex;align-items:center;justify-content:center;box-shadow:0 30px 80px rgba(0,0,0,0.5);transition:all .5s}
     #shopify-section-{{ section.id }} .fh-hero-card .fh-flag{font-size:120px;filter:drop-shadow(0 10px 30px rgba(0,0,0,0.4));transition:opacity .4s,transform .4s;position:relative;z-index:1}
     #shopify-section-{{ section.id }} .fh-hero-card .fh-card-jersey{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:center;opacity:0;transform:scale(0.9);transition:opacity .4s,transform .4s;z-index:1;padding:20px}
-    #shopify-section-{{ section.id }} .fh-hero-card:hover .fh-flag{opacity:0;transform:scale(0.8)}
-    #shopify-section-{{ section.id }} .fh-hero-card:hover .fh-card-jersey{opacity:1;transform:scale(1)}
+    #shopify-section-{{ section.id }} .fh-hero-card:not(.fh-active):hover{opacity:.9}
     #shopify-section-{{ section.id }} .fh-hero-card::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(0,0,0,0.6) 100%)}
     #shopify-section-{{ section.id }} .fh-hero-card-label{position:absolute;bottom:20px;left:20px;z-index:2}
     #shopify-section-{{ section.id }} .fh-hc-name{font-family:'Bebas Neue',Impact,sans-serif;font-size:24px;color:#fff;letter-spacing:1px}
     #shopify-section-{{ section.id }} .fh-hc-price{font-size:14px;color:#f0d78c;font-weight:600}
-    #shopify-section-{{ section.id }} .fh-hc-1{top:0;left:0;z-index:3;transform:rotate(-2deg)}
-    #shopify-section-{{ section.id }} .fh-hc-2{top:20px;left:40px;z-index:2;transform:rotate(3deg);opacity:.7}
-    #shopify-section-{{ section.id }} .fh-hc-3{top:40px;left:80px;z-index:1;transform:rotate(7deg);opacity:.4}
-    #shopify-section-{{ section.id }} .fh-hero-card-stack:hover .fh-hc-1{transform:rotate(0deg) translateX(-20px)}
-    #shopify-section-{{ section.id }} .fh-hero-card-stack:hover .fh-hc-2{transform:rotate(0deg) translateX(0);opacity:1}
-    #shopify-section-{{ section.id }} .fh-hero-card-stack:hover .fh-hc-3{transform:rotate(0deg) translateX(20px);opacity:.8}
+    #shopify-section-{{ section.id }} .fh-hero-card.fh-active{top:0;left:0;z-index:3;transform:rotate(-2deg);opacity:1;cursor:default}
+    #shopify-section-{{ section.id }} .fh-hero-card.fh-next{top:20px;left:40px;z-index:2;transform:rotate(3deg);opacity:.7;cursor:pointer}
+    #shopify-section-{{ section.id }} .fh-hero-card.fh-last{top:40px;left:80px;z-index:1;transform:rotate(7deg);opacity:.4;cursor:pointer}
+    #shopify-section-{{ section.id }} .fh-hero-card.fh-active .fh-flag{opacity:0;transform:scale(0.8)}
+    #shopify-section-{{ section.id }} .fh-hero-card.fh-active .fh-card-jersey{opacity:1;transform:scale(1)}
+    #shopify-section-{{ section.id }} .fh-hero-card.fh-next .fh-card-jersey,
+    #shopify-section-{{ section.id }} .fh-hero-card.fh-last .fh-card-jersey{opacity:0;transform:scale(0.9)}
     @media(max-width:900px){
       #shopify-section-{{ section.id }} .fh-hero-inner{flex-direction:column;padding:60px 24px;gap:48px;text-align:center}
       #shopify-section-{{ section.id }} .fh-hero-h1{font-size:56px}
@@ -148,26 +148,53 @@
     }
   </style>
 
-  {% if section.settings.show_countdown %}
   <script>
     (function(){
       var section = document.getElementById('shopify-section-{{ section.id }}');
-      var cd = section.querySelector('.fh-countdown');
-      if(!cd) return;
-      var target = new Date(cd.dataset.target).getTime();
-      function update(){
-        var now = Date.now(), d = target - now;
-        if(d < 0) return;
-        cd.querySelector('[data-cd="days"]').textContent = String(Math.floor(d/86400000)).padStart(2,'0');
-        cd.querySelector('[data-cd="hours"]').textContent = String(Math.floor((d%86400000)/3600000)).padStart(2,'0');
-        cd.querySelector('[data-cd="mins"]').textContent = String(Math.floor((d%3600000)/60000)).padStart(2,'0');
-        cd.querySelector('[data-cd="secs"]').textContent = String(Math.floor((d%60000)/1000)).padStart(2,'0');
+      // Card rotation
+      var cards = section.querySelectorAll('.fh-hero-card');
+      var order = ['fh-active','fh-next','fh-last'];
+      var current = 0;
+      function setPositions(){
+        cards.forEach(function(c,i){
+          c.classList.remove('fh-active','fh-next','fh-last');
+          var pos = (i - current + cards.length) % cards.length;
+          c.classList.add(order[pos]);
+        });
       }
-      update();
-      setInterval(update, 1000);
+      setPositions();
+      cards.forEach(function(card,i){
+        card.addEventListener('click', function(){
+          if(card.classList.contains('fh-active')) return;
+          current = i;
+          setPositions();
+        });
+      });
+      // Auto-rotate every 4s
+      setInterval(function(){
+        current = (current + 1) % cards.length;
+        setPositions();
+      }, 4000);
+
+      {% if section.settings.show_countdown %}
+      // Countdown
+      var cd = section.querySelector('.fh-countdown');
+      if(cd){
+        var target = new Date(cd.dataset.target).getTime();
+        function update(){
+          var now = Date.now(), d = target - now;
+          if(d < 0) return;
+          cd.querySelector('[data-cd="days"]').textContent = String(Math.floor(d/86400000)).padStart(2,'0');
+          cd.querySelector('[data-cd="hours"]').textContent = String(Math.floor((d%86400000)/3600000)).padStart(2,'0');
+          cd.querySelector('[data-cd="mins"]').textContent = String(Math.floor((d%3600000)/60000)).padStart(2,'0');
+          cd.querySelector('[data-cd="secs"]').textContent = String(Math.floor((d%60000)/1000)).padStart(2,'0');
+        }
+        update();
+        setInterval(update, 1000);
+      }
+      {% endif %}
     })();
   </script>
-  {% endif %}
 </div>
 
 {% schema %}
