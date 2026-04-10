@@ -1,0 +1,129 @@
+{% comment %}
+  Section: FAQ Section
+  FAQ avec accordeon pour la page d'accueil
+{% endcomment %}
+
+<div id="shopify-section-{{ section.id }}">
+  <section class="fh-faq" style="background:{{ section.settings.bg_color }}">
+    <div class="fh-section-header">
+      <div class="fh-section-overline" style="color:{{ section.settings.accent_color }}">{{ section.settings.overline }}</div>
+      <div class="fh-section-title">{{ section.settings.title }}</div>
+    </div>
+    <div class="fh-faq-inner">
+      {% for block in section.blocks %}
+        <div class="fh-faq-item" {{ block.shopify_attributes }}>
+          <button class="fh-faq-q" data-faq-toggle aria-expanded="false">
+            {{ block.settings.question }}
+            <span class="fh-faq-icon">+</span>
+          </button>
+          <div class="fh-faq-a" aria-hidden="true">{{ block.settings.answer }}</div>
+        </div>
+      {% endfor %}
+    </div>
+  </section>
+
+  <style>
+    #shopify-section-{{ section.id }} .fh-faq{padding:100px 48px}
+    #shopify-section-{{ section.id }} .fh-section-header{text-align:center;margin-bottom:56px}
+    #shopify-section-{{ section.id }} .fh-section-overline{font-size:11px;text-transform:uppercase;letter-spacing:4px;font-weight:700;margin-bottom:12px}
+    #shopify-section-{{ section.id }} .fh-section-title{font-family:'Bebas Neue',Impact,sans-serif;font-size:52px;letter-spacing:2px;text-transform:uppercase;color:#0d1b2a}
+    #shopify-section-{{ section.id }} .fh-faq-inner{max-width:680px;margin:0 auto}
+    #shopify-section-{{ section.id }} .fh-faq-item{border-bottom:1px solid #e0e0dc}
+    #shopify-section-{{ section.id }} .fh-faq-q{width:100%;background:none;border:none;text-align:left;padding:24px 0;font-size:16px;font-weight:600;color:#0d1b2a;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-family:'Inter',sans-serif;transition:color .3s}
+    #shopify-section-{{ section.id }} .fh-faq-q:hover{color:{{ section.settings.accent_color }}}
+    #shopify-section-{{ section.id }} .fh-faq-icon{width:28px;height:28px;border-radius:50%;border:1.5px solid #e0e0dc;display:flex;align-items:center;justify-content:center;font-size:14px;color:#777;transition:all .3s;flex-shrink:0}
+    #shopify-section-{{ section.id }} .fh-faq-q.open .fh-faq-icon{background:#0d1b2a;border-color:{{ section.settings.accent_color }};color:#fff}
+    #shopify-section-{{ section.id }} .fh-faq-a{display:none;padding:0 0 24px;font-size:15px;color:#777;line-height:1.7;font-weight:300;font-family:'Inter',sans-serif}
+    #shopify-section-{{ section.id }} .fh-faq-a.open{display:block}
+    @media(max-width:900px){
+      #shopify-section-{{ section.id }} .fh-faq{padding:64px 20px}
+      #shopify-section-{{ section.id }} .fh-section-title{font-size:36px}
+    }
+  </style>
+
+  <script>
+    (function(){
+      var section = document.getElementById('shopify-section-{{ section.id }}');
+      section.querySelectorAll('[data-faq-toggle]').forEach(function(btn){
+        btn.addEventListener('click', function(){
+          var open = this.classList.toggle('open');
+          this.setAttribute('aria-expanded', open);
+          var icon = this.querySelector('.fh-faq-icon');
+          if(icon) icon.textContent = open ? '−' : '+';
+          var answer = this.nextElementSibling;
+          if(answer){
+            answer.classList.toggle('open');
+            answer.setAttribute('aria-hidden', !open);
+          }
+        });
+      });
+    })();
+  </script>
+</div>
+
+{% schema %}
+{
+  "name": "FAQ",
+  "tag": "section",
+  "class": "fh-faq-section",
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Couleur de fond",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Couleur accent",
+      "default": "#d4a843"
+    },
+    {
+      "type": "text",
+      "id": "overline",
+      "label": "Surtitre",
+      "default": "FAQ"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Titre",
+      "default": "Questions fréquentes"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "faq_item",
+      "name": "Question/Réponse",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question",
+          "default": "Quels sont les délais de livraison ?"
+        },
+        {
+          "type": "textarea",
+          "id": "answer",
+          "label": "Réponse",
+          "default": "Production 2-4j + livraison 5-10j ouvrés en Europe. Suivi par email en temps réel."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "FAQ",
+      "blocks": [
+        { "type": "faq_item", "settings": { "question": "Quels sont les délais de livraison ?", "answer": "Production 2-4j + livraison 5-10j ouvrés en Europe. Suivi par email en temps réel." } },
+        { "type": "faq_item", "settings": { "question": "Quelle taille choisir ?", "answer": "Taille normalement. Hésitation ? Taille au-dessus pour décontracté, en-dessous pour ajusté." } },
+        { "type": "faq_item", "settings": { "question": "C'est un maillot officiel ?", "answer": "Non. Designs originaux indépendants, non affiliés aux fédérations, FIFA ou équipementiers." } },
+        { "type": "faq_item", "settings": { "question": "Politique de retour ?", "answer": "30 jours satisfait ou remboursé, sans conditions." } },
+        { "type": "faq_item", "settings": { "question": "Livraison hors France ?", "answer": "Oui ! Toute l'Europe : Belgique, Allemagne, Espagne, Italie, Pays-Bas, Portugal..." } },
+        { "type": "faq_item", "settings": { "question": "Comment sont imprimés les t-shirts ?", "answer": "Impression DTG haute définition : couleurs vives et durables directement sur le coton. Résistant aux lavages." } }
+      ]
+    }
+  ]
+}
+{% endschema %}

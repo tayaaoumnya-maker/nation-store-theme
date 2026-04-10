@@ -18,7 +18,7 @@
         "title": "Livraison & Retours"
       },
       "blocks": {
-        "b1": { "type": "info_card", "settings": { "icon": "\ud83d\ude9a", "heading": "Livraison Europe", "text": "<p>Production sous 1-2 jours ouvr\u00e9s, puis livraison en <strong>3-5 jours ouvr\u00e9s</strong> partout en Europe. Suivi en temps r\u00e9el par email.</p>" } },
+        "b1": { "type": "info_card", "settings": { "icon": "\ud83d\ude9a", "heading": "Livraison Europe", "text": "<p>Production sous 2-4 jours ouvr\u00e9s, puis livraison en <strong>5-10 jours ouvr\u00e9s</strong> partout en Europe. Suivi en temps r\u00e9el par email.</p>" } },
         "b2": { "type": "info_card", "settings": { "icon": "\ud83c\udf0d", "heading": "Pays livr\u00e9s", "text": "<p>France, Belgique, Allemagne, Espagne, Italie, Pays-Bas, Portugal, Suisse, Luxembourg, Autriche et plus encore.</p>" } },
         "b3": { "type": "info_card", "settings": { "icon": "\ud83d\udce6", "heading": "Livraison gratuite", "text": "<p>Livraison <strong>offerte d\u00e8s 50\u20ac</strong> d'achat. En dessous, frais de port \u00e0 4,99\u20ac.</p>" } },
         "b4": { "type": "info_card", "settings": { "icon": "\ud83d\udd04", "heading": "Retours 30 jours", "text": "<p><strong>Satisfait ou rembours\u00e9 30 jours</strong>, sans conditions. Contacte-nous et on s'occupe de tout.</p>" } },
@@ -36,7 +36,7 @@
         "title": "Questions fr\u00e9quentes"
       },
       "blocks": {
-        "q1": { "type": "faq_item", "settings": { "question": "Combien de temps pour recevoir ma commande ?", "answer": "1-2 jours de production + 3-5 jours de livraison = 4-7 jours ouvr\u00e9s au total." } },
+        "q1": { "type": "faq_item", "settings": { "question": "Combien de temps pour recevoir ma commande ?", "answer": "2-4 jours de production + 5-10 jours de livraison = 7-14 jours ouvr\u00e9s au total." } },
         "q2": { "type": "faq_item", "settings": { "question": "Puis-je suivre ma commande ?", "answer": "Oui ! Tu re\u00e7ois un email avec un lien de suivi d\u00e8s que ta commande est exp\u00e9di\u00e9e." } },
         "q3": { "type": "faq_item", "settings": { "question": "Comment faire un retour ?", "answer": "Contacte-nous dans les 30 jours suivant la r\u00e9ception. On t'envoie une \u00e9tiquette retour pr\u00e9pay\u00e9e." } }
       },
