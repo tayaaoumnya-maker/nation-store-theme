@@ -21,7 +21,9 @@
         "line3": "Origines",
         "subtitle": "Jerseys fan premium pour la diaspora. Design exclusif, tissu respirant, fabriqu\u00e9 en Europe. Sois pr\u00eat pour le coup d'envoi.",
         "cta_text": "Shopper la collection",
-        "cta2_text": "Notre histoire"
+        "cta_link": "/collections/all",
+        "cta2_text": "Notre histoire",
+        "cta2_link": "/pages/notre-histoire"
       },
       "blocks": {
         "trust_1": { "type": "trust_badge", "settings": { "text": "Rembours\u00e9 30j" } },
@@ -78,7 +80,8 @@
         "compare_price": "49,99\u20ac",
         "flag_emoji": "\ud83c\uddf2\ud83c\udde6",
         "product_gradient": "linear-gradient(160deg,#c1272d,#7a1018)",
-        "button_text": "Voir le produit"
+        "button_text": "Voir le produit",
+        "button_link": "/collections/maroc"
       },
       "blocks": {
         "b1": { "type": "benefit", "settings": { "text": "Design exclusif inspir\u00e9 du Maroc" } },
@@ -99,11 +102,11 @@
         "subtitle": "5 pays, 5 designs exclusifs \u2014 \u00c9dition Coupe du Monde 2026"
       },
       "blocks": {
-        "ma": { "type": "country_card", "settings": { "flag_emoji": "\ud83c\uddf2\ud83c\udde6", "country": "Maroc", "price_from": "D\u00e8s 34,99\u20ac", "gradient": "linear-gradient(180deg,#c1272d,#5a0f14)" } },
-        "dz": { "type": "country_card", "settings": { "flag_emoji": "\ud83c\udde9\ud83c\uddff", "country": "Alg\u00e9rie", "price_from": "D\u00e8s 34,99\u20ac", "gradient": "linear-gradient(180deg,#006233,#002614)" } },
-        "ci": { "type": "country_card", "settings": { "flag_emoji": "\ud83c\udde8\ud83c\uddee", "country": "C\u00f4te d'Ivoire", "price_from": "D\u00e8s 34,99\u20ac", "gradient": "linear-gradient(180deg,#FF8200,#7a3e00)" } },
-        "fr": { "type": "country_card", "settings": { "flag_emoji": "\ud83c\uddeb\ud83c\uddf7", "country": "France", "price_from": "D\u00e8s 34,99\u20ac", "gradient": "linear-gradient(180deg,#0055A4,#002952)" } },
-        "br": { "type": "country_card", "settings": { "flag_emoji": "\ud83c\udde7\ud83c\uddf7", "country": "Br\u00e9sil", "price_from": "D\u00e8s 34,99\u20ac", "gradient": "linear-gradient(180deg,#009C3B,#FFDF00)" } }
+        "ma": { "type": "country_card", "settings": { "flag_emoji": "\ud83c\uddf2\ud83c\udde6", "country": "Maroc", "price_from": "D\u00e8s 34,99\u20ac", "gradient": "linear-gradient(180deg,#c1272d,#5a0f14)", "link": "/collections/maroc" } },
+        "dz": { "type": "country_card", "settings": { "flag_emoji": "\ud83c\udde9\ud83c\uddff", "country": "Alg\u00e9rie", "price_from": "D\u00e8s 34,99\u20ac", "gradient": "linear-gradient(180deg,#006233,#002614)", "link": "/collections/algerie" } },
+        "ci": { "type": "country_card", "settings": { "flag_emoji": "\ud83c\udde8\ud83c\uddee", "country": "C\u00f4te d'Ivoire", "price_from": "D\u00e8s 34,99\u20ac", "gradient": "linear-gradient(180deg,#FF8200,#7a3e00)", "link": "/collections/cote-divoire" } },
+        "fr": { "type": "country_card", "settings": { "flag_emoji": "\ud83c\uddeb\ud83c\uddf7", "country": "France", "price_from": "D\u00e8s 34,99\u20ac", "gradient": "linear-gradient(180deg,#0055A4,#002952)", "link": "/collections/france" } },
+        "br": { "type": "country_card", "settings": { "flag_emoji": "\ud83c\udde7\ud83c\uddf7", "country": "Br\u00e9sil", "price_from": "D\u00e8s 34,99\u20ac", "gradient": "linear-gradient(180deg,#009C3B,#FFDF00)", "link": "/collections/bresil" } }
       },
       "block_order": ["ma", "dz", "ci", "fr", "br"]
     },
