@@ -1,0 +1,298 @@
+{% comment %}
+  Section: FAQ Page — page complète immersive
+{% endcomment %}
+
+<div id="shopify-section-{{ section.id }}">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  {%- comment -%} ── HERO ── {%- endcomment -%}
+  <section class="fh-fq-hero">
+    <div class="fh-fq-hero-bg"></div>
+    <div class="fh-fq-hero-inner">
+      <div class="fh-fq-overline">{{ section.settings.hero_overline }}</div>
+      <h1 class="fh-fq-h1">{{ section.settings.hero_title }}</h1>
+      <p class="fh-fq-hero-sub">{{ section.settings.hero_subtitle }}</p>
+      <div class="fh-fq-hero-stats">
+        <div class="fh-fq-stat">
+          <span class="fh-fq-stat-icon">🚚</span>
+          <span class="fh-fq-stat-text">5-10 jours</span>
+        </div>
+        <div class="fh-fq-stat">
+          <span class="fh-fq-stat-icon">💰</span>
+          <span class="fh-fq-stat-text">Remboursé 30j</span>
+        </div>
+        <div class="fh-fq-stat">
+          <span class="fh-fq-stat-icon">📦</span>
+          <span class="fh-fq-stat-text">Gratuit dès 50€</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {%- comment -%} ── CATEGORIES NAV ── {%- endcomment -%}
+  <section class="fh-fq-nav-section">
+    <div class="fh-fq-nav-inner">
+      {% for block in section.blocks %}
+        {% if block.type == 'category' %}
+          <button class="fh-fq-nav-btn{% if forloop.first %} active{% endif %}" data-fq-cat="{{ block.settings.slug }}" {{ block.shopify_attributes }}>
+            <span class="fh-fq-nav-icon">{{ block.settings.icon }}</span>
+            {{ block.settings.label }}
+          </button>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </section>
+
+  {%- comment -%} ── FAQ ACCORDION ── {%- endcomment -%}
+  <section class="fh-fq-main">
+    <div class="fh-fq-main-inner">
+
+      {% assign current_cat = '' %}
+      {% for block in section.blocks %}
+        {% if block.type == 'category' %}
+          {% if current_cat != '' %}
+              </div>
+            </div>
+          {% endif %}
+          {% assign current_cat = block.settings.slug %}
+          <div class="fh-fq-group{% if forloop.index == 1 %} active{% endif %}" data-fq-group="{{ block.settings.slug }}">
+            <div class="fh-fq-group-header">
+              <span class="fh-fq-group-icon">{{ block.settings.icon }}</span>
+              <h2 class="fh-fq-group-title">{{ block.settings.label }}</h2>
+            </div>
+            <div class="fh-fq-items">
+        {% endif %}
+
+        {% if block.type == 'faq_item' %}
+          <div class="fh-fq-item" {{ block.shopify_attributes }}>
+            <button class="fh-fq-q" data-fq-toggle aria-expanded="false">
+              <span class="fh-fq-q-text">{{ block.settings.question }}</span>
+              <span class="fh-fq-q-icon">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+            </button>
+            <div class="fh-fq-a" aria-hidden="true">
+              <div class="fh-fq-a-inner">{{ block.settings.answer }}</div>
+            </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+
+      {% if current_cat != '' %}
+            </div>
+          </div>
+      {% endif %}
+
+    </div>
+  </section>
+
+  {%- comment -%} ── CTA ── {%- endcomment -%}
+  <section class="fh-fq-cta">
+    <div class="fh-fq-cta-inner">
+      <div class="fh-fq-cta-icon">💬</div>
+      <h2 class="fh-fq-cta-title">{{ section.settings.cta_title }}</h2>
+      <p class="fh-fq-cta-sub">{{ section.settings.cta_subtitle }}</p>
+      <a href="{{ section.settings.cta_link | default: '/pages/contact' }}" class="fh-fq-cta-btn">{{ section.settings.cta_button }} →</a>
+    </div>
+  </section>
+
+  <style>
+    /* ── HERO ── */
+    #shopify-section-{{ section.id }} .fh-fq-hero{position:relative;background:#0d1b2a;padding:120px 48px 80px;text-align:center;overflow:hidden}
+    #shopify-section-{{ section.id }} .fh-fq-hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 30%,rgba(212,168,67,0.08),transparent 60%),radial-gradient(ellipse at 80% 80%,rgba(193,39,45,0.06),transparent 50%)}
+    #shopify-section-{{ section.id }} .fh-fq-hero-inner{position:relative;z-index:1;max-width:700px;margin:0 auto}
+    #shopify-section-{{ section.id }} .fh-fq-overline{font-size:11px;text-transform:uppercase;letter-spacing:5px;font-weight:700;color:#d4a843;margin-bottom:20px;font-family:'Inter',sans-serif}
+    #shopify-section-{{ section.id }} .fh-fq-h1{font-family:'Bebas Neue',Impact,sans-serif;font-size:64px;letter-spacing:3px;text-transform:uppercase;color:#fff;line-height:1;margin-bottom:20px}
+    #shopify-section-{{ section.id }} .fh-fq-hero-sub{font-size:17px;color:rgba(255,255,255,0.6);line-height:1.7;font-weight:300;font-family:'Inter',sans-serif;max-width:520px;margin:0 auto 40px}
+    #shopify-section-{{ section.id }} .fh-fq-hero-stats{display:flex;justify-content:center;gap:32px;flex-wrap:wrap}
+    #shopify-section-{{ section.id }} .fh-fq-stat{display:flex;align-items:center;gap:8px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.08);padding:10px 20px;border-radius:100px}
+    #shopify-section-{{ section.id }} .fh-fq-stat-icon{font-size:16px}
+    #shopify-section-{{ section.id }} .fh-fq-stat-text{font-size:13px;font-weight:600;color:rgba(255,255,255,0.8);font-family:'Inter',sans-serif;letter-spacing:0.5px}
+
+    /* ── CATEGORY NAV ── */
+    #shopify-section-{{ section.id }} .fh-fq-nav-section{background:#fff;border-bottom:1px solid #e0e0dc;position:sticky;top:0;z-index:10}
+    #shopify-section-{{ section.id }} .fh-fq-nav-inner{max-width:800px;margin:0 auto;display:flex;gap:4px;padding:16px 48px;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none}
+    #shopify-section-{{ section.id }} .fh-fq-nav-inner::-webkit-scrollbar{display:none}
+    #shopify-section-{{ section.id }} .fh-fq-nav-btn{background:none;border:1.5px solid #e0e0dc;padding:10px 20px;border-radius:100px;font-size:13px;font-weight:600;color:#777;cursor:pointer;white-space:nowrap;transition:all .3s;font-family:'Inter',sans-serif;display:flex;align-items:center;gap:8px}
+    #shopify-section-{{ section.id }} .fh-fq-nav-btn:hover{border-color:#0d1b2a;color:#0d1b2a}
+    #shopify-section-{{ section.id }} .fh-fq-nav-btn.active{background:#0d1b2a;border-color:#0d1b2a;color:#fff}
+    #shopify-section-{{ section.id }} .fh-fq-nav-icon{font-size:15px}
+
+    /* ── FAQ GROUPS ── */
+    #shopify-section-{{ section.id }} .fh-fq-main{background:#f9f9f7;padding:64px 48px 80px}
+    #shopify-section-{{ section.id }} .fh-fq-main-inner{max-width:760px;margin:0 auto}
+    #shopify-section-{{ section.id }} .fh-fq-group{display:none;animation:fhFqFadeIn .4s ease}
+    #shopify-section-{{ section.id }} .fh-fq-group.active{display:block}
+    @keyframes fhFqFadeIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+    #shopify-section-{{ section.id }} .fh-fq-group-header{display:flex;align-items:center;gap:14px;margin-bottom:32px}
+    #shopify-section-{{ section.id }} .fh-fq-group-icon{font-size:28px;width:52px;height:52px;display:flex;align-items:center;justify-content:center;background:#fff;border-radius:14px;box-shadow:0 2px 12px rgba(0,0,0,0.06)}
+    #shopify-section-{{ section.id }} .fh-fq-group-title{font-family:'Bebas Neue',Impact,sans-serif;font-size:32px;letter-spacing:2px;text-transform:uppercase;color:#0d1b2a}
+
+    /* ── FAQ ITEMS ── */
+    #shopify-section-{{ section.id }} .fh-fq-item{background:#fff;border-radius:14px;margin-bottom:10px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,0.04);transition:box-shadow .3s}
+    #shopify-section-{{ section.id }} .fh-fq-item:hover{box-shadow:0 4px 20px rgba(0,0,0,0.08)}
+    #shopify-section-{{ section.id }} .fh-fq-q{width:100%;background:none;border:none;text-align:left;padding:22px 24px;font-size:15px;font-weight:600;color:#0d1b2a;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;font-family:'Inter',sans-serif;transition:color .3s}
+    #shopify-section-{{ section.id }} .fh-fq-q:hover{color:#d4a843}
+    #shopify-section-{{ section.id }} .fh-fq-q-text{flex:1}
+    #shopify-section-{{ section.id }} .fh-fq-q-icon{width:32px;height:32px;border-radius:50%;background:#f5f5f3;display:flex;align-items:center;justify-content:center;color:#777;flex-shrink:0;transition:all .3s}
+    #shopify-section-{{ section.id }} .fh-fq-q.open .fh-fq-q-icon{background:#0d1b2a;color:#d4a843;transform:rotate(180deg)}
+    #shopify-section-{{ section.id }} .fh-fq-a{max-height:0;overflow:hidden;transition:max-height .4s ease}
+    #shopify-section-{{ section.id }} .fh-fq-a.open{max-height:500px}
+    #shopify-section-{{ section.id }} .fh-fq-a-inner{padding:0 24px 22px;font-size:15px;color:#666;line-height:1.8;font-weight:400;font-family:'Inter',sans-serif;border-top:1px solid #f0f0ec;padding-top:18px;margin:0 24px;padding-left:0;padding-right:0}
+
+    /* ── CTA ── */
+    #shopify-section-{{ section.id }} .fh-fq-cta{background:#0d1b2a;padding:80px 48px;text-align:center;position:relative;overflow:hidden}
+    #shopify-section-{{ section.id }} .fh-fq-cta::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 50%,rgba(212,168,67,0.06),transparent 60%)}
+    #shopify-section-{{ section.id }} .fh-fq-cta-inner{position:relative;z-index:1;max-width:520px;margin:0 auto}
+    #shopify-section-{{ section.id }} .fh-fq-cta-icon{font-size:40px;margin-bottom:20px}
+    #shopify-section-{{ section.id }} .fh-fq-cta-title{font-family:'Bebas Neue',Impact,sans-serif;font-size:40px;letter-spacing:2px;text-transform:uppercase;color:#fff;margin-bottom:12px}
+    #shopify-section-{{ section.id }} .fh-fq-cta-sub{font-size:16px;color:rgba(255,255,255,0.55);line-height:1.7;font-weight:300;font-family:'Inter',sans-serif;margin-bottom:32px}
+    #shopify-section-{{ section.id }} .fh-fq-cta-btn{display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,#d4a843,#f0d78c);color:#0d1b2a;padding:16px 36px;border-radius:6px;font-size:14px;font-weight:800;text-decoration:none;text-transform:uppercase;letter-spacing:2px;font-family:'Inter',sans-serif;transition:all .3s;box-shadow:0 8px 30px rgba(212,168,67,0.25)}
+    #shopify-section-{{ section.id }} .fh-fq-cta-btn:hover{transform:translateY(-2px);box-shadow:0 16px 48px rgba(212,168,67,0.4)}
+
+    /* ── RESPONSIVE ── */
+    @media(max-width:768px){
+      #shopify-section-{{ section.id }} .fh-fq-hero{padding:80px 20px 56px}
+      #shopify-section-{{ section.id }} .fh-fq-h1{font-size:40px}
+      #shopify-section-{{ section.id }} .fh-fq-hero-stats{gap:12px}
+      #shopify-section-{{ section.id }} .fh-fq-stat{padding:8px 14px}
+      #shopify-section-{{ section.id }} .fh-fq-nav-inner{padding:12px 20px}
+      #shopify-section-{{ section.id }} .fh-fq-main{padding:40px 20px 56px}
+      #shopify-section-{{ section.id }} .fh-fq-group-title{font-size:24px}
+      #shopify-section-{{ section.id }} .fh-fq-q{padding:18px 18px;font-size:14px}
+      #shopify-section-{{ section.id }} .fh-fq-a-inner{margin:0 18px;font-size:14px}
+      #shopify-section-{{ section.id }} .fh-fq-cta{padding:56px 20px}
+      #shopify-section-{{ section.id }} .fh-fq-cta-title{font-size:28px}
+    }
+  </style>
+
+  <script>
+    (function(){
+      var section = document.getElementById('shopify-section-{{ section.id }}');
+      /* Category nav */
+      section.querySelectorAll('[data-fq-cat]').forEach(function(btn){
+        btn.addEventListener('click', function(){
+          var cat = this.dataset.fqCat;
+          section.querySelectorAll('[data-fq-cat]').forEach(function(b){b.classList.remove('active')});
+          this.classList.add('active');
+          section.querySelectorAll('[data-fq-group]').forEach(function(g){
+            g.classList.toggle('active', g.dataset.fqGroup === cat);
+          });
+        });
+      });
+      /* Accordion */
+      section.querySelectorAll('[data-fq-toggle]').forEach(function(btn){
+        btn.addEventListener('click', function(){
+          var isOpen = this.classList.toggle('open');
+          this.setAttribute('aria-expanded', isOpen);
+          var answer = this.nextElementSibling;
+          if(answer){
+            answer.classList.toggle('open', isOpen);
+            answer.setAttribute('aria-hidden', !isOpen);
+          }
+        });
+      });
+    })();
+  </script>
+</div>
+
+{% schema %}
+{
+  "name": "FAQ Page",
+  "tag": "section",
+  "class": "fh-faq-page-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "hero_overline",
+      "label": "Surtitre hero",
+      "default": "Aide & Support"
+    },
+    {
+      "type": "text",
+      "id": "hero_title",
+      "label": "Titre hero",
+      "default": "Questions fréquentes"
+    },
+    {
+      "type": "textarea",
+      "id": "hero_subtitle",
+      "label": "Sous-titre hero",
+      "default": "Tout ce que tu dois savoir sur nos jerseys, la livraison et les retours."
+    },
+    {
+      "type": "text",
+      "id": "cta_title",
+      "label": "Titre CTA",
+      "default": "Pas trouvé ta réponse ?"
+    },
+    {
+      "type": "textarea",
+      "id": "cta_subtitle",
+      "label": "Sous-titre CTA",
+      "default": "Notre équipe te répond en moins de 24h. Écris-nous, on est là pour toi."
+    },
+    {
+      "type": "text",
+      "id": "cta_button",
+      "label": "Texte bouton CTA",
+      "default": "Nous contacter"
+    },
+    {
+      "type": "text",
+      "id": "cta_link",
+      "label": "Lien CTA",
+      "default": "/pages/contact"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "category",
+      "name": "Catégorie",
+      "settings": [
+        {
+          "type": "text",
+          "id": "icon",
+          "label": "Icône emoji",
+          "default": "📦"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Nom catégorie",
+          "default": "Livraison"
+        },
+        {
+          "type": "text",
+          "id": "slug",
+          "label": "Identifiant unique",
+          "default": "livraison"
+        }
+      ]
+    },
+    {
+      "type": "faq_item",
+      "name": "Question/Réponse",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question",
+          "default": "Quels sont les délais de livraison ?"
+        },
+        {
+          "type": "textarea",
+          "id": "answer",
+          "label": "Réponse",
+          "default": "Production 2-4j + livraison 5-10j ouvrés en Europe."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "FAQ Page"
+    }
+  ]
+}
+{% endschema %}

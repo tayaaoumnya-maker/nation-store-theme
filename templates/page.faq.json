@@ -9,26 +9,52 @@
  */
 {
   "sections": {
-    "faq": {
-      "type": "faq-section",
+    "faq-page": {
+      "type": "fh-faq-page",
       "settings": {
-        "bg_color": "#ffffff",
-        "accent_color": "#d4a843",
-        "overline": "FAQ",
-        "title": "Questions fréquentes"
+        "hero_overline": "Aide & Support",
+        "hero_title": "Questions fréquentes",
+        "hero_subtitle": "Tout ce que tu dois savoir sur nos jerseys, la livraison et les retours. Si tu ne trouves pas ta réponse, contacte-nous.",
+        "cta_title": "Pas trouvé ta réponse ?",
+        "cta_subtitle": "Notre équipe te répond en moins de 24h par email. Écris-nous à contact@footballheritage.com — on est là pour toi.",
+        "cta_button": "Nous contacter",
+        "cta_link": "mailto:contact@footballheritage.com"
       },
       "blocks": {
-        "q1": { "type": "faq_item", "settings": { "question": "Quels sont les délais de livraison ?", "answer": "Production 2-4j + livraison 5-10j ouvrés en Europe. Suivi par email en temps réel." } },
-        "q2": { "type": "faq_item", "settings": { "question": "Quelle taille choisir ?", "answer": "Taille normalement. Hésitation ? Taille au-dessus pour décontracté, en-dessous pour ajusté. Consulte notre guide des tailles." } },
-        "q3": { "type": "faq_item", "settings": { "question": "C'est un maillot officiel ?", "answer": "Non. Designs originaux indépendants, non affiliés aux fédérations, FIFA ou équipementiers." } },
-        "q4": { "type": "faq_item", "settings": { "question": "Politique de retour ?", "answer": "30 jours satisfait ou remboursé, sans conditions." } },
-        "q5": { "type": "faq_item", "settings": { "question": "Livraison hors France ?", "answer": "Oui ! Toute l'Europe : Belgique, Allemagne, Espagne, Italie, Pays-Bas, Portugal..." } },
-        "q6": { "type": "faq_item", "settings": { "question": "Comment sont imprimés les jerseys ?", "answer": "Sublimation : couleurs intégrées dans le tissu. Durable, résistant, couleurs éternelles." } },
-        "q7": { "type": "faq_item", "settings": { "question": "Puis-je suivre ma commande ?", "answer": "Oui ! Tu reçois un email avec un lien de suivi dès que ta commande est expédiée." } },
-        "q8": { "type": "faq_item", "settings": { "question": "Comment faire un retour ?", "answer": "Contacte-nous dans les 30 jours suivant la réception. On t'envoie une étiquette retour prépayée." } }
+        "cat_livraison": { "type": "category", "settings": { "icon": "🚚", "label": "Livraison", "slug": "livraison" } },
+        "q1": { "type": "faq_item", "settings": { "question": "Quels sont les délais de livraison ?", "answer": "Production 2-4 jours ouvrés + livraison 5-10 jours ouvrés partout en Europe. Tu reçois un email de suivi dès l'expédition." } },
+        "q2": { "type": "faq_item", "settings": { "question": "Livrez-vous hors France ?", "answer": "Oui ! On livre dans toute l'Europe : Belgique, Allemagne, Espagne, Italie, Pays-Bas, Portugal, Suisse, Luxembourg, Autriche et plus encore." } },
+        "q3": { "type": "faq_item", "settings": { "question": "La livraison est-elle gratuite ?", "answer": "Livraison offerte dès 50€ d'achat. En dessous, frais de port à 4,99€." } },
+        "q4": { "type": "faq_item", "settings": { "question": "Puis-je suivre ma commande ?", "answer": "Oui ! Tu reçois un email avec un lien de suivi en temps réel dès que ta commande est expédiée." } },
+
+        "cat_produit": { "type": "category", "settings": { "icon": "👕", "label": "Produit", "slug": "produit" } },
+        "q5": { "type": "faq_item", "settings": { "question": "C'est un maillot officiel ?", "answer": "Non. Ce sont des designs originaux indépendants, non affiliés aux fédérations, à la FIFA ou aux équipementiers. C'est de l'art fan premium." } },
+        "q6": { "type": "faq_item", "settings": { "question": "Comment sont imprimés les jerseys ?", "answer": "Impression par sublimation haute définition : les couleurs sont intégrées directement dans le tissu. Résultat durable, résistant aux lavages, couleurs qui ne fanent pas." } },
+        "q7": { "type": "faq_item", "settings": { "question": "Quel est le matériau ?", "answer": "100% polyester premium respirant. Léger, confortable et à séchage rapide. Parfait pour le stade comme pour la ville." } },
+        "q8": { "type": "faq_item", "settings": { "question": "Les couleurs vont-elles tenir au lavage ?", "answer": "Oui ! Grâce à la sublimation, les couleurs sont intégrées dans la fibre du tissu. Elles résistent aux lavages répétés sans décoloration." } },
+
+        "cat_tailles": { "type": "category", "settings": { "icon": "📏", "label": "Tailles", "slug": "tailles" } },
+        "q9": { "type": "faq_item", "settings": { "question": "Quelle taille choisir ?", "answer": "Nos jerseys taillent normalement. En cas d'hésitation : prends la taille au-dessus pour un look décontracté, ou ta taille habituelle pour un fit ajusté." } },
+        "q10": { "type": "faq_item", "settings": { "question": "Avez-vous un guide des tailles ?", "answer": "Oui ! Consulte notre page Guide des tailles pour les mesures exactes de chaque taille (S à 3XL)." } },
+        "q11": { "type": "faq_item", "settings": { "question": "Proposez-vous des tailles enfant ?", "answer": "Oui ! Nous avons des tailles adulte, femme cintrée, enfant et bébé. Retrouve toutes les variantes dans nos collections." } },
+
+        "cat_retours": { "type": "category", "settings": { "icon": "🔄", "label": "Retours", "slug": "retours" } },
+        "q12": { "type": "faq_item", "settings": { "question": "Quelle est votre politique de retour ?", "answer": "30 jours satisfait ou remboursé, sans conditions. Si le jersey ne te plaît pas, on te rembourse." } },
+        "q13": { "type": "faq_item", "settings": { "question": "Comment faire un retour ?", "answer": "Contacte-nous par email dans les 30 jours suivant la réception. On t'envoie les instructions et une étiquette retour." } },
+        "q14": { "type": "faq_item", "settings": { "question": "Combien de temps pour le remboursement ?", "answer": "Remboursement sous 5-7 jours ouvrés après réception du retour, sur le moyen de paiement original." } },
+
+        "cat_paiement": { "type": "category", "settings": { "icon": "💳", "label": "Paiement", "slug": "paiement" } },
+        "q15": { "type": "faq_item", "settings": { "question": "Quels moyens de paiement acceptez-vous ?", "answer": "CB (Visa, Mastercard), Apple Pay, Google Pay, PayPal. Paiement 100% sécurisé via Shopify Payments." } },
+        "q16": { "type": "faq_item", "settings": { "question": "Le paiement est-il sécurisé ?", "answer": "Oui, 100%. Tous les paiements passent par Shopify Payments avec chiffrement SSL. On ne stocke aucune donnée bancaire." } }
       },
-      "block_order": ["q1", "q2", "q3", "q4", "q5", "q6", "q7", "q8"]
+      "block_order": [
+        "cat_livraison", "q1", "q2", "q3", "q4",
+        "cat_produit", "q5", "q6", "q7", "q8",
+        "cat_tailles", "q9", "q10", "q11",
+        "cat_retours", "q12", "q13", "q14",
+        "cat_paiement", "q15", "q16"
+      ]
     }
   },
-  "order": ["faq"]
+  "order": ["faq-page"]
 }
