@@ -12,7 +12,11 @@
     </div>
     <div class="fh-coll-grid">
       {% for block in section.blocks %}
-        <a href="{{ block.settings.link }}" class="fh-coll-card" {{ block.shopify_attributes }}>
+        {% assign card_link = block.settings.link %}
+        {% if card_link == blank %}
+          {% assign card_link = block.settings.country | handleize | prepend: '/collections/' %}
+        {% endif %}
+        <a href="{{ card_link }}" class="fh-coll-card" {{ block.shopify_attributes }}>
           <div class="fh-coll-card-bg" style="background:{{ block.settings.gradient }}">
             {% if block.settings.image != blank %}
               {{ block.settings.image | image_url: width: 500 | image_tag: loading: 'lazy', class: 'fh-coll-bg-img' }}
