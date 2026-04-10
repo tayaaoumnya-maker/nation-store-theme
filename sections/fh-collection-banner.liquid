@@ -1,0 +1,62 @@
+{% comment %}
+  Section: Football Heritage Collection Banner
+  Banner premium pour les pages collection
+{% endcomment %}
+
+<div id="shopify-section-{{ section.id }}">
+  <section class="fh-coll-banner" style="background:{{ section.settings.bg_color }}">
+    <div class="fh-coll-bg"></div>
+    <div class="fh-coll-inner">
+      <div class="fh-section-overline" style="color:{{ section.settings.accent_color }}">{{ section.settings.overline | default: collection.title }}</div>
+      <h1 class="fh-coll-title">
+        {% if section.settings.flag_emoji != blank %}
+          <span class="fh-coll-flag">{{ section.settings.flag_emoji }}</span>
+        {% endif %}
+        {{ collection.title }}
+      </h1>
+      {% if collection.description != blank and section.settings.show_description %}
+        <p class="fh-coll-desc">{{ collection.description }}</p>
+      {% endif %}
+      <div class="fh-coll-meta">
+        <span class="fh-coll-count">{{ collection.products_count }} {{ collection.products_count | pluralize: 'produit', 'produits' }}</span>
+        {% if section.settings.badge_text != blank %}
+          <span class="fh-coll-badge" style="background:{{ section.settings.accent_color }}">{{ section.settings.badge_text }}</span>
+        {% endif %}
+      </div>
+    </div>
+  </section>
+
+  <style>
+    #shopify-section-{{ section.id }} .fh-coll-banner{position:relative;padding:80px 48px 60px;overflow:hidden;text-align:center}
+    #shopify-section-{{ section.id }} .fh-coll-bg{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 100%,rgba(212,168,67,0.08) 0%,transparent 60%),radial-gradient(ellipse at 20% 0%,rgba(29,53,87,0.15) 0%,transparent 50%)}
+    #shopify-section-{{ section.id }} .fh-coll-inner{position:relative;z-index:2;max-width:700px;margin:0 auto}
+    #shopify-section-{{ section.id }} .fh-section-overline{font-size:11px;text-transform:uppercase;letter-spacing:4px;font-weight:700;margin-bottom:16px;font-family:'Inter',sans-serif}
+    #shopify-section-{{ section.id }} .fh-coll-title{font-family:'Bebas Neue',Impact,sans-serif;font-size:72px;line-height:1;letter-spacing:3px;text-transform:uppercase;color:#fff;margin-bottom:16px}
+    #shopify-section-{{ section.id }} .fh-coll-flag{margin-right:12px;font-size:60px;vertical-align:middle}
+    #shopify-section-{{ section.id }} .fh-coll-desc{font-family:'Inter',sans-serif;font-size:16px;color:rgba(255,255,255,0.5);line-height:1.7;max-width:500px;margin:0 auto 20px;font-weight:300}
+    #shopify-section-{{ section.id }} .fh-coll-meta{display:flex;align-items:center;justify-content:center;gap:16px}
+    #shopify-section-{{ section.id }} .fh-coll-count{font-family:'Inter',sans-serif;font-size:13px;color:rgba(255,255,255,0.3);text-transform:uppercase;letter-spacing:1px}
+    #shopify-section-{{ section.id }} .fh-coll-badge{display:inline-block;padding:4px 14px;border-radius:20px;font-size:11px;font-weight:700;color:#0d1b2a;text-transform:uppercase;letter-spacing:1px}
+    @media(max-width:600px){
+      #shopify-section-{{ section.id }} .fh-coll-banner{padding:48px 16px 36px}
+      #shopify-section-{{ section.id }} .fh-coll-title{font-size:48px}
+      #shopify-section-{{ section.id }} .fh-coll-flag{font-size:40px}
+    }
+  </style>
+</div>
+
+{% schema %}
+{
+  "name": "FH Collection Banner",
+  "tag": "section",
+  "settings": [
+    { "type": "color", "id": "bg_color", "label": "Fond", "default": "#0d1b2a" },
+    { "type": "color", "id": "accent_color", "label": "Accent", "default": "#d4a843" },
+    { "type": "text", "id": "overline", "label": "Surtitre", "info": "Laisse vide pour utiliser le nom de la collection" },
+    { "type": "text", "id": "flag_emoji", "label": "Emoji drapeau", "info": "Ex: 🇲🇦" },
+    { "type": "text", "id": "badge_text", "label": "Badge (optionnel)", "info": "Ex: Édition limitée" },
+    { "type": "checkbox", "id": "show_description", "label": "Afficher la description", "default": true }
+  ],
+  "presets": [{ "name": "FH Collection Banner" }]
+}
+{% endschema %}
