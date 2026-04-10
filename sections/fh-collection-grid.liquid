@@ -1,64 +1,75 @@
 {% comment %}
   Section: Football Heritage Collection Product Grid
-  Grille produits stylisée pour les pages collection
+  Grille produits premium — fond clair, cards élégantes, 4 colonnes
 {% endcomment %}
 
-{{ 'template-collection.css' | asset_url | stylesheet_tag }}
-{{ 'component-card.css' | asset_url | stylesheet_tag }}
-{{ 'component-price.css' | asset_url | stylesheet_tag }}
-
 <div id="shopify-section-{{ section.id }}">
-  <section class="fh-grid-section" style="background:{{ section.settings.bg_color }}">
+  <section class="fh-grid-section">
     <div class="fh-grid-inner">
 
       {%- paginate collection.products by section.settings.products_per_page -%}
 
-        {% if section.settings.enable_sorting %}
         <div class="fh-grid-toolbar">
-          <div class="fh-grid-results">{{ collection.products_count }} {{ collection.products_count | pluralize: 'produit', 'produits' }}</div>
-          <div class="fh-grid-sort">
-            <label for="fh-sort-{{ section.id }}">Trier par</label>
-            <select id="fh-sort-{{ section.id }}" onchange="window.location.href=this.value">
-              {%- for option in collection.sort_options -%}
-                <option value="{{ collection.url }}?sort_by={{ option.value }}" {% if collection.sort_by == option.value or collection.default_sort_by == option.value and collection.sort_by == blank %}selected{% endif %}>
-                  {{ option.name }}
-                </option>
-              {%- endfor -%}
-            </select>
+          <div class="fh-grid-results">
+            {{ collection.products_count }} {{ collection.products_count | pluralize: 'produit', 'produits' }}
+          </div>
+          <div class="fh-grid-controls">
+            {% if section.settings.enable_sorting %}
+            <div class="fh-grid-sort">
+              <label for="fh-sort-{{ section.id }}">Trier par</label>
+              <select id="fh-sort-{{ section.id }}" onchange="window.location.href=this.value">
+                {%- for option in collection.sort_options -%}
+                  <option value="{{ collection.url }}?sort_by={{ option.value }}" {% if collection.sort_by == option.value or collection.default_sort_by == option.value and collection.sort_by == blank %}selected{% endif %}>
+                    {{ option.name }}
+                  </option>
+                {%- endfor -%}
+              </select>
+            </div>
+            {% endif %}
           </div>
         </div>
-        {% endif %}
 
         {% if collection.products.size > 0 %}
-        <div class="fh-product-grid" style="--cols:{{ section.settings.columns }}">
+        <div class="fh-product-grid">
           {%- for product in collection.products -%}
             <a href="{{ product.url }}" class="fh-product-card">
               <div class="fh-pc-image">
                 {% if product.featured_image %}
                   <img
-                    src="{{ product.featured_image | image_url: width: 600 }}"
+                    src="{{ product.featured_image | image_url: width: 800 }}"
                     alt="{{ product.featured_image.alt | escape }}"
-                    width="600"
-                    height="{{ 600 | divided_by: product.featured_image.aspect_ratio | round }}"
+                    width="800"
+                    height="{{ 800 | divided_by: product.featured_image.aspect_ratio | round }}"
                     loading="lazy"
                   >
+                  {% if product.images.size > 1 %}
+                    <img
+                      src="{{ product.images[1] | image_url: width: 800 }}"
+                      alt="{{ product.images[1].alt | escape }}"
+                      class="fh-pc-hover-img"
+                      loading="lazy"
+                    >
+                  {% endif %}
                 {% else %}
-                  <div class="fh-pc-placeholder">{{ product.title | slice: 0 }}</div>
+                  <div class="fh-pc-placeholder">
+                    <svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="1"><rect x="2" y="2" width="20" height="20" rx="2"/><circle cx="8" cy="8" r="2"/><path d="m21 15-5-5L5 21"/></svg>
+                  </div>
                 {% endif %}
                 {% if product.compare_at_price > product.price %}
-                  <span class="fh-pc-badge">PROMO</span>
+                  {% assign discount = product.compare_at_price | minus: product.price | times: 100 | divided_by: product.compare_at_price %}
+                  <span class="fh-pc-badge">-{{ discount }}%</span>
                 {% endif %}
+                {% unless product.available %}
+                  <span class="fh-pc-sold-out">Épuisé</span>
+                {% endunless %}
               </div>
               <div class="fh-pc-info">
                 <h3 class="fh-pc-title">{{ product.title }}</h3>
-                {% if product.variants.size > 1 %}
-                  <div class="fh-pc-variants">{{ product.variants.size }} variantes</div>
-                {% endif %}
                 <div class="fh-pc-price">
                   {% if product.compare_at_price > product.price %}
                     <span class="fh-pc-compare">{{ product.compare_at_price | money }}</span>
                   {% endif %}
-                  <span class="fh-pc-current">{{ product.price | money }}</span>
+                  <span class="fh-pc-current {% if product.compare_at_price > product.price %}fh-pc-sale{% endif %}">{{ product.price | money }}</span>
                 </div>
               </div>
             </a>
@@ -68,7 +79,7 @@
         {% if paginate.pages > 1 %}
         <nav class="fh-pagination">
           {% if paginate.previous %}
-            <a href="{{ paginate.previous.url }}" class="fh-page-btn">&larr; Précédent</a>
+            <a href="{{ paginate.previous.url }}" class="fh-page-arrow">&larr;</a>
           {% endif %}
           {% for part in paginate.parts %}
             {% if part.is_link %}
@@ -82,15 +93,17 @@
             {% endif %}
           {% endfor %}
           {% if paginate.next %}
-            <a href="{{ paginate.next.url }}" class="fh-page-btn">Suivant &rarr;</a>
+            <a href="{{ paginate.next.url }}" class="fh-page-arrow">&rarr;</a>
           {% endif %}
         </nav>
         {% endif %}
 
         {% else %}
         <div class="fh-empty">
-          <p>Aucun produit dans cette collection pour le moment.</p>
-          <a href="/collections/all" class="fh-btn-fire">Voir tous les produits &rarr;</a>
+          <div class="fh-empty-icon">🏟️</div>
+          <p class="fh-empty-title">Bientôt disponible</p>
+          <p class="fh-empty-sub">Les jerseys de cette collection arrivent très bientôt.</p>
+          <a href="/collections" class="fh-empty-btn">Voir toutes les collections &rarr;</a>
         </div>
         {% endif %}
 
@@ -99,44 +112,72 @@
   </section>
 
   <style>
-    #shopify-section-{{ section.id }} .fh-grid-section{padding:48px 48px 80px}
-    #shopify-section-{{ section.id }} .fh-grid-inner{max-width:1200px;margin:0 auto}
-    #shopify-section-{{ section.id }} .fh-grid-toolbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:32px;padding-bottom:16px;border-bottom:1px solid rgba(255,255,255,0.06)}
-    #shopify-section-{{ section.id }} .fh-grid-results{font-family:'Inter',sans-serif;font-size:13px;color:rgba(255,255,255,0.3);text-transform:uppercase;letter-spacing:1px}
-    #shopify-section-{{ section.id }} .fh-grid-sort{display:flex;align-items:center;gap:10px}
-    #shopify-section-{{ section.id }} .fh-grid-sort label{font-family:'Inter',sans-serif;font-size:12px;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:1px}
-    #shopify-section-{{ section.id }} .fh-grid-sort select{background:#162d4a;color:#fff;border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:8px 16px;font-size:13px;font-family:'Inter',sans-serif;cursor:pointer}
-    #shopify-section-{{ section.id }} .fh-product-grid{display:grid;grid-template-columns:repeat(var(--cols),1fr);gap:24px}
-    #shopify-section-{{ section.id }} .fh-product-card{text-decoration:none;background:#0f2438;border-radius:16px;overflow:hidden;transition:transform .3s,box-shadow .3s}
-    #shopify-section-{{ section.id }} .fh-product-card:hover{transform:translateY(-6px);box-shadow:0 20px 60px rgba(0,0,0,0.4)}
-    #shopify-section-{{ section.id }} .fh-pc-image{position:relative;aspect-ratio:1/1;overflow:hidden;background:#162d4a}
-    #shopify-section-{{ section.id }} .fh-pc-image img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
-    #shopify-section-{{ section.id }} .fh-product-card:hover .fh-pc-image img{transform:scale(1.06)}
-    #shopify-section-{{ section.id }} .fh-pc-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',Impact,sans-serif;font-size:48px;color:rgba(255,255,255,0.1)}
-    #shopify-section-{{ section.id }} .fh-pc-badge{position:absolute;top:12px;left:12px;background:#d4a843;color:#0d1b2a;font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:1px;padding:4px 10px;border-radius:4px}
-    #shopify-section-{{ section.id }} .fh-pc-info{padding:16px 20px 20px}
-    #shopify-section-{{ section.id }} .fh-pc-title{font-family:'Bebas Neue',Impact,sans-serif;font-size:20px;color:#fff;letter-spacing:1px;margin-bottom:4px}
-    #shopify-section-{{ section.id }} .fh-pc-variants{font-family:'Inter',sans-serif;font-size:12px;color:rgba(255,255,255,0.3);margin-bottom:8px}
+    #shopify-section-{{ section.id }} .fh-grid-section{padding:40px 48px 80px;background:#fff}
+    #shopify-section-{{ section.id }} .fh-grid-inner{max-width:1280px;margin:0 auto}
+
+    /* Toolbar */
+    #shopify-section-{{ section.id }} .fh-grid-toolbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:36px;padding-bottom:20px;border-bottom:1px solid #eee}
+    #shopify-section-{{ section.id }} .fh-grid-results{font-family:'Inter',sans-serif;font-size:13px;color:#999;letter-spacing:.5px}
+    #shopify-section-{{ section.id }} .fh-grid-controls{display:flex;align-items:center;gap:16px}
+    #shopify-section-{{ section.id }} .fh-grid-sort{display:flex;align-items:center;gap:8px}
+    #shopify-section-{{ section.id }} .fh-grid-sort label{font-family:'Inter',sans-serif;font-size:12px;color:#999;text-transform:uppercase;letter-spacing:1px}
+    #shopify-section-{{ section.id }} .fh-grid-sort select{background:#fff;color:#0d1b2a;border:1px solid #ddd;border-radius:8px;padding:10px 16px;font-size:13px;font-family:'Inter',sans-serif;cursor:pointer;transition:border-color .3s}
+    #shopify-section-{{ section.id }} .fh-grid-sort select:hover{border-color:#0d1b2a}
+
+    /* Grid */
+    #shopify-section-{{ section.id }} .fh-product-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+
+    /* Card */
+    #shopify-section-{{ section.id }} .fh-product-card{text-decoration:none;display:block;transition:transform .35s}
+    #shopify-section-{{ section.id }} .fh-product-card:hover{transform:translateY(-4px)}
+
+    /* Image */
+    #shopify-section-{{ section.id }} .fh-pc-image{position:relative;aspect-ratio:3/4;overflow:hidden;background:#f7f7f5;border-radius:12px;margin-bottom:14px}
+    #shopify-section-{{ section.id }} .fh-pc-image img{width:100%;height:100%;object-fit:contain;padding:16px;transition:opacity .4s,transform .5s}
+    #shopify-section-{{ section.id }} .fh-pc-hover-img{position:absolute;inset:0;opacity:0;object-fit:contain;padding:16px}
+    #shopify-section-{{ section.id }} .fh-product-card:hover .fh-pc-image > img:first-child{opacity:0}
+    #shopify-section-{{ section.id }} .fh-product-card:hover .fh-pc-hover-img{opacity:1}
+    #shopify-section-{{ section.id }} .fh-product-card:hover .fh-pc-image img{transform:scale(1.04)}
+    #shopify-section-{{ section.id }} .fh-pc-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:#ddd}
+
+    /* Badges */
+    #shopify-section-{{ section.id }} .fh-pc-badge{position:absolute;top:12px;left:12px;background:#c1272d;color:#fff;font-size:11px;font-weight:700;padding:5px 10px;border-radius:6px;letter-spacing:.5px;z-index:2}
+    #shopify-section-{{ section.id }} .fh-pc-sold-out{position:absolute;top:12px;right:12px;background:#0d1b2a;color:#fff;font-size:10px;font-weight:700;padding:5px 10px;border-radius:6px;text-transform:uppercase;letter-spacing:1px;z-index:2}
+
+    /* Info */
+    #shopify-section-{{ section.id }} .fh-pc-info{padding:0 4px}
+    #shopify-section-{{ section.id }} .fh-pc-title{font-family:'Inter',sans-serif;font-size:14px;font-weight:500;color:#0d1b2a;margin-bottom:6px;line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
     #shopify-section-{{ section.id }} .fh-pc-price{display:flex;align-items:center;gap:8px}
-    #shopify-section-{{ section.id }} .fh-pc-compare{font-family:'Inter',sans-serif;font-size:14px;color:rgba(255,255,255,0.3);text-decoration:line-through}
-    #shopify-section-{{ section.id }} .fh-pc-current{font-family:'Inter',sans-serif;font-size:16px;color:#d4a843;font-weight:700}
-    #shopify-section-{{ section.id }} .fh-pagination{display:flex;justify-content:center;align-items:center;gap:8px;margin-top:48px}
-    #shopify-section-{{ section.id }} .fh-page-btn{font-family:'Inter',sans-serif;font-size:13px;color:#d4a843;text-decoration:none;padding:8px 16px;border:1px solid rgba(212,168,67,0.3);border-radius:8px;transition:all .3s}
-    #shopify-section-{{ section.id }} .fh-page-btn:hover{background:rgba(212,168,67,0.1)}
-    #shopify-section-{{ section.id }} .fh-page-num{font-family:'Inter',sans-serif;font-size:14px;color:rgba(255,255,255,0.4);padding:8px 14px;border-radius:8px;text-decoration:none;transition:all .3s}
-    #shopify-section-{{ section.id }} .fh-page-num:hover{color:#fff}
-    #shopify-section-{{ section.id }} .fh-page-active{background:#d4a843;color:#0d1b2a;font-weight:700}
+    #shopify-section-{{ section.id }} .fh-pc-compare{font-family:'Inter',sans-serif;font-size:14px;color:#bbb;text-decoration:line-through}
+    #shopify-section-{{ section.id }} .fh-pc-current{font-family:'Inter',sans-serif;font-size:15px;color:#0d1b2a;font-weight:700}
+    #shopify-section-{{ section.id }} .fh-pc-sale{color:#c1272d}
+
+    /* Pagination */
+    #shopify-section-{{ section.id }} .fh-pagination{display:flex;justify-content:center;align-items:center;gap:4px;margin-top:56px}
+    #shopify-section-{{ section.id }} .fh-page-arrow{display:flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:50%;border:1px solid #ddd;text-decoration:none;color:#0d1b2a;font-size:16px;transition:all .3s}
+    #shopify-section-{{ section.id }} .fh-page-arrow:hover{background:#0d1b2a;color:#fff;border-color:#0d1b2a}
+    #shopify-section-{{ section.id }} .fh-page-num{font-family:'Inter',sans-serif;font-size:14px;color:#999;width:40px;height:40px;display:flex;align-items:center;justify-content:center;border-radius:50%;text-decoration:none;transition:all .3s}
+    #shopify-section-{{ section.id }} .fh-page-num:hover{color:#0d1b2a;background:#f5f5f3}
+    #shopify-section-{{ section.id }} .fh-page-active{background:#0d1b2a;color:#fff;font-weight:700}
+
+    /* Empty state */
     #shopify-section-{{ section.id }} .fh-empty{text-align:center;padding:80px 20px}
-    #shopify-section-{{ section.id }} .fh-empty p{font-family:'Inter',sans-serif;font-size:16px;color:rgba(255,255,255,0.4);margin-bottom:24px}
-    #shopify-section-{{ section.id }} .fh-btn-fire{display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,#0d1b2a,#162d4a);color:#fff;padding:16px 32px;border-radius:6px;font-size:13px;font-weight:800;text-decoration:none;text-transform:uppercase;letter-spacing:2px;transition:all .3s;box-shadow:0 8px 32px rgba(13,27,42,0.3)}
-    #shopify-section-{{ section.id }} .fh-btn-fire:hover{transform:translateY(-2px);box-shadow:0 16px 48px rgba(13,27,42,0.45)}
-    @media(max-width:900px){
-      #shopify-section-{{ section.id }} .fh-grid-section{padding:32px 16px 60px}
+    #shopify-section-{{ section.id }} .fh-empty-icon{font-size:64px;margin-bottom:20px}
+    #shopify-section-{{ section.id }} .fh-empty-title{font-family:'Bebas Neue',Impact,sans-serif;font-size:36px;color:#0d1b2a;letter-spacing:2px;margin-bottom:8px}
+    #shopify-section-{{ section.id }} .fh-empty-sub{font-family:'Inter',sans-serif;font-size:15px;color:#999;margin-bottom:28px}
+    #shopify-section-{{ section.id }} .fh-empty-btn{display:inline-flex;align-items:center;gap:8px;background:#0d1b2a;color:#fff;padding:14px 28px;border-radius:8px;font-size:13px;font-weight:700;text-decoration:none;text-transform:uppercase;letter-spacing:1.5px;transition:all .3s}
+    #shopify-section-{{ section.id }} .fh-empty-btn:hover{background:#162d4a;transform:translateY(-2px)}
+
+    /* Responsive */
+    @media(max-width:1100px){
+      #shopify-section-{{ section.id }} .fh-product-grid{grid-template-columns:repeat(3,1fr)}
+    }
+    @media(max-width:768px){
+      #shopify-section-{{ section.id }} .fh-grid-section{padding:24px 16px 60px}
       #shopify-section-{{ section.id }} .fh-product-grid{grid-template-columns:repeat(2,1fr);gap:12px}
       #shopify-section-{{ section.id }} .fh-grid-toolbar{flex-direction:column;gap:12px;align-items:flex-start}
-    }
-    @media(max-width:400px){
-      #shopify-section-{{ section.id }} .fh-product-grid{grid-template-columns:1fr}
+      #shopify-section-{{ section.id }} .fh-pc-title{font-size:13px}
+      #shopify-section-{{ section.id }} .fh-pc-image{border-radius:8px}
     }
   </style>
 </div>
@@ -146,9 +187,7 @@
   "name": "FH Product Grid",
   "tag": "section",
   "settings": [
-    { "type": "color", "id": "bg_color", "label": "Fond", "default": "#0d1b2a" },
-    { "type": "range", "id": "products_per_page", "min": 4, "max": 24, "step": 4, "default": 12, "label": "Produits par page" },
-    { "type": "range", "id": "columns", "min": 2, "max": 4, "step": 1, "default": 3, "label": "Colonnes desktop" },
+    { "type": "range", "id": "products_per_page", "min": 8, "max": 32, "step": 4, "default": 16, "label": "Produits par page" },
     { "type": "checkbox", "id": "enable_sorting", "label": "Activer le tri", "default": true }
   ],
   "presets": [{ "name": "FH Product Grid" }]

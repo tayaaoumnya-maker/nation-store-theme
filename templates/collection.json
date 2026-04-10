@@ -20,9 +20,7 @@
     "product-grid": {
       "type": "fh-collection-grid",
       "settings": {
-        "bg_color": "#0d1b2a",
-        "products_per_page": 12,
-        "columns": 3,
+        "products_per_page": 16,
         "enable_sorting": true
       }
     }
