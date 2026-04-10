@@ -1,0 +1,34 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "reviews": {
+      "type": "fh-reviews",
+      "settings": {
+        "bg_color": "#ffffff",
+        "accent_color": "#d4a843",
+        "overline": "★ Avis clients",
+        "title": "Ce qu'ils en pensent",
+        "subtitle": "Des centaines de clients satisfaits à travers l'Europe",
+        "score": "4,8/5"
+      },
+      "blocks": {
+        "r1": { "type": "review", "settings": { "stars": 5, "text": "J'ai porté le jersey Maroc pendant le match et l'ambiance était folle. Tout le monde me demandait où je l'avais trouvé. Un truc de ouf.", "initials": "YK", "name": "Youssef K.", "location": "Paris", "verified": true, "product": "Jersey Maroc Heritage" } },
+        "r2": { "type": "review", "settings": { "stars": 5, "text": "Le pack famille Algérie est arrivé en 4 jours. On est tous équipés pour supporter les Fennecs à la Coupe du Monde. Qualité dingue.", "initials": "AB", "name": "Amina B.", "location": "Lyon", "verified": true, "product": "Pack Famille Algérie" } },
+        "r3": { "type": "review", "settings": { "stars": 5, "text": "Ce jersey c'est pas un maillot générique, c'est une déclaration. Je représente mes origines avec style. Vivement les matchs !", "initials": "ID", "name": "Ibrahim D.", "location": "Bruxelles", "verified": true, "product": "Jersey Côte d'Ivoire" } },
+        "r4": { "type": "review", "settings": { "stars": 5, "text": "La qualité est vraiment au rendez-vous. Le tissu est léger, les couleurs sont éclatantes. J'ai commandé pour toute la famille.", "initials": "SK", "name": "Sofiane K.", "location": "Marseille", "verified": true, "product": "Jersey Algérie Heritage" } },
+        "r5": { "type": "review", "settings": { "stars": 4, "text": "Super design, livraison rapide. J'aurais aimé un peu plus de choix de tailles en 3XL mais sinon c'est parfait.", "initials": "MN", "name": "Moussa N.", "location": "Bruxelles", "verified": true, "product": "Jersey France Heritage" } },
+        "r6": { "type": "review", "settings": { "stars": 5, "text": "Mon fils de 12 ans est fan. Il porte son jersey Brésil tous les weekends. Les couleurs tiennent super bien après plusieurs lavages.", "initials": "LC", "name": "Lucia C.", "location": "Paris", "verified": true, "product": "Jersey Brésil Heritage" } }
+      },
+      "block_order": ["r1", "r2", "r3", "r4", "r5", "r6"]
+    }
+  },
+  "order": ["reviews"]
+}
