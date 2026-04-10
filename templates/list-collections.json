@@ -1,15 +1,41 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
-    "main": {
-      "type": "main-list-collections",
+    "banner": {
+      "type": "fh-collection-banner",
       "settings": {
-        "title": "Collections",
-        "sort": "alphabetical",
-        "image_ratio": "square"
+        "bg_color": "#0d1b2a",
+        "accent_color": "#d4a843",
+        "overline": "Coupe du Monde 2026",
+        "show_description": false
       }
+    },
+    "grid": {
+      "type": "collection-grid",
+      "settings": {
+        "bg_color": "#ffffff",
+        "accent_color": "#d4a843",
+        "overline": "\ud83c\udfc6 Collections",
+        "title": "Choisis ton camp",
+        "subtitle": "5 pays, 5 designs exclusifs \u2014 \u00c9dition Coupe du Monde 2026"
+      },
+      "blocks": {
+        "ma": { "type": "country_card", "settings": { "flag_emoji": "\ud83c\uddf2\ud83c\udde6", "country": "Maroc", "price_from": "D\u00e8s 34,99\u20ac", "gradient": "linear-gradient(180deg,#c1272d,#5a0f14)", "link": "/collections/maroc" } },
+        "dz": { "type": "country_card", "settings": { "flag_emoji": "\ud83c\udde9\ud83c\uddff", "country": "Alg\u00e9rie", "price_from": "D\u00e8s 34,99\u20ac", "gradient": "linear-gradient(180deg,#006233,#002614)", "link": "/collections/algerie" } },
+        "ci": { "type": "country_card", "settings": { "flag_emoji": "\ud83c\udde8\ud83c\uddee", "country": "C\u00f4te d'Ivoire", "price_from": "D\u00e8s 34,99\u20ac", "gradient": "linear-gradient(180deg,#FF8200,#7a3e00)", "link": "/collections/cote-divoire" } },
+        "fr": { "type": "country_card", "settings": { "flag_emoji": "\ud83c\uddeb\ud83c\uddf7", "country": "France", "price_from": "D\u00e8s 34,99\u20ac", "gradient": "linear-gradient(180deg,#0055A4,#002952)", "link": "/collections/france" } },
+        "br": { "type": "country_card", "settings": { "flag_emoji": "\ud83c\udde7\ud83c\uddf7", "country": "Br\u00e9sil", "price_from": "D\u00e8s 34,99\u20ac", "gradient": "linear-gradient(180deg,#009C3B,#FFDF00)", "link": "/collections/bresil" } }
+      },
+      "block_order": ["ma", "dz", "ci", "fr", "br"]
     }
   },
-  "order": [
-    "main"
-  ]
+  "order": ["banner", "grid"]
 }

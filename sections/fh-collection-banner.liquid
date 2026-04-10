@@ -8,21 +8,24 @@
     <div class="fh-coll-bg"></div>
     <div class="fh-coll-inner">
       <div class="fh-section-overline" style="color:{{ section.settings.accent_color }}">{{ section.settings.overline | default: collection.title }}</div>
+      {% assign banner_title = collection.title | default: section.settings.title %}
       <h1 class="fh-coll-title">
         {% if section.settings.flag_emoji != blank %}
           <span class="fh-coll-flag">{{ section.settings.flag_emoji }}</span>
         {% endif %}
-        {{ collection.title }}
+        {{ banner_title }}
       </h1>
       {% if collection.description != blank and section.settings.show_description %}
         <p class="fh-coll-desc">{{ collection.description }}</p>
       {% endif %}
+      {% if collection %}
       <div class="fh-coll-meta">
         <span class="fh-coll-count">{{ collection.products_count }} {{ collection.products_count | pluralize: 'produit', 'produits' }}</span>
         {% if section.settings.badge_text != blank %}
           <span class="fh-coll-badge" style="background:{{ section.settings.accent_color }}">{{ section.settings.badge_text }}</span>
         {% endif %}
       </div>
+      {% endif %}
     </div>
   </section>
 
@@ -52,6 +55,7 @@
   "settings": [
     { "type": "color", "id": "bg_color", "label": "Fond", "default": "#0d1b2a" },
     { "type": "color", "id": "accent_color", "label": "Accent", "default": "#d4a843" },
+    { "type": "text", "id": "title", "label": "Titre", "default": "Collections", "info": "Utilisé si pas de collection (page list-collections)" },
     { "type": "text", "id": "overline", "label": "Surtitre", "info": "Laisse vide pour utiliser le nom de la collection" },
     { "type": "text", "id": "flag_emoji", "label": "Emoji drapeau", "info": "Ex: 🇲🇦" },
     { "type": "text", "id": "badge_text", "label": "Badge (optionnel)", "info": "Ex: Édition limitée" },
