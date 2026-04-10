@@ -10,24 +10,14 @@
 {
   "sections": {
     "size-guide": {
-      "type": "size-guide",
+      "type": "fh-size-guide-page",
       "settings": {
-        "bg_color": "#ffffff",
-        "accent_color": "#d4a843",
-        "overline": "Tailles",
-        "title": "Guide des tailles",
-        "subtitle": "Trouve ta taille parfaite"
-      },
-      "blocks": {
-        "xs": { "type": "size_row", "settings": { "size": "XS", "chest": "86-91 cm", "waist": "71-76 cm", "length": "68 cm" } },
-        "s": { "type": "size_row", "settings": { "size": "S", "chest": "91-96 cm", "waist": "76-81 cm", "length": "70 cm" } },
-        "m": { "type": "size_row", "settings": { "size": "M", "chest": "96-101 cm", "waist": "81-86 cm", "length": "72 cm" } },
-        "l": { "type": "size_row", "settings": { "size": "L", "chest": "101-106 cm", "waist": "86-91 cm", "length": "74 cm" } },
-        "xl": { "type": "size_row", "settings": { "size": "XL", "chest": "106-112 cm", "waist": "91-96 cm", "length": "76 cm" } },
-        "xxl": { "type": "size_row", "settings": { "size": "2XL", "chest": "112-117 cm", "waist": "96-101 cm", "length": "78 cm" } },
-        "xxxl": { "type": "size_row", "settings": { "size": "3XL", "chest": "117-122 cm", "waist": "101-106 cm", "length": "80 cm" } }
-      },
-      "block_order": ["xs", "s", "m", "l", "xl", "xxl", "xxxl"]
+        "hero_bg": "#0d1b2a",
+        "accent": "#d4a843",
+        "overline": "📏 Trouvez votre taille",
+        "title": "Guide des Tailles",
+        "subtitle": "Nos jerseys sont en coupe regular — consultez le guide pour choisir la taille parfaite"
+      }
     }
   },
   "order": ["size-guide"]

@@ -1,0 +1,199 @@
+{% comment %}
+  Section: Guide des Tailles — Design premium
+{% endcomment %}
+
+<div id="shopify-section-{{ section.id }}">
+  <!-- Hero -->
+  <section class="fhsg-hero" style="background:{{ section.settings.hero_bg }}">
+    <div class="fhsg-hero-inner">
+      <div class="fhsg-overline" style="color:{{ section.settings.accent }}">{{ section.settings.overline }}</div>
+      <h1 class="fhsg-title">{{ section.settings.title }}</h1>
+      <p class="fhsg-sub">{{ section.settings.subtitle }}</p>
+    </div>
+  </section>
+
+  <!-- Onglets coupe -->
+  <section class="fhsg-tabs-section">
+    <div class="fhsg-tabs-inner">
+      <div class="fhsg-tabs" id="fhsg-tabs-{{ section.id }}">
+        <button class="fhsg-tab fhsg-tab--active" data-tab="homme">Homme</button>
+        <button class="fhsg-tab" data-tab="femme">Femme</button>
+        <button class="fhsg-tab" data-tab="enfant">Enfant</button>
+      </div>
+
+      <!-- Homme -->
+      <div class="fhsg-panel fhsg-panel--active" data-panel="homme">
+        <div class="fhsg-table-wrap">
+          <table class="fhsg-table">
+            <thead><tr><th>Taille</th><th>Poitrine</th><th>Taille</th><th>Longueur</th><th>Épaules</th></tr></thead>
+            <tbody>
+              <tr><td><strong>S</strong></td><td>91-96 cm</td><td>76-81 cm</td><td>70 cm</td><td>44 cm</td></tr>
+              <tr><td><strong>M</strong></td><td>96-101 cm</td><td>81-86 cm</td><td>72 cm</td><td>46 cm</td></tr>
+              <tr><td><strong>L</strong></td><td>101-106 cm</td><td>86-91 cm</td><td>74 cm</td><td>48 cm</td></tr>
+              <tr><td><strong>XL</strong></td><td>106-112 cm</td><td>91-96 cm</td><td>76 cm</td><td>50 cm</td></tr>
+              <tr><td><strong>2XL</strong></td><td>112-117 cm</td><td>96-101 cm</td><td>78 cm</td><td>52 cm</td></tr>
+              <tr><td><strong>3XL</strong></td><td>117-122 cm</td><td>101-106 cm</td><td>80 cm</td><td>54 cm</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Femme -->
+      <div class="fhsg-panel" data-panel="femme">
+        <div class="fhsg-table-wrap">
+          <table class="fhsg-table">
+            <thead><tr><th>Taille</th><th>Poitrine</th><th>Taille</th><th>Longueur</th><th>Épaules</th></tr></thead>
+            <tbody>
+              <tr><td><strong>XS</strong></td><td>82-86 cm</td><td>64-68 cm</td><td>62 cm</td><td>38 cm</td></tr>
+              <tr><td><strong>S</strong></td><td>86-90 cm</td><td>68-72 cm</td><td>64 cm</td><td>39 cm</td></tr>
+              <tr><td><strong>M</strong></td><td>90-94 cm</td><td>72-76 cm</td><td>66 cm</td><td>40 cm</td></tr>
+              <tr><td><strong>L</strong></td><td>94-100 cm</td><td>76-82 cm</td><td>68 cm</td><td>42 cm</td></tr>
+              <tr><td><strong>XL</strong></td><td>100-106 cm</td><td>82-88 cm</td><td>70 cm</td><td>44 cm</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Enfant -->
+      <div class="fhsg-panel" data-panel="enfant">
+        <div class="fhsg-table-wrap">
+          <table class="fhsg-table">
+            <thead><tr><th>Âge</th><th>Taille</th><th>Poitrine</th><th>Longueur</th></tr></thead>
+            <tbody>
+              <tr><td><strong>3-4 ans</strong></td><td>98-104 cm</td><td>54-56 cm</td><td>42 cm</td></tr>
+              <tr><td><strong>5-6 ans</strong></td><td>110-116 cm</td><td>58-60 cm</td><td>48 cm</td></tr>
+              <tr><td><strong>7-8 ans</strong></td><td>122-128 cm</td><td>62-64 cm</td><td>52 cm</td></tr>
+              <tr><td><strong>9-10 ans</strong></td><td>134-140 cm</td><td>66-70 cm</td><td>56 cm</td></tr>
+              <tr><td><strong>11-12 ans</strong></td><td>146-152 cm</td><td>72-76 cm</td><td>60 cm</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Comment mesurer -->
+  <section class="fhsg-how">
+    <div class="fhsg-how-inner">
+      <h2 class="fhsg-how-title">Comment se mesurer ?</h2>
+      <div class="fhsg-how-grid">
+        <div class="fhsg-how-card">
+          <div class="fhsg-how-num" style="color:{{ section.settings.accent }}">01</div>
+          <h3>Tour de poitrine</h3>
+          <p>Mesure horizontalement autour de la partie la plus large de ta poitrine, sous les aisselles.</p>
+        </div>
+        <div class="fhsg-how-card">
+          <div class="fhsg-how-num" style="color:{{ section.settings.accent }}">02</div>
+          <h3>Tour de taille</h3>
+          <p>Mesure autour de ta taille naturelle, au-dessus du nombril. Ne serre pas le mètre ruban.</p>
+        </div>
+        <div class="fhsg-how-card">
+          <div class="fhsg-how-num" style="color:{{ section.settings.accent }}">03</div>
+          <h3>Longueur</h3>
+          <p>Du haut de l'épaule jusqu'au bas du jersey. Mesure sur un vêtement similaire posé à plat.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Conseils -->
+  <section class="fhsg-tips" style="background:{{ section.settings.hero_bg }}">
+    <div class="fhsg-tips-inner">
+      <h2 class="fhsg-tips-title">Nos conseils</h2>
+      <div class="fhsg-tips-grid">
+        <div class="fhsg-tip"><span class="fhsg-tip-icon" style="color:{{ section.settings.accent }}">✓</span> Coupe <strong>regular fit</strong> — ni slim, ni oversize</div>
+        <div class="fhsg-tip"><span class="fhsg-tip-icon" style="color:{{ section.settings.accent }}">✓</span> Hésitation ? Prends la <strong>taille au-dessus</strong> pour un look décontracté</div>
+        <div class="fhsg-tip"><span class="fhsg-tip-icon" style="color:{{ section.settings.accent }}">✓</span> Tissu <strong>légèrement extensible</strong> grâce au mesh polyester</div>
+        <div class="fhsg-tip"><span class="fhsg-tip-icon" style="color:{{ section.settings.accent }}">✓</span> Les jerseys <strong>ne rétrécissent pas</strong> au lavage</div>
+        <div class="fhsg-tip"><span class="fhsg-tip-icon" style="color:{{ section.settings.accent }}">✓</span> Disponible du <strong>XS au 3XL</strong> — adulte, femme, enfant</div>
+        <div class="fhsg-tip"><span class="fhsg-tip-icon" style="color:{{ section.settings.accent }}">✓</span> <strong>Retour gratuit 30 jours</strong> si la taille ne convient pas</div>
+      </div>
+      <div class="fhsg-tips-cta">
+        <a href="/collections/all" class="fhsg-btn" style="background:{{ section.settings.accent }}">Choisir mon jersey →</a>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    #shopify-section-{{ section.id }} .fhsg-hero{padding:80px 48px 60px;text-align:center;position:relative;overflow:hidden}
+    #shopify-section-{{ section.id }} .fhsg-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 100%,rgba(212,168,67,0.08),transparent 60%)}
+    #shopify-section-{{ section.id }} .fhsg-hero-inner{position:relative;z-index:2;max-width:600px;margin:0 auto}
+    #shopify-section-{{ section.id }} .fhsg-overline{font-size:11px;text-transform:uppercase;letter-spacing:4px;font-weight:700;margin-bottom:16px;font-family:'Inter',sans-serif}
+    #shopify-section-{{ section.id }} .fhsg-title{font-family:'Bebas Neue',Impact,sans-serif;font-size:64px;line-height:1;letter-spacing:3px;text-transform:uppercase;color:#fff;margin-bottom:12px}
+    #shopify-section-{{ section.id }} .fhsg-sub{font-family:'Inter',sans-serif;font-size:16px;color:rgba(255,255,255,0.5);font-weight:300}
+
+    #shopify-section-{{ section.id }} .fhsg-tabs-section{padding:60px 48px;background:#fff}
+    #shopify-section-{{ section.id }} .fhsg-tabs-inner{max-width:900px;margin:0 auto}
+    #shopify-section-{{ section.id }} .fhsg-tabs{display:flex;gap:8px;margin-bottom:32px;justify-content:center}
+    #shopify-section-{{ section.id }} .fhsg-tab{font-family:'Inter',sans-serif;font-size:13px;font-weight:600;padding:10px 24px;border-radius:8px;border:1px solid #ddd;background:#fff;color:#666;cursor:pointer;transition:all .3s;text-transform:uppercase;letter-spacing:1px}
+    #shopify-section-{{ section.id }} .fhsg-tab--active{background:#0d1b2a;color:#fff;border-color:#0d1b2a}
+    #shopify-section-{{ section.id }} .fhsg-panel{display:none}
+    #shopify-section-{{ section.id }} .fhsg-panel--active{display:block}
+    #shopify-section-{{ section.id }} .fhsg-table-wrap{overflow-x:auto}
+    #shopify-section-{{ section.id }} .fhsg-table{width:100%;border-collapse:collapse;font-family:'Inter',sans-serif}
+    #shopify-section-{{ section.id }} .fhsg-table th{background:#0d1b2a;color:#f0d78c;padding:14px 20px;text-align:left;font-size:11px;text-transform:uppercase;letter-spacing:2px;font-weight:700}
+    #shopify-section-{{ section.id }} .fhsg-table th:first-child{border-radius:8px 0 0 0}
+    #shopify-section-{{ section.id }} .fhsg-table th:last-child{border-radius:0 8px 0 0}
+    #shopify-section-{{ section.id }} .fhsg-table td{padding:14px 20px;border-bottom:1px solid #eee;font-size:14px;color:#444}
+    #shopify-section-{{ section.id }} .fhsg-table tr:hover td{background:#f9f9f7}
+
+    #shopify-section-{{ section.id }} .fhsg-how{padding:60px 48px;background:#f9f9f7}
+    #shopify-section-{{ section.id }} .fhsg-how-inner{max-width:1000px;margin:0 auto}
+    #shopify-section-{{ section.id }} .fhsg-how-title{font-family:'Bebas Neue',Impact,sans-serif;font-size:40px;letter-spacing:2px;text-transform:uppercase;color:#0d1b2a;text-align:center;margin-bottom:40px}
+    #shopify-section-{{ section.id }} .fhsg-how-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+    #shopify-section-{{ section.id }} .fhsg-how-card{background:#fff;border-radius:16px;padding:32px;font-family:'Inter',sans-serif}
+    #shopify-section-{{ section.id }} .fhsg-how-num{font-family:'Bebas Neue',Impact,sans-serif;font-size:36px;margin-bottom:8px}
+    #shopify-section-{{ section.id }} .fhsg-how-card h3{font-size:16px;font-weight:700;color:#0d1b2a;margin-bottom:8px}
+    #shopify-section-{{ section.id }} .fhsg-how-card p{font-size:14px;color:#777;line-height:1.7;font-weight:300}
+
+    #shopify-section-{{ section.id }} .fhsg-tips{padding:60px 48px;text-align:center}
+    #shopify-section-{{ section.id }} .fhsg-tips-inner{max-width:700px;margin:0 auto}
+    #shopify-section-{{ section.id }} .fhsg-tips-title{font-family:'Bebas Neue',Impact,sans-serif;font-size:40px;color:#fff;letter-spacing:2px;text-transform:uppercase;margin-bottom:32px}
+    #shopify-section-{{ section.id }} .fhsg-tips-grid{text-align:left;margin-bottom:40px}
+    #shopify-section-{{ section.id }} .fhsg-tip{font-family:'Inter',sans-serif;font-size:15px;color:rgba(255,255,255,0.8);padding:12px 0;border-bottom:1px solid rgba(255,255,255,0.06);display:flex;align-items:center;gap:12px;font-weight:300}
+    #shopify-section-{{ section.id }} .fhsg-tip-icon{font-size:16px;font-weight:800}
+    #shopify-section-{{ section.id }} .fhsg-tips-cta{margin-top:8px}
+    #shopify-section-{{ section.id }} .fhsg-btn{display:inline-block;color:#0d1b2a;padding:16px 36px;border-radius:8px;font-family:'Inter',sans-serif;font-size:14px;font-weight:700;text-decoration:none;text-transform:uppercase;letter-spacing:1.5px;transition:all .3s}
+    #shopify-section-{{ section.id }} .fhsg-btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(212,168,67,0.4)}
+
+    @media(max-width:768px){
+      #shopify-section-{{ section.id }} .fhsg-hero{padding:48px 20px 40px}
+      #shopify-section-{{ section.id }} .fhsg-title{font-size:40px}
+      #shopify-section-{{ section.id }} .fhsg-tabs-section{padding:40px 16px}
+      #shopify-section-{{ section.id }} .fhsg-how{padding:40px 16px}
+      #shopify-section-{{ section.id }} .fhsg-how-grid{grid-template-columns:1fr}
+      #shopify-section-{{ section.id }} .fhsg-tips{padding:40px 16px}
+    }
+  </style>
+
+  <script>
+    (function(){
+      var wrap=document.getElementById('fhsg-tabs-{{ section.id }}');
+      if(!wrap)return;
+      var sec=wrap.closest('[id^="shopify-section-"]');
+      wrap.addEventListener('click',function(e){
+        if(!e.target.classList.contains('fhsg-tab'))return;
+        sec.querySelectorAll('.fhsg-tab').forEach(function(t){t.classList.remove('fhsg-tab--active')});
+        sec.querySelectorAll('.fhsg-panel').forEach(function(p){p.classList.remove('fhsg-panel--active')});
+        e.target.classList.add('fhsg-tab--active');
+        var panel=sec.querySelector('[data-panel="'+e.target.dataset.tab+'"]');
+        if(panel)panel.classList.add('fhsg-panel--active');
+      });
+    })();
+  </script>
+</div>
+
+{% schema %}
+{
+  "name": "Guide Tailles Premium",
+  "tag": "section",
+  "settings": [
+    { "type": "color", "id": "hero_bg", "label": "Fond hero", "default": "#0d1b2a" },
+    { "type": "color", "id": "accent", "label": "Accent", "default": "#d4a843" },
+    { "type": "text", "id": "overline", "label": "Surtitre", "default": "Tailles" },
+    { "type": "text", "id": "title", "label": "Titre", "default": "Guide des Tailles" },
+    { "type": "text", "id": "subtitle", "label": "Sous-titre", "default": "Trouve ta taille parfaite pour un fit impeccable" }
+  ],
+  "presets": [{ "name": "Guide Tailles Premium" }]
+}
+{% endschema %}

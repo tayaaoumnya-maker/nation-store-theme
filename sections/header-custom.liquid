@@ -15,6 +15,9 @@
           {% if nav_href == blank %}
             {% assign nav_href = block.settings.label | handleize | prepend: '/pages/' %}
           {% endif %}
+          {% if nav_href == '/pages/nos-avis' %}{% assign nav_href = '/pages/avis' %}{% endif %}
+          {% if nav_href == '/pages/guide-tailles' or nav_href == '/pages/guide-des-tailles' %}{% assign nav_href = '/pages/page-produit' %}{% endif %}
+          {% if nav_href == '/pages/livraison-retours' %}{% assign nav_href = '/pages/livraison-retour' %}{% endif %}
           <a href="{{ nav_href }}" {{ block.shopify_attributes }}>{{ block.settings.label }}</a>
         {% endif %}
       {% endfor %}
