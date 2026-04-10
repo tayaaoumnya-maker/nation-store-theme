@@ -1,0 +1,157 @@
+{% comment %}
+  Section: Collection Grid
+  Grille des 5 pays avec cartes cliquables
+{% endcomment %}
+
+<div id="shopify-section-{{ section.id }}">
+  <section class="fh-collections" style="background:{{ section.settings.bg_color }}">
+    <div class="fh-section-header">
+      <div class="fh-section-overline" style="color:{{ section.settings.accent_color }}">{{ section.settings.overline }}</div>
+      <div class="fh-section-title">{{ section.settings.title }}</div>
+      <div class="fh-section-subtitle">{{ section.settings.subtitle }}</div>
+    </div>
+    <div class="fh-coll-grid">
+      {% for block in section.blocks %}
+        <a href="{{ block.settings.link }}" class="fh-coll-card" {{ block.shopify_attributes }}>
+          <div class="fh-coll-card-bg" style="background:{{ block.settings.gradient }}">
+            {% if block.settings.image != blank %}
+              {{ block.settings.image | image_url: width: 500 | image_tag: loading: 'lazy', class: 'fh-coll-bg-img' }}
+            {% else %}
+              <span class="fh-coll-emoji">{{ block.settings.flag_emoji }}</span>
+            {% endif %}
+          </div>
+          <div class="fh-coll-arrow">&rarr;</div>
+          <div class="fh-coll-info">
+            <div class="fh-coll-flag">{{ block.settings.flag_emoji }}</div>
+            <div class="fh-coll-country">{{ block.settings.country }}</div>
+            <div class="fh-coll-from">{{ block.settings.price_from }}</div>
+          </div>
+        </a>
+      {% endfor %}
+    </div>
+  </section>
+
+  <style>
+    #shopify-section-{{ section.id }} .fh-collections{padding:100px 48px}
+    #shopify-section-{{ section.id }} .fh-section-header{text-align:center;margin-bottom:56px}
+    #shopify-section-{{ section.id }} .fh-section-overline{font-size:11px;text-transform:uppercase;letter-spacing:4px;font-weight:700;margin-bottom:12px}
+    #shopify-section-{{ section.id }} .fh-section-title{font-family:'Bebas Neue',Impact,sans-serif;font-size:52px;letter-spacing:2px;text-transform:uppercase;color:#0d1b2a}
+    #shopify-section-{{ section.id }} .fh-section-subtitle{font-size:14px;color:#777;margin-top:8px;font-weight:300;font-family:'Inter',sans-serif}
+    #shopify-section-{{ section.id }} .fh-coll-grid{display:grid;grid-template-columns:repeat({{ section.blocks.size | at_most: 5 }},1fr);gap:16px;max-width:1200px;margin:0 auto}
+    #shopify-section-{{ section.id }} .fh-coll-card{border-radius:16px;overflow:hidden;position:relative;cursor:pointer;aspect-ratio:3/4.5;display:flex;align-items:flex-end;text-decoration:none}
+    #shopify-section-{{ section.id }} .fh-coll-card-bg{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;transition:transform .6s}
+    #shopify-section-{{ section.id }} .fh-coll-card-bg .fh-coll-emoji{font-size:80px}
+    #shopify-section-{{ section.id }} .fh-coll-card-bg .fh-coll-bg-img{width:100%;height:100%;object-fit:cover}
+    #shopify-section-{{ section.id }} .fh-coll-card:hover .fh-coll-card-bg{transform:scale(1.08)}
+    #shopify-section-{{ section.id }} .fh-coll-card::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,rgba(0,0,0,0.85) 100%);pointer-events:none}
+    #shopify-section-{{ section.id }} .fh-coll-info{position:relative;z-index:2;padding:24px;width:100%}
+    #shopify-section-{{ section.id }} .fh-coll-flag{font-size:28px;margin-bottom:8px}
+    #shopify-section-{{ section.id }} .fh-coll-country{font-family:'Bebas Neue',Impact,sans-serif;font-size:28px;letter-spacing:2px;text-transform:uppercase;color:#fff}
+    #shopify-section-{{ section.id }} .fh-coll-from{font-size:13px;color:#f0d78c;font-weight:500;margin-top:4px}
+    #shopify-section-{{ section.id }} .fh-coll-arrow{position:absolute;top:20px;right:20px;z-index:2;width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.4);font-size:16px;transition:all .3s;backdrop-filter:blur(4px)}
+    #shopify-section-{{ section.id }} .fh-coll-card:hover .fh-coll-arrow{background:{{ section.settings.accent_color }};color:#0d1b2a;border-color:{{ section.settings.accent_color }}}
+    @media(max-width:900px){
+      #shopify-section-{{ section.id }} .fh-collections{padding:64px 20px}
+      #shopify-section-{{ section.id }} .fh-coll-grid{grid-template-columns:repeat(2,1fr)}
+      #shopify-section-{{ section.id }} .fh-section-title{font-size:36px}
+    }
+    @media(max-width:500px){
+      #shopify-section-{{ section.id }} .fh-coll-grid{grid-template-columns:1fr 1fr}
+    }
+  </style>
+</div>
+
+{% schema %}
+{
+  "name": "Grille collections",
+  "tag": "section",
+  "class": "fh-collection-grid-section",
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Couleur de fond",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Couleur accent",
+      "default": "#d4a843"
+    },
+    {
+      "type": "text",
+      "id": "overline",
+      "label": "Surtitre",
+      "default": "🏆 Collections"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Titre",
+      "default": "Choisis ton camp"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Sous-titre",
+      "default": "5 pays, 5 designs exclusifs — Édition Coupe du Monde 2026"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "country_card",
+      "name": "Carte pays",
+      "settings": [
+        {
+          "type": "text",
+          "id": "flag_emoji",
+          "label": "Emoji drapeau",
+          "default": "🇲🇦"
+        },
+        {
+          "type": "text",
+          "id": "country",
+          "label": "Nom du pays",
+          "default": "Maroc"
+        },
+        {
+          "type": "text",
+          "id": "price_from",
+          "label": "Prix a partir de",
+          "default": "Dès 34,99€"
+        },
+        {
+          "type": "text",
+          "id": "gradient",
+          "label": "Gradient CSS",
+          "default": "linear-gradient(180deg,#c1272d,#5a0f14)"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image (optionnel)"
+        },
+        {
+          "type": "text",
+          "id": "link",
+          "label": "Lien collection",
+          "default": "/collections/all"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Grille collections",
+      "blocks": [
+        { "type": "country_card", "settings": { "flag_emoji": "🇲🇦", "country": "Maroc", "price_from": "Dès 34,99€", "gradient": "linear-gradient(180deg,#c1272d,#5a0f14)" } },
+        { "type": "country_card", "settings": { "flag_emoji": "🇩🇿", "country": "Algérie", "price_from": "Dès 34,99€", "gradient": "linear-gradient(180deg,#006233,#002614)" } },
+        { "type": "country_card", "settings": { "flag_emoji": "🇨🇮", "country": "Côte d'Ivoire", "price_from": "Dès 34,99€", "gradient": "linear-gradient(180deg,#FF8200,#7a3e00)" } },
+        { "type": "country_card", "settings": { "flag_emoji": "🇫🇷", "country": "France", "price_from": "Dès 34,99€", "gradient": "linear-gradient(180deg,#0055A4,#002952)" } },
+        { "type": "country_card", "settings": { "flag_emoji": "🇧🇷", "country": "Brésil", "price_from": "Dès 34,99€", "gradient": "linear-gradient(180deg,#009C3B,#FFDF00)" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
