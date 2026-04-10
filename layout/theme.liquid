@@ -372,5 +372,11 @@
     {%- if settings.cart_type == 'drawer' -%}
       <script src="{{ 'cart-drawer.js' | asset_url }}" defer="defer"></script>
     {%- endif -%}
+  <script>
+    document.addEventListener('DOMContentLoaded',function(){
+      var m={'/pages/guide-tailles':'/pages/page-produit','/pages/guide-des-tailles':'/pages/page-produit','/pages/livraison-retours':'/pages/livraison-retour','/pages/livraison-et-retours':'/pages/livraison-retour','/pages/nos-avis':'/pages/avis'};
+      document.querySelectorAll('a[href]').forEach(function(a){var h=a.getAttribute('href');if(m[h])a.setAttribute('href',m[h]);});
+    });
+  </script>
   </body>
 </html>
