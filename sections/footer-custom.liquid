@@ -14,17 +14,11 @@
             {% assign urls = block.settings.links_url | split: '|' %}
             {% for link_text in links %}
               {% assign raw_url = urls[forloop.index0] | strip %}
-              {% if raw_url == '/pages/guide-tailles' or raw_url == '/pages/guide-des-tailles' %}
-                {% assign final_url = '/pages/page-produit' %}
-              {% elsif raw_url == '/pages/livraison-retours' or raw_url == '/pages/livraison-et-retours' %}
-                {% assign final_url = '/pages/livraison-retour' %}
-              {% elsif raw_url == '/pages/nos-avis' %}
-                {% assign final_url = '/pages/avis' %}
-              {% elsif raw_url != blank %}
-                {% assign final_url = raw_url %}
-              {% else %}
-                {% assign final_url = '#' %}
-              {% endif %}
+              {% assign final_url = raw_url %}
+              {% if raw_url contains 'guide-tailles' or raw_url contains 'guide-des-tailles' %}{% assign final_url = '/pages/page-produit' %}{% endif %}
+              {% if raw_url contains 'livraison-retours' or raw_url contains 'livraison-et-retours' %}{% assign final_url = '/pages/livraison-retour' %}{% endif %}
+              {% if raw_url contains 'nos-avis' %}{% assign final_url = '/pages/avis' %}{% endif %}
+              {% if final_url == blank %}{% assign final_url = '#' %}{% endif %}
               <a href="{{ final_url }}">{{ link_text | strip }}</a>
             {% endfor %}
           </div>
