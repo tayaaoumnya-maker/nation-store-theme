@@ -10,6 +10,7 @@
         {% if block.type == 'column' %}
           <div class="fh-footer-col" {{ block.shopify_attributes }}>
             <h4>{{ block.settings.heading }}</h4>
+            <!-- fhv2 -->
             {% assign links = block.settings.links_text | split: '|' %}
             {% assign urls = block.settings.links_url | split: '|' %}
             {% for link_text in links %}
