@@ -56,6 +56,8 @@
               <div class="fh-hero-card fh-hc-{{ forloop.index }}" style="background:{{ block.settings.gradient }}" {{ block.shopify_attributes }}>
                 {% if block.settings.image != blank %}
                   {{ block.settings.image | image_url: width: 600 | image_tag: loading: 'eager', class: 'fh-card-img' }}
+                {% elsif block.settings.jersey_asset != blank %}
+                  <img src="{{ block.settings.jersey_asset | asset_url }}" alt="{{ block.settings.country_name }}" class="fh-card-img" loading="eager" width="600">
                 {% else %}
                   <span class="fh-flag">{{ block.settings.flag_emoji }}</span>
                 {% endif %}
@@ -269,6 +271,11 @@
           "type": "image_picker",
           "id": "image",
           "label": "Image produit (optionnel)"
+        },
+        {
+          "type": "text",
+          "id": "jersey_asset",
+          "label": "Nom fichier asset (ex: jersey-maroc.jpg)"
         },
         {
           "type": "text",
