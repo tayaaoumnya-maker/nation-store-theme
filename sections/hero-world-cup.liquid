@@ -51,9 +51,11 @@
       </div>
       <div class="fh-hero-visual">
         <div class="fh-hero-card-stack">
+          {% assign card_index = 0 %}
           {% for block in section.blocks %}
             {% if block.type == 'hero_card' %}
-              <div class="fh-hero-card fh-hc-{{ forloop.index }}" style="background:{{ block.settings.gradient }}" {{ block.shopify_attributes }}>
+              {% assign card_index = card_index | plus: 1 %}
+              <div class="fh-hero-card fh-hc-{{ card_index }}" style="background:{{ block.settings.gradient }}" {{ block.shopify_attributes }}>
                 {% if block.settings.image != blank %}
                   {{ block.settings.image | image_url: width: 600 | image_tag: loading: 'eager', class: 'fh-card-img' }}
                 {% elsif block.settings.jersey_asset != blank %}
