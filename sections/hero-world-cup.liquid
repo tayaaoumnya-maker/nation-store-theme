@@ -5,7 +5,8 @@
 
 <div id="shopify-section-{{ section.id }}">
   <section class="fh-hero" style="background:{{ section.settings.bg_color }}">
-    <div class="fh-hero-bg"></div>
+    {%- assign smoke_url = 'banner-smoke.jpg' | asset_url -%}
+    <div class="fh-hero-bg" style="background-image:url('{{ smoke_url }}')"></div>
     <div class="fh-hero-lights">
       <div class="fh-light-beam"></div><div class="fh-light-beam"></div><div class="fh-light-beam"></div><div class="fh-light-beam"></div><div class="fh-light-beam"></div>
     </div>
@@ -77,7 +78,7 @@
 
   <style>
     #shopify-section-{{ section.id }} .fh-hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden}
-    #shopify-section-{{ section.id }} .fh-hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse at 20% 80%,rgba(13,27,42,0.15) 0%,transparent 50%),radial-gradient(ellipse at 80% 20%,rgba(212,168,67,0.1) 0%,transparent 50%),radial-gradient(ellipse at 50% 50%,rgba(29,53,87,0.2) 0%,transparent 60%)}
+    #shopify-section-{{ section.id }} .fh-hero-bg{position:absolute;inset:0;background-size:cover;background-position:center bottom;background-repeat:no-repeat;z-index:0}
     #shopify-section-{{ section.id }} .fh-hero-lights{position:absolute;inset:0;overflow:hidden;pointer-events:none}
     #shopify-section-{{ section.id }} .fh-light-beam{position:absolute;width:2px;height:120vh;background:linear-gradient(180deg,transparent,rgba(255,255,255,0.03),transparent);transform:rotate(-15deg);animation:fhBeam 8s ease-in-out infinite}
     #shopify-section-{{ section.id }} .fh-light-beam:nth-child(1){left:10%;animation-delay:0s}
