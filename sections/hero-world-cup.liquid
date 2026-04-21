@@ -5,8 +5,7 @@
 
 <div id="shopify-section-{{ section.id }}">
   <section class="fh-hero" style="background:{{ section.settings.bg_color }}">
-    {%- assign smoke_url = 'banner-smoke.jpg' | asset_url -%}
-    <div class="fh-hero-bg" style="background-image:url('{{ smoke_url }}')"></div>
+    <div class="fh-hero-bg"></div>
     <div class="fh-hero-lights">
       <div class="fh-light-beam"></div><div class="fh-light-beam"></div><div class="fh-light-beam"></div><div class="fh-light-beam"></div><div class="fh-light-beam"></div>
     </div>
@@ -52,15 +51,11 @@
       </div>
       <div class="fh-hero-visual">
         <div class="fh-hero-card-stack">
-          {% assign card_index = 0 %}
           {% for block in section.blocks %}
             {% if block.type == 'hero_card' %}
-              {% assign card_index = card_index | plus: 1 %}
-              <div class="fh-hero-card fh-hc-{{ card_index }}" style="background:{{ block.settings.gradient }}" {{ block.shopify_attributes }}>
+              <div class="fh-hero-card fh-hc-{{ forloop.index }}" style="background:{{ block.settings.gradient }}" {{ block.shopify_attributes }}>
                 {% if block.settings.image != blank %}
                   {{ block.settings.image | image_url: width: 600 | image_tag: loading: 'eager', class: 'fh-card-img' }}
-                {% elsif block.settings.jersey_asset != blank %}
-                  <img src="{{ block.settings.jersey_asset | asset_url }}" alt="{{ block.settings.country_name }}" class="fh-card-img" loading="eager" width="600">
                 {% else %}
                   <span class="fh-flag">{{ block.settings.flag_emoji }}</span>
                 {% endif %}
@@ -78,7 +73,7 @@
 
   <style>
     #shopify-section-{{ section.id }} .fh-hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden}
-    #shopify-section-{{ section.id }} .fh-hero-bg{position:absolute;inset:0;background-size:cover;background-position:center bottom;background-repeat:no-repeat;z-index:0;display:block !important}
+    #shopify-section-{{ section.id }} .fh-hero-bg{position:absolute;inset:0;background:url('https://res.cloudinary.com/dkaldvbmm/image/upload/v1776697506/shopify/banner-smoke.png') center bottom/cover no-repeat}
     #shopify-section-{{ section.id }} .fh-hero-lights{position:absolute;inset:0;overflow:hidden;pointer-events:none}
     #shopify-section-{{ section.id }} .fh-light-beam{position:absolute;width:2px;height:120vh;background:linear-gradient(180deg,transparent,rgba(255,255,255,0.03),transparent);transform:rotate(-15deg);animation:fhBeam 8s ease-in-out infinite}
     #shopify-section-{{ section.id }} .fh-light-beam:nth-child(1){left:10%;animation-delay:0s}
@@ -118,19 +113,20 @@
     #shopify-section-{{ section.id }} .fh-ic{color:{{ section.settings.accent_color }};font-size:14px}
     #shopify-section-{{ section.id }} .fh-hero-visual{flex:1;display:flex;justify-content:center;position:relative}
     #shopify-section-{{ section.id }} .fh-hero-card-stack{position:relative;width:340px;height:480px}
-    #shopify-section-{{ section.id }} .fh-hero-card{position:absolute;width:300px;height:440px;border-radius:20px;overflow:hidden;display:flex;align-items:center;justify-content:center;box-shadow:0 30px 80px rgba(0,0,0,0.5);transition:all .5s}
+    #shopify-section-{{ section.id }} .fh-hero-card{position:absolute;width:300px;height:440px;border-radius:20px;overflow:hidden;display:flex;align-items:center;justify-content:center;box-shadow:0 30px 80px rgba(0,0,0,0.5);transition:all .6s cubic-bezier(.4,0,.2,1)}
     #shopify-section-{{ section.id }} .fh-hero-card .fh-flag{font-size:120px;filter:drop-shadow(0 10px 30px rgba(0,0,0,0.4))}
-    #shopify-section-{{ section.id }} .fh-hero-card .fh-card-img{width:85%;height:auto;object-fit:contain;padding:16px;margin-top:-30px}
+    #shopify-section-{{ section.id }} .fh-hero-card .fh-card-img{width:100%;height:100%;object-fit:cover}
     #shopify-section-{{ section.id }} .fh-hero-card::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(0,0,0,0.6) 100%)}
     #shopify-section-{{ section.id }} .fh-hero-card-label{position:absolute;bottom:20px;left:20px;z-index:2}
     #shopify-section-{{ section.id }} .fh-hc-name{font-family:'Bebas Neue',Impact,sans-serif;font-size:24px;color:#fff;letter-spacing:1px}
     #shopify-section-{{ section.id }} .fh-hc-price{font-size:14px;color:#f0d78c;font-weight:600}
-    #shopify-section-{{ section.id }} .fh-hc-1{top:0;left:0;z-index:3;transform:rotate(-2deg)}
-    #shopify-section-{{ section.id }} .fh-hc-2{top:20px;left:40px;z-index:2;transform:rotate(3deg);opacity:.7}
-    #shopify-section-{{ section.id }} .fh-hc-3{top:40px;left:80px;z-index:1;transform:rotate(7deg);opacity:.4}
-    #shopify-section-{{ section.id }} .fh-hero-card-stack:hover .fh-hc-1{transform:rotate(0deg) translateX(-20px)}
-    #shopify-section-{{ section.id }} .fh-hero-card-stack:hover .fh-hc-2{transform:rotate(0deg) translateX(0);opacity:1}
-    #shopify-section-{{ section.id }} .fh-hero-card-stack:hover .fh-hc-3{transform:rotate(0deg) translateX(20px);opacity:.8}
+    #shopify-section-{{ section.id }} .fh-hero-card.fh-card-front{top:0;left:0;z-index:3;transform:rotate(-2deg) scale(1);opacity:1}
+    #shopify-section-{{ section.id }} .fh-hero-card.fh-card-mid{top:20px;left:40px;z-index:2;transform:rotate(3deg) scale(.95);opacity:.7}
+    #shopify-section-{{ section.id }} .fh-hero-card.fh-card-back{top:40px;left:80px;z-index:1;transform:rotate(7deg) scale(.9);opacity:.4}
+    #shopify-section-{{ section.id }} .fh-hero-card.fh-card-exit{top:-20px;left:-40px;z-index:0;transform:rotate(-10deg) scale(.85) translateY(-30px);opacity:0}
+    #shopify-section-{{ section.id }} .fh-hero-card-stack:hover .fh-hero-card.fh-card-front{transform:rotate(0deg) translateX(-20px) scale(1)}
+    #shopify-section-{{ section.id }} .fh-hero-card-stack:hover .fh-hero-card.fh-card-mid{transform:rotate(0deg) translateX(0) scale(.95);opacity:1}
+    #shopify-section-{{ section.id }} .fh-hero-card-stack:hover .fh-hero-card.fh-card-back{transform:rotate(0deg) translateX(20px) scale(.9);opacity:.8}
     @media(max-width:900px){
       #shopify-section-{{ section.id }} .fh-hero-inner{flex-direction:column;padding:60px 24px;gap:48px;text-align:center}
       #shopify-section-{{ section.id }} .fh-hero-h1{font-size:56px}
@@ -148,26 +144,52 @@
     }
   </style>
 
-  {% if section.settings.show_countdown %}
   <script>
     (function(){
       var section = document.getElementById('shopify-section-{{ section.id }}');
+
+      {% if section.settings.show_countdown %}
       var cd = section.querySelector('.fh-countdown');
-      if(!cd) return;
-      var target = new Date(cd.dataset.target).getTime();
-      function update(){
-        var now = Date.now(), d = target - now;
-        if(d < 0) return;
-        cd.querySelector('[data-cd="days"]').textContent = String(Math.floor(d/86400000)).padStart(2,'0');
-        cd.querySelector('[data-cd="hours"]').textContent = String(Math.floor((d%86400000)/3600000)).padStart(2,'0');
-        cd.querySelector('[data-cd="mins"]').textContent = String(Math.floor((d%3600000)/60000)).padStart(2,'0');
-        cd.querySelector('[data-cd="secs"]').textContent = String(Math.floor((d%60000)/1000)).padStart(2,'0');
+      if(cd){
+        var target = new Date(cd.dataset.target).getTime();
+        function update(){
+          var now = Date.now(), d = target - now;
+          if(d < 0) return;
+          cd.querySelector('[data-cd="days"]').textContent = String(Math.floor(d/86400000)).padStart(2,'0');
+          cd.querySelector('[data-cd="hours"]').textContent = String(Math.floor((d%86400000)/3600000)).padStart(2,'0');
+          cd.querySelector('[data-cd="mins"]').textContent = String(Math.floor((d%3600000)/60000)).padStart(2,'0');
+          cd.querySelector('[data-cd="secs"]').textContent = String(Math.floor((d%60000)/1000)).padStart(2,'0');
+        }
+        update();
+        setInterval(update, 1000);
       }
-      update();
-      setInterval(update, 1000);
+      {% endif %}
+
+      /* Card stack auto-rotation */
+      var stack = section.querySelector('.fh-hero-card-stack');
+      if(!stack) return;
+      var cards = Array.from(stack.querySelectorAll('.fh-hero-card'));
+      if(cards.length < 2) return;
+      var slots = ['fh-card-front','fh-card-mid','fh-card-back'];
+      var order = [];
+      for(var i = cards.length - 1; i >= 0; i--) order.push(i);
+      function apply(){
+        for(var i = 0; i < cards.length; i++){
+          cards[order[i]].classList.remove('fh-card-front','fh-card-mid','fh-card-back','fh-card-exit');
+          cards[order[i]].classList.add(i < slots.length ? slots[i] : 'fh-card-exit');
+        }
+      }
+      apply();
+      var paused = false;
+      stack.addEventListener('mouseenter', function(){ paused = true; });
+      stack.addEventListener('mouseleave', function(){ paused = false; });
+      setInterval(function(){
+        if(paused) return;
+        order.push(order.shift());
+        apply();
+      }, 3000);
     })();
   </script>
-  {% endif %}
 </div>
 
 {% schema %}
@@ -274,11 +296,6 @@
           "type": "image_picker",
           "id": "image",
           "label": "Image produit (optionnel)"
-        },
-        {
-          "type": "text",
-          "id": "jersey_asset",
-          "label": "Nom fichier asset (ex: jersey-maroc.jpg)"
         },
         {
           "type": "text",
