@@ -141,6 +141,7 @@
           "type": "hero_card",
           "settings": {
             "flag_emoji": "🇩🇿",
+            "image": "shopify://shop_images/v1-front-algerie-removebg-preview.png",
             "gradient": "linear-gradient(160deg,#006233,#003d1f)",
             "country_name": "Algérie",
             "price": "34,99 €"
