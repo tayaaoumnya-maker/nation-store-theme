@@ -132,6 +132,7 @@
           "type": "hero_card",
           "settings": {
             "flag_emoji": "🇨🇮",
+            "image": "shopify://shop_images/10-limited-diagonal-removebg-preview.png",
             "gradient": "linear-gradient(160deg,#FF8200,#cc6500)",
             "country_name": "Côte d'Ivoire",
             "price": "34,99 €"
