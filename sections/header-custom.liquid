@@ -11,14 +11,7 @@
     <nav class="fh-header-nav">
       {% for block in section.blocks %}
         {% if block.type == 'nav_link' %}
-          {% assign nav_href = block.settings.link %}
-          {% if nav_href == blank %}
-            {% assign nav_href = block.settings.label | handleize | prepend: '/pages/' %}
-          {% endif %}
-          {% if nav_href == '/pages/nos-avis' %}{% assign nav_href = '/pages/avis' %}{% endif %}
-          {% if nav_href == '/pages/guide-tailles' or nav_href == '/pages/guide-des-tailles' %}{% assign nav_href = '/pages/page-produit' %}{% endif %}
-          {% if nav_href == '/pages/livraison-retours' %}{% assign nav_href = '/pages/livraison-retour' %}{% endif %}
-          <a href="{{ nav_href }}" {{ block.shopify_attributes }}>{{ block.settings.label }}</a>
+          <a href="{{ block.settings.link }}" {{ block.shopify_attributes }}>{{ block.settings.label }}</a>
         {% endif %}
       {% endfor %}
     </nav>
@@ -68,13 +61,13 @@
       "type": "text",
       "id": "logo_text_1",
       "label": "Logo texte partie 1",
-      "default": "FOOTBALL"
+      "default": "NATION"
     },
     {
       "type": "text",
       "id": "logo_text_2",
       "label": "Logo texte partie 2 (accent)",
-      "default": "HERITAGE"
+      "default": "VARSITY"
     },
     {
       "type": "color",
@@ -95,10 +88,9 @@
           "default": "Collections"
         },
         {
-          "type": "text",
+          "type": "url",
           "id": "link",
-          "label": "Lien",
-          "info": "Ex: /collections/all ou /pages/faq"
+          "label": "Lien"
         }
       ]
     }
