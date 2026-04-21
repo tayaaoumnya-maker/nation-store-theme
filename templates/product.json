@@ -163,7 +163,7 @@
       },
       "blocks": {
         "r1": { "type": "review", "settings": { "stars": 5, "title": "L'ambiance au stade avec ce jersey", "text": "Je l'ai port\u00e9 pour Maroc-Espagne en fan zone. L'ambiance \u00e9tait folle et tout le monde me demandait o\u00f9 je l'avais trouv\u00e9. Qualit\u00e9 dingue.", "initials": "KL", "name": "Karim L." } },
-        "r2": { "type": "review", "settings": { "stars": 5, "title": "Cadeau parfait avant le Mondial", "text": "Offert \u00e0 mon p\u00e8re pour la Coupe du Monde. Il l'a ador\u00e9, il dit que c'est le plus beau jersey qu'il ait jamais eu. Livr\u00e9 en 4 jours.", "initials": "SM", "name": "Sarah M." } },
+        "r2": { "type": "review", "settings": { "stars": 5, "title": "Cadeau parfait avant le Mondial", "text": "Offert \u00e0 mon p\u00e8re pour la Coupe du Monde. Il l'a ador\u00e9, il dit que c'est le plus beau jersey qu'il ait jamais eu. Livr\u00e9 en 15 jours.", "initials": "SM", "name": "Sarah M." } },
         "r3": { "type": "review", "settings": { "stars": 4, "title": "Top, taille un peu grand", "text": "Jersey magnifique. Taille l\u00e9g\u00e8rement grand, prenez votre taille ou en dessous. Sinon la qualit\u00e9 est 10/10. Pr\u00eat pour le Mondial.", "initials": "RB", "name": "Rachid B." } }
       },
       "block_order": ["r1", "r2", "r3"]

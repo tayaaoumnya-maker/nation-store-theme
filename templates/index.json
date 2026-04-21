@@ -107,7 +107,7 @@
       },
       "blocks": {
         "t1": { "type": "testimonial", "settings": { "stars": 5, "text": "J'ai port\u00e9 le jersey Maroc pendant le match et l'ambiance \u00e9tait folle. Tout le monde me demandait o\u00f9 je l'avais trouv\u00e9. Un truc de ouf.", "initials": "YK", "name": "Youssef K.", "location": "Paris", "verified": true } },
-        "t2": { "type": "testimonial", "settings": { "stars": 5, "text": "Le pack famille Alg\u00e9rie est arriv\u00e9 en 4 jours. On est tous \u00e9quip\u00e9s pour supporter les Fennecs \u00e0 la Coupe du Monde. Qualit\u00e9 dingue.", "initials": "AB", "name": "Amina B.", "location": "Lyon", "verified": true } },
+        "t2": { "type": "testimonial", "settings": { "stars": 5, "text": "Le pack famille Alg\u00e9rie est arriv\u00e9 en 2 semaines. On est tous \u00e9quip\u00e9s pour supporter les Fennecs \u00e0 la Coupe du Monde. Qualit\u00e9 dingue.", "initials": "AB", "name": "Amina B.", "location": "Lyon", "verified": true } },
         "t3": { "type": "testimonial", "settings": { "stars": 5, "text": "Ce jersey c'est pas un maillot g\u00e9n\u00e9rique, c'est une d\u00e9claration. Je repr\u00e9sente mes origines avec style. Vivement les matchs !", "initials": "ID", "name": "Ibrahim D.", "location": "Bruxelles", "verified": true } }
       },
       "block_order": ["t1", "t2", "t3"]
