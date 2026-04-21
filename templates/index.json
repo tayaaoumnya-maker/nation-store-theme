@@ -332,6 +332,7 @@
         "price": "34,99€",
         "compare_price": "49,99€",
         "flag_emoji": "🇲🇦",
+        "product_image": "shopify://shop_images/Capture_d_ecran_2026-04-21_a_18.46.20-removebg-preview.png",
         "product_gradient": "linear-gradient(160deg,#c1272d,#7a1018)",
         "button_text": "Voir le produit",
         "button_link": ""
