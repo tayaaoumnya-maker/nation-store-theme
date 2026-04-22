@@ -132,6 +132,7 @@
           "type": "hero_card",
           "settings": {
             "flag_emoji": "🇨🇮",
+            "image": "shopify://shop_images/10-limited-diagonal-removebg-preview.png",
             "gradient": "linear-gradient(160deg,#FF8200,#cc6500)",
             "country_name": "Côte d'Ivoire",
             "price": "34,99 €"
@@ -141,6 +142,7 @@
           "type": "hero_card",
           "settings": {
             "flag_emoji": "🇩🇿",
+            "image": "shopify://shop_images/v1-front-algerie-removebg-preview.png",
             "gradient": "linear-gradient(160deg,#006233,#003d1f)",
             "country_name": "Algérie",
             "price": "34,99 €"
@@ -150,6 +152,7 @@
           "type": "hero_card",
           "settings": {
             "flag_emoji": "🇲🇦",
+            "image": "shopify://shop_images/maroc-concept-V1-FRONT-removebg-preview.png",
             "gradient": "linear-gradient(160deg,#c1272d,#7a1018)",
             "country_name": "Maroc",
             "price": "34,99 €"
