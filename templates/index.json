@@ -344,50 +344,55 @@
         "ma": {
           "type": "country_card",
           "settings": {
-            "flag_emoji": "🇲🇦",
+            "flag_emoji": "",
             "country": "Maroc",
             "price_from": "Dès 34,99€",
             "gradient": "linear-gradient(180deg,#c1272d,#5a0f14)",
+            "image": "shopify://shop_images/maroc-king-v8.jpg",
             "link": ""
           }
         },
         "dz": {
           "type": "country_card",
           "settings": {
-            "flag_emoji": "🇩🇿",
+            "flag_emoji": "",
             "country": "Algérie",
             "price_from": "Dès 34,99€",
             "gradient": "linear-gradient(180deg,#006233,#002614)",
+            "image": "shopify://shop_images/jersey-algerie-v1-front.jpg",
             "link": ""
           }
         },
         "ci": {
           "type": "country_card",
           "settings": {
-            "flag_emoji": "🇨🇮",
+            "flag_emoji": "",
             "country": "Côte d'Ivoire",
             "price_from": "Dès 34,99€",
             "gradient": "linear-gradient(180deg,#FF8200,#7a3e00)",
+            "image": "shopify://shop_images/04-elephant-v2-FRONT-clean.jpg",
             "link": ""
           }
         },
         "fr": {
           "type": "country_card",
           "settings": {
-            "flag_emoji": "🇫🇷",
+            "flag_emoji": "",
             "country": "France",
             "price_from": "Dès 34,99€",
             "gradient": "linear-gradient(180deg,#0055A4,#002952)",
+            "image": "shopify://shop_images/france-pod-v1-front-emblem.jpg",
             "link": ""
           }
         },
         "br": {
           "type": "country_card",
           "settings": {
-            "flag_emoji": "🇧🇷",
+            "flag_emoji": "",
             "country": "Brésil",
             "price_from": "Dès 34,99€",
             "gradient": "linear-gradient(180deg,#009C3B,#FFDF00)",
+            "image": "shopify://shop_images/09-pattern-allover.jpg",
             "link": ""
           }
         }
