@@ -141,7 +141,8 @@
         "compare_price": "49,99\u20ac",
         "flag_emoji": "\ud83c\uddf2\ud83c\udde6",
         "product_gradient": "linear-gradient(160deg,#c1272d,#7a1018)",
-        "button_text": "Voir le produit"
+        "button_text": "Voir le produit",
+        "video_url": "https://cdn.shopify.com/videos/c/o/v/f4fdb9c8d9d145e2a95750a36ddeae7b.mp4"
       },
       "blocks": {
         "b1": { "type": "benefit", "settings": { "text": "Design exclusif inspir\u00e9 du Maroc" } },
@@ -217,7 +218,7 @@
         "col1": { "type": "column", "settings": { "heading": "Nation Varsity", "links_text": "Accueil|Tous les produits|Notre histoire|Contact", "links_url": "/|/collections/all|/pages/notre-histoire|/pages/contact" } },
         "col2": { "type": "column", "settings": { "heading": "Collections", "links_text": "Maroc|Alg\u00e9rie|C\u00f4te d'Ivoire|France|Br\u00e9sil", "links_url": "/collections/maroc|/collections/algerie|/collections/cote-divoire|/collections/france|/collections/bresil" } },
         "col3": { "type": "column", "settings": { "heading": "Informations", "links_text": "Guide des tailles|Livraison & retours|CGV|Confidentialit\u00e9", "links_url": "/pages/guide-tailles|/pages/livraison-retours|/policies/terms-of-service|/policies/privacy-policy" } },
-        "col4": { "type": "column", "settings": { "heading": "Suivez-nous", "links_text": "Instagram|TikTok|YouTube|Pinterest", "links_url": "#|#|#|#" } }
+        "col4": { "type": "column", "settings": { "heading": "Suivez-nous", "links_text": "Instagram|YouTube|Pinterest", "links_url": "#|#|#" } }
       },
       "block_order": ["col1", "col2", "col3", "col4"]
     }
