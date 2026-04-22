@@ -222,7 +222,7 @@
         "col1": { "type": "column", "settings": { "heading": "Nation Varsity", "links_text": "Accueil|Produits|Notre histoire|Contact", "links_url": "/|/collections/all|/pages/notre-histoire|/pages/contact" } },
         "col2": { "type": "column", "settings": { "heading": "Collections", "links_text": "Maroc|Alg\u00e9rie|C\u00f4te d'Ivoire|France|Br\u00e9sil", "links_url": "/collections/maroc|/collections/algerie|/collections/cote-divoire|/collections/france|/collections/bresil" } },
         "col3": { "type": "column", "settings": { "heading": "Infos", "links_text": "Guide tailles|Livraison & retours|CGV|Confidentialit\u00e9", "links_url": "/pages/guide-tailles|/pages/livraison-retours|/policies/terms-of-service|/policies/privacy-policy" } },
-        "col4": { "type": "column", "settings": { "heading": "Suivez-nous", "links_text": "Instagram|TikTok|YouTube|Pinterest", "links_url": "#|#|#|#" } }
+        "col4": { "type": "column", "settings": { "heading": "Suivez-nous", "links_text": "Instagram|YouTube|Pinterest", "links_url": "#|#|#" } }
       },
       "block_order": ["col1", "col2", "col3", "col4"]
     }
