@@ -352,6 +352,7 @@
             "country": "Maroc",
             "price_from": "Dès 34,99€",
             "gradient": "linear-gradient(180deg,#c1272d,#5a0f14)",
+            "image": "shopify://shop_images/maroc-king-v8.jpg",
             "link": ""
           }
         },
@@ -362,6 +363,7 @@
             "country": "Algérie",
             "price_from": "Dès 34,99€",
             "gradient": "linear-gradient(180deg,#006233,#002614)",
+            "image": "shopify://shop_images/jersey-algerie-v1-front.jpg",
             "link": ""
           }
         },
@@ -372,6 +374,7 @@
             "country": "Côte d'Ivoire",
             "price_from": "Dès 34,99€",
             "gradient": "linear-gradient(180deg,#FF8200,#7a3e00)",
+            "image": "shopify://shop_images/10-limited-diagonal-removebg-preview.png",
             "link": ""
           }
         },
@@ -382,6 +385,7 @@
             "country": "France",
             "price_from": "Dès 34,99€",
             "gradient": "linear-gradient(180deg,#0055A4,#002952)",
+            "image": "shopify://shop_images/france-pod-v1-front-emblem.jpg",
             "link": ""
           }
         },
@@ -392,6 +396,7 @@
             "country": "Brésil",
             "price_from": "Dès 34,99€",
             "gradient": "linear-gradient(180deg,#009C3B,#FFDF00)",
+            "image": "shopify://shop_images/09-pattern-allover.jpg",
             "link": ""
           }
         }
