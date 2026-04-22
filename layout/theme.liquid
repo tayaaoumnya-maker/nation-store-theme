@@ -258,7 +258,7 @@
     {{ 'base.css' | asset_url | stylesheet_tag }}
     <style>
       .visually-hidden{position:absolute!important;overflow:hidden;width:1px;height:1px;margin:-1px;padding:0;border:0;clip:rect(0 0 0 0);word-wrap:normal!important}
-      .visually-hidden:focus{position:static!important;overflow:visible;width:auto;height:auto;margin:0;clip:auto;background:#fff;color:#0d1b2a;padding:8px 16px;z-index:9999;font-size:14px;text-decoration:underline}
+      .visually-hidden:focus{position:static!important;overflow:visible;width:auto;height:auto;margin:0;clip:auto;background:#fff;color:#0A0A0A;padding:8px 16px;z-index:9999;font-size:14px;text-decoration:underline}
     </style>
     <link rel="stylesheet" href="{{ 'component-cart-items.css' | asset_url }}" media="print" onload="this.media='all'">
 
@@ -303,19 +303,19 @@
   {% if request.path contains '/policies/' %}
     <style>
       .shopify-policy__container{max-width:800px;margin:0 auto;padding:0 24px 80px;font-family:'Inter',sans-serif}
-      .shopify-policy__title{background:#0d1b2a;margin:0 -9999px;padding:64px 9999px 48px;text-align:center;margin-bottom:48px}
+      .shopify-policy__title{background:#0A0A0A;margin:0 -9999px;padding:64px 9999px 48px;text-align:center;margin-bottom:48px}
       .shopify-policy__title h1{color:#fff;font-family:'Bebas Neue',Impact,sans-serif;font-size:clamp(32px,5vw,52px);letter-spacing:2px;margin:0}
-      .shopify-policy__title::before{content:'⚖️ Mentions légales';display:block;font-size:11px;text-transform:uppercase;letter-spacing:3px;margin-bottom:16px;font-weight:600;color:#d4a843;font-family:'Inter',sans-serif}
+      .shopify-policy__title::before{content:'⚖️ Mentions légales';display:block;font-size:11px;text-transform:uppercase;letter-spacing:3px;margin-bottom:16px;font-weight:600;color:#C8A84E;font-family:'Inter',sans-serif}
       .shopify-policy__body{color:#333;font-size:15px;line-height:1.8;font-weight:300}
-      .shopify-policy__body h2{color:#0d1b2a;font-family:'Bebas Neue',Impact,sans-serif;font-size:24px;letter-spacing:1px;margin:32px 0 16px;padding-bottom:8px;border-bottom:2px solid #d4a843}
-      .shopify-policy__body h3{color:#0d1b2a;font-family:'Bebas Neue',Impact,sans-serif;font-size:20px;letter-spacing:1px;margin:24px 0 12px}
+      .shopify-policy__body h2{color:#0A0A0A;font-family:'Bebas Neue',Impact,sans-serif;font-size:24px;letter-spacing:1px;margin:32px 0 16px;padding-bottom:8px;border-bottom:2px solid #C8A84E}
+      .shopify-policy__body h3{color:#0A0A0A;font-family:'Bebas Neue',Impact,sans-serif;font-size:20px;letter-spacing:1px;margin:24px 0 12px}
       .shopify-policy__body p{margin-bottom:16px}
       .shopify-policy__body ul,.shopify-policy__body ol{margin:16px 0;padding-left:24px}
       .shopify-policy__body li{margin-bottom:8px}
-      .shopify-policy__body a{color:#d4a843;text-decoration:underline;text-underline-offset:3px}
-      .shopify-policy__body a:hover{color:#0d1b2a}
-      .shopify-policy__body strong{color:#0d1b2a;font-weight:600}
-      .shopify-policy__body blockquote{border-left:3px solid #d4a843;padding:16px 24px;margin:24px 0;background:#f9f7f2;font-style:italic}
+      .shopify-policy__body a{color:#C8A84E;text-decoration:underline;text-underline-offset:3px}
+      .shopify-policy__body a:hover{color:#0A0A0A}
+      .shopify-policy__body strong{color:#0A0A0A;font-weight:600}
+      .shopify-policy__body blockquote{border-left:3px solid #C8A84E;padding:16px 24px;margin:24px 0;background:#f9f7f2;font-style:italic}
       @media(max-width:600px){.shopify-policy__container{padding:0 16px 64px}.shopify-policy__title{padding:48px 9999px 32px}.shopify-policy__body{font-size:14px}}
     </style>
   {% endif %}

@@ -6,7 +6,7 @@
 
 {% liquid
   assign handle = collection.handle | downcase
-  assign gradient = 'linear-gradient(135deg,#1a2a3a 0%,#0d1b2a 100%)'
+  assign gradient = 'linear-gradient(135deg,#1a2a3a 0%,#0A0A0A 100%)'
   assign emoji = ''
   assign country_gradients = 'maroc:linear-gradient(180deg,#c1272d,#5a0f14)|algerie:linear-gradient(180deg,#006233,#002614)|cote-divoire:linear-gradient(180deg,#FF8200,#7a3e00)|france:linear-gradient(180deg,#0055A4,#002952)|bresil:linear-gradient(180deg,#009C3B,#004d1e)'
   assign country_emojis = 'maroc:🇲🇦|algerie:🇩🇿|cote-divoire:🇨🇮|france:🇫🇷|bresil:🇧🇷'
@@ -105,7 +105,7 @@
     #shopify-section-{{ section.id }} .fh-colp-hero::after{content:'';position:absolute;inset:0;background:rgba(0,0,0,0.35)}
     #shopify-section-{{ section.id }} .fh-colp-hero-inner{position:relative;z-index:2;max-width:700px;margin:0 auto}
     #shopify-section-{{ section.id }} .fh-colp-hero-emoji{font-size:48px;display:block;margin-bottom:12px}
-    #shopify-section-{{ section.id }} .fh-colp-hero-overline{font-family:'Inter',sans-serif;font-size:11px;letter-spacing:4px;text-transform:uppercase;color:#f0d78c;margin-bottom:12px;font-weight:500}
+    #shopify-section-{{ section.id }} .fh-colp-hero-overline{font-family:'Inter',sans-serif;font-size:11px;letter-spacing:4px;text-transform:uppercase;color:#C8A84E;margin-bottom:12px;font-weight:500}
     #shopify-section-{{ section.id }} .fh-colp-hero-title{font-family:'Bebas Neue',Impact,sans-serif;font-size:56px;letter-spacing:3px;text-transform:uppercase;color:#fff;margin:0 0 12px}
     #shopify-section-{{ section.id }} .fh-colp-hero-desc{font-family:'Inter',sans-serif;font-size:15px;color:rgba(255,255,255,0.8);font-weight:300;line-height:1.6;margin:0 0 16px}
     #shopify-section-{{ section.id }} .fh-colp-hero-count{font-family:'Inter',sans-serif;font-size:13px;color:rgba(255,255,255,0.5);font-weight:300}
@@ -119,7 +119,7 @@
     #shopify-section-{{ section.id }} .fh-colp-card:hover{transform:translateY(-6px);box-shadow:0 16px 40px rgba(0,0,0,0.1)}
 
     /* Card Image */
-    #shopify-section-{{ section.id }} .fh-colp-card-img{position:relative;aspect-ratio:3/4;background:#0d1b2a;overflow:hidden}
+    #shopify-section-{{ section.id }} .fh-colp-card-img{position:relative;aspect-ratio:3/4;background:#0A0A0A;overflow:hidden}
     #shopify-section-{{ section.id }} .fh-colp-img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
     #shopify-section-{{ section.id }} .fh-colp-card:hover .fh-colp-img{transform:scale(1.06)}
     #shopify-section-{{ section.id }} .fh-colp-img-placeholder{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px}
@@ -128,22 +128,22 @@
 
     /* Badge */
     #shopify-section-{{ section.id }} .fh-colp-badge{position:absolute;top:16px;left:16px;z-index:2;font-family:'Inter',sans-serif;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:1.5px;padding:6px 14px;border-radius:4px}
-    #shopify-section-{{ section.id }} .fh-colp-badge--new{background:#d4a843;color:#fff}
-    #shopify-section-{{ section.id }} .fh-colp-badge--sale{background:#d4a843;color:#fff}
+    #shopify-section-{{ section.id }} .fh-colp-badge--new{background:#C8A84E;color:#fff}
+    #shopify-section-{{ section.id }} .fh-colp-badge--sale{background:#C8A84E;color:#fff}
     #shopify-section-{{ section.id }} .fh-colp-badge--sold{background:rgba(0,0,0,0.6);color:rgba(255,255,255,0.8);backdrop-filter:blur(4px)}
 
     /* Card Info */
     #shopify-section-{{ section.id }} .fh-colp-card-info{padding:20px 24px 24px}
     #shopify-section-{{ section.id }} .fh-colp-vendor{font-family:'Inter',sans-serif;font-size:11px;color:#999;font-weight:400;text-transform:uppercase;letter-spacing:1px;display:block;margin-bottom:6px}
-    #shopify-section-{{ section.id }} .fh-colp-name{font-family:'Bebas Neue',Impact,sans-serif;font-size:22px;letter-spacing:1px;text-transform:uppercase;color:#0d1b2a;margin:0 0 10px;line-height:1.2}
+    #shopify-section-{{ section.id }} .fh-colp-name{font-family:'Bebas Neue',Impact,sans-serif;font-size:22px;letter-spacing:1px;text-transform:uppercase;color:#0A0A0A;margin:0 0 10px;line-height:1.2}
     #shopify-section-{{ section.id }} .fh-colp-pricing{display:flex;align-items:center;gap:10px;margin-bottom:16px}
-    #shopify-section-{{ section.id }} .fh-colp-price{font-family:'Inter',sans-serif;font-size:18px;font-weight:700;color:#0d1b2a}
+    #shopify-section-{{ section.id }} .fh-colp-price{font-family:'Inter',sans-serif;font-size:18px;font-weight:700;color:#0A0A0A}
     #shopify-section-{{ section.id }} .fh-colp-price-old{font-family:'Inter',sans-serif;font-size:14px;text-decoration:line-through;color:#aaa}
 
     /* CTA */
     #shopify-section-{{ section.id }} .fh-colp-cta{display:flex;align-items:center;gap:8px;padding-top:16px;border-top:1px solid #eee}
-    #shopify-section-{{ section.id }} .fh-colp-cta-text{font-family:'Inter',sans-serif;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:#d4a843}
-    #shopify-section-{{ section.id }} .fh-colp-cta-arrow{color:#d4a843;font-size:14px;transition:transform .3s}
+    #shopify-section-{{ section.id }} .fh-colp-cta-text{font-family:'Inter',sans-serif;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:#C8A84E}
+    #shopify-section-{{ section.id }} .fh-colp-cta-arrow{color:#C8A84E;font-size:14px;transition:transform .3s}
     #shopify-section-{{ section.id }} .fh-colp-card:hover .fh-colp-cta-arrow{transform:translateX(4px)}
 
     /* Empty */

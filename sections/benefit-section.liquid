@@ -1,0 +1,162 @@
+{% comment %}
+  Section: Benefit Section
+  Section benefice reutilisable (qualite, europe, etc.)
+{% endcomment %}
+
+<div id="shopify-section-{{ section.id }}">
+  <section class="fh-benefit{% if section.settings.alt_bg %} fh-benefit-alt{% endif %}" style="background:{{ section.settings.bg_color }}">
+    <div class="fh-benefit-inner{% if section.settings.reverse_layout %} fh-reverse{% endif %}">
+      <div class="fh-benefit-image" style="background:{{ section.settings.image_bg }}">
+        {% if section.settings.image != blank %}
+          {{ section.settings.image | image_url: width: 800 | image_tag: loading: 'lazy', class: 'fh-ben-img' }}
+        {% else %}
+          <span class="fh-ben-emoji">{{ section.settings.emoji }}</span>
+        {% endif %}
+      </div>
+      <div class="fh-benefit-text">
+        <div class="fh-overline" style="color:{{ section.settings.accent_color }}">{{ section.settings.overline }}</div>
+        <h2 class="fh-ben-title">{{ section.settings.title }}</h2>
+        <p class="fh-ben-desc">{{ section.settings.description }}</p>
+        <ul class="fh-ben-features">
+          {% for block in section.blocks %}
+            {% if block.type == 'feature' %}
+              <li {{ block.shopify_attributes }}>{{ block.settings.text }}</li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+        {% if section.settings.cta_text != blank %}
+          <a href="{{ section.settings.cta_link }}" class="fh-ben-cta">{{ section.settings.cta_text }} &rarr;</a>
+        {% endif %}
+      </div>
+    </div>
+  </section>
+
+  <style>
+    #shopify-section-{{ section.id }} .fh-benefit{padding:100px 48px;position:relative;overflow:hidden}
+    #shopify-section-{{ section.id }} .fh-benefit::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 20% 50%,rgba(13,27,42,0.02),transparent 50%)}
+    #shopify-section-{{ section.id }} .fh-benefit-alt::before{background:radial-gradient(ellipse at 80% 50%,rgba(13,27,42,0.02),transparent 50%)}
+    #shopify-section-{{ section.id }} .fh-benefit-inner{max-width:1100px;margin:0 auto;display:flex;gap:64px;align-items:center;flex-wrap:wrap;position:relative;z-index:1}
+    #shopify-section-{{ section.id }} .fh-reverse{flex-direction:row-reverse}
+    #shopify-section-{{ section.id }} .fh-benefit-image{flex:1;min-width:300px;border-radius:20px;overflow:hidden;aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;border:1px solid #e0e0dc;position:relative;box-shadow:0 4px 16px rgba(0,0,0,0.06)}
+    #shopify-section-{{ section.id }} .fh-ben-emoji{font-size:80px}
+    #shopify-section-{{ section.id }} .fh-ben-img{width:100%;height:100%;object-fit:cover}
+    #shopify-section-{{ section.id }} .fh-benefit-text{flex:1;min-width:300px}
+    #shopify-section-{{ section.id }} .fh-overline{font-size:11px;text-transform:uppercase;letter-spacing:3px;font-weight:700;margin-bottom:12px}
+    #shopify-section-{{ section.id }} .fh-ben-title{font-family:'Bebas Neue',Impact,sans-serif;font-size:40px;letter-spacing:1px;text-transform:uppercase;margin-bottom:16px;line-height:1.1;color:#0A0A0A}
+    #shopify-section-{{ section.id }} .fh-ben-desc{font-size:16px;color:#777;line-height:1.8;margin-bottom:16px;font-weight:300;font-family:'Inter',sans-serif}
+    #shopify-section-{{ section.id }} .fh-ben-features{list-style:none;margin-top:20px;padding:0}
+    #shopify-section-{{ section.id }} .fh-ben-features li{font-size:14px;color:#444;padding:6px 0;display:flex;align-items:center;gap:10px;font-family:'Inter',sans-serif}
+    #shopify-section-{{ section.id }} .fh-ben-features li::before{content:'';width:6px;height:6px;border-radius:50%;background:{{ section.settings.accent_color }};flex-shrink:0}
+    #shopify-section-{{ section.id }} .fh-ben-cta{display:inline-flex;align-items:center;gap:10px;margin-top:24px;background:linear-gradient(135deg,#0A0A0A,#1A1A1A);color:#fff;padding:14px 28px;border-radius:6px;font-size:13px;font-weight:700;text-decoration:none;text-transform:uppercase;letter-spacing:2px;transition:all .3s;box-shadow:0 6px 24px rgba(13,27,42,0.2)}
+    #shopify-section-{{ section.id }} .fh-ben-cta:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(13,27,42,0.35)}
+    @media(max-width:900px){
+      #shopify-section-{{ section.id }} .fh-benefit{padding:64px 20px}
+      #shopify-section-{{ section.id }} .fh-benefit-inner,#shopify-section-{{ section.id }} .fh-reverse{flex-direction:column}
+    }
+  </style>
+</div>
+
+{% schema %}
+{
+  "name": "Section bénéfice",
+  "tag": "section",
+  "class": "fh-benefit-section",
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Couleur de fond",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Couleur accent",
+      "default": "#C8A84E"
+    },
+    {
+      "type": "checkbox",
+      "id": "alt_bg",
+      "label": "Style alternatif",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "reverse_layout",
+      "label": "Inverser image/texte",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "overline",
+      "label": "Surtitre",
+      "default": "Qualité match-day"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Titre",
+      "default": "Un tissu qui respire comme au stade"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Coton premium 180g/m² avec impression DTG haute définition. Les couleurs sont éclatantes et durables. Résultat : impeccable après des dizaines de lavages."
+    },
+    {
+      "type": "text",
+      "id": "emoji",
+      "label": "Emoji (fallback)",
+      "default": "🌈"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "image_bg",
+      "label": "Fond image CSS",
+      "default": "linear-gradient(135deg,#fef9ef,#f5f0e8)"
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "Texte CTA",
+      "default": "Ajouter au panier"
+    },
+    {
+      "type": "url",
+      "id": "cta_link",
+      "label": "Lien CTA"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Caractéristique",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Texte",
+          "default": "Coton doux et respirant"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Section bénéfice",
+      "blocks": [
+        { "type": "feature", "settings": { "text": "Coton doux et respirant" } },
+        { "type": "feature", "settings": { "text": "Coutures renforcées double-aiguille" } },
+        { "type": "feature", "settings": { "text": "Impression DTG durable, couleurs vives" } },
+        { "type": "feature", "settings": { "text": "Lavable en machine, couleurs qui tiennent" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
