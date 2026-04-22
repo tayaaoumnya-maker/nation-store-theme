@@ -1,7 +1,7 @@
 {% comment %}
   Section: Main Page
   Affiche le contenu des pages statiques (CGV, FAQ, etc.)
-  Design dark premium — cohérent avec le reste du site Nation Varsity
+  Design fond blanc — accents gold + navy
 {% endcomment %}
 
 <div id="shopify-section-{{ section.id }}">
@@ -11,42 +11,38 @@
       <h1 class="fh-page-title">{{ page.title }}</h1>
       <div class="fh-page-divider"></div>
     </div>
-    <div class="fh-page-card">
-      <div class="fh-page-content rte">
-        {{ page.content }}
-      </div>
+    <div class="fh-page-content rte">
+      {{ page.content }}
     </div>
   </div>
 
   <style>
-    #shopify-section-{{ section.id }}{background:#0d1b2a;min-height:80vh}
-    #shopify-section-{{ section.id }} .fh-page{max-width:860px;margin:0 auto;padding:72px 48px 100px}
-    #shopify-section-{{ section.id }} .fh-page-header{text-align:center;margin-bottom:40px}
+    #shopify-section-{{ section.id }}{background:#fff;min-height:80vh}
+    #shopify-section-{{ section.id }} .fh-page{max-width:820px;margin:0 auto;padding:72px 48px 100px}
+    #shopify-section-{{ section.id }} .fh-page-header{text-align:center;margin-bottom:48px;padding-bottom:32px;border-bottom:2px solid #d4a843}
     #shopify-section-{{ section.id }} .fh-page-overline{font-family:'Inter',sans-serif;font-size:11px;letter-spacing:4px;text-transform:uppercase;color:#d4a843;margin-bottom:12px;font-weight:500}
-    #shopify-section-{{ section.id }} .fh-page-title{font-family:'Bebas Neue',Impact,sans-serif;font-size:56px;letter-spacing:3px;text-transform:uppercase;color:#fff;margin:0}
-    #shopify-section-{{ section.id }} .fh-page-divider{width:60px;height:3px;background:linear-gradient(90deg,#d4a843,#f0d78c);margin:20px auto 0;border-radius:2px}
-    #shopify-section-{{ section.id }} .fh-page-card{background:rgba(255,255,255,0.04);border:1px solid rgba(212,168,67,0.15);border-radius:12px;padding:48px;backdrop-filter:blur(4px)}
-    #shopify-section-{{ section.id }} .fh-page-content{font-family:'Inter',sans-serif;font-size:15px;line-height:1.85;color:rgba(255,255,255,0.75);font-weight:300}
-    #shopify-section-{{ section.id }} .fh-page-content h2{font-family:'Bebas Neue',Impact,sans-serif;font-size:30px;letter-spacing:1.5px;color:#d4a843;margin:40px 0 16px;text-transform:uppercase;padding-bottom:10px;border-bottom:1px solid rgba(212,168,67,0.2)}
-    #shopify-section-{{ section.id }} .fh-page-content h3{font-family:'Bebas Neue',Impact,sans-serif;font-size:22px;color:#fff;margin:32px 0 12px;letter-spacing:1px}
+    #shopify-section-{{ section.id }} .fh-page-title{font-family:'Bebas Neue',Impact,sans-serif;font-size:52px;letter-spacing:3px;text-transform:uppercase;color:#0d1b2a;margin:0}
+    #shopify-section-{{ section.id }} .fh-page-divider{display:none}
+    #shopify-section-{{ section.id }} .fh-page-content{font-family:'Inter',sans-serif;font-size:15px;line-height:1.85;color:#444;font-weight:300}
+    #shopify-section-{{ section.id }} .fh-page-content h2{font-family:'Bebas Neue',Impact,sans-serif;font-size:30px;letter-spacing:1.5px;color:#0d1b2a;margin:40px 0 16px;text-transform:uppercase;padding-bottom:10px;border-bottom:2px solid #d4a843}
+    #shopify-section-{{ section.id }} .fh-page-content h3{font-family:'Bebas Neue',Impact,sans-serif;font-size:22px;color:#0d1b2a;margin:32px 0 12px;letter-spacing:1px}
     #shopify-section-{{ section.id }} .fh-page-content p{margin-bottom:16px}
     #shopify-section-{{ section.id }} .fh-page-content ul,#shopify-section-{{ section.id }} .fh-page-content ol{margin:16px 0;padding-left:24px}
-    #shopify-section-{{ section.id }} .fh-page-content li{margin-bottom:8px;color:rgba(255,255,255,0.7)}
+    #shopify-section-{{ section.id }} .fh-page-content li{margin-bottom:8px;color:#555}
     #shopify-section-{{ section.id }} .fh-page-content li::marker{color:#d4a843}
     #shopify-section-{{ section.id }} .fh-page-content a{color:#d4a843;text-decoration:none;border-bottom:1px solid rgba(212,168,67,0.3);transition:border-color .2s}
     #shopify-section-{{ section.id }} .fh-page-content a:hover{border-color:#d4a843}
-    #shopify-section-{{ section.id }} .fh-page-content strong{color:#fff;font-weight:600}
-    #shopify-section-{{ section.id }} .fh-page-content em{color:rgba(255,255,255,0.5)}
-    #shopify-section-{{ section.id }} .fh-page-content blockquote{border-left:3px solid #d4a843;margin:24px 0;padding:20px 24px;background:rgba(212,168,67,0.06);border-radius:0 8px 8px 0}
+    #shopify-section-{{ section.id }} .fh-page-content strong{color:#0d1b2a;font-weight:600}
+    #shopify-section-{{ section.id }} .fh-page-content em{color:#777}
+    #shopify-section-{{ section.id }} .fh-page-content blockquote{border-left:3px solid #d4a843;margin:24px 0;padding:20px 24px;background:#faf6ec;border-radius:0 8px 8px 0}
     #shopify-section-{{ section.id }} .fh-page-content table{width:100%;border-collapse:collapse;margin:24px 0;border-radius:8px;overflow:hidden}
-    #shopify-section-{{ section.id }} .fh-page-content thead{background:rgba(212,168,67,0.15)}
+    #shopify-section-{{ section.id }} .fh-page-content thead{background:#0d1b2a}
     #shopify-section-{{ section.id }} .fh-page-content th{font-family:'Bebas Neue',Impact,sans-serif;font-size:16px;letter-spacing:1px;color:#d4a843;padding:12px 16px;text-align:left;text-transform:uppercase}
-    #shopify-section-{{ section.id }} .fh-page-content td{padding:12px 16px;border-bottom:1px solid rgba(255,255,255,0.06);color:rgba(255,255,255,0.75)}
-    #shopify-section-{{ section.id }} .fh-page-content tbody tr:hover{background:rgba(255,255,255,0.03)}
+    #shopify-section-{{ section.id }} .fh-page-content td{padding:12px 16px;border-bottom:1px solid #eee;color:#444}
+    #shopify-section-{{ section.id }} .fh-page-content tbody tr:hover{background:#f8f5ee}
     @media(max-width:900px){
       #shopify-section-{{ section.id }} .fh-page{padding:40px 16px 64px}
       #shopify-section-{{ section.id }} .fh-page-title{font-size:40px;letter-spacing:2px}
-      #shopify-section-{{ section.id }} .fh-page-card{padding:28px 20px;border-radius:8px}
       #shopify-section-{{ section.id }} .fh-page-content h2{font-size:26px}
     }
   </style>
