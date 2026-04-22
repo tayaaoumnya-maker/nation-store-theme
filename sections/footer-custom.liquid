@@ -13,7 +13,10 @@
             {% assign links = block.settings.links_text | split: '|' %}
             {% assign urls = block.settings.links_url | split: '|' %}
             {% for link_text in links %}
-              <a href="{% if urls[forloop.index0] != blank %}{{ urls[forloop.index0] }}{% else %}#{% endif %}">{{ link_text | strip }}</a>
+              {% assign link_stripped = link_text | strip | downcase %}
+              {% unless link_stripped == 'tiktok' %}
+                <a href="{% if urls[forloop.index0] != blank %}{{ urls[forloop.index0] }}{% else %}#{% endif %}">{{ link_text | strip }}</a>
+              {% endunless %}
             {% endfor %}
           </div>
         {% endif %}
