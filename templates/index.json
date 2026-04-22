@@ -207,7 +207,7 @@
       },
       "block_order": ["q1", "q2", "q3", "q4", "q5", "q6"]
     },
-    "footer": {
+    "footer-v2": {
       "type": "footer-custom",
       "settings": {
         "bg_color": "#0f1f30",
@@ -233,6 +233,6 @@
     "collections",
     "story",
     "faq",
-    "footer"
+    "footer-v2"
   ]
 }
