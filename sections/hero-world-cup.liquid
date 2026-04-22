@@ -53,6 +53,7 @@
           {% for block in section.blocks %}
             {% if block.type == 'hero_card' %}
               <div class="fh-hero-card fh-hc-{{ forloop.index }}" style="background:{{ block.settings.gradient }}" {{ block.shopify_attributes }}>
+                {% comment %} Priority: image_picker > image_url > asset_filename > auto-detect by emoji > fallback emoji {% endcomment %}
                 {% if block.settings.image != blank %}
                   {{ block.settings.image | image_url: width: 900 | image_tag: loading: 'eager', class: 'fh-card-img' }}
                 {% elsif block.settings.image_url != blank %}
@@ -60,7 +61,16 @@
                 {% elsif block.settings.asset_filename != blank %}
                   <img src="{{ block.settings.asset_filename | asset_url }}" alt="{{ block.settings.country_name }}" class="fh-card-img" loading="eager">
                 {% else %}
-                  <span class="fh-flag">{{ block.settings.flag_emoji }}</span>
+                  {% assign jersey_file = '' %}
+                  {% if block.settings.flag_emoji contains '🇲🇦' %}{% assign jersey_file = 'jersey-maroc.png' %}
+                  {% elsif block.settings.flag_emoji contains '🇩🇿' %}{% assign jersey_file = 'jersey-algerie.png' %}
+                  {% elsif block.settings.flag_emoji contains '🇨🇮' %}{% assign jersey_file = 'jersey-ci.png' %}
+                  {% endif %}
+                  {% if jersey_file != '' %}
+                    <img src="{{ jersey_file | asset_url }}" alt="{{ block.settings.country_name }}" class="fh-card-img" loading="eager">
+                  {% else %}
+                    <span class="fh-flag">{{ block.settings.flag_emoji }}</span>
+                  {% endif %}
                 {% endif %}
                 <div class="fh-hero-card-label">
                   <div class="fh-hc-name">{{ block.settings.country_name }}</div>
