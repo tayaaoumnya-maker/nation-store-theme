@@ -182,7 +182,7 @@
         "cta_text": "Shopper la collection",
         "cta_link": "shopify://collections",
         "cta2_text": "Notre histoire",
-        "cta2_link": ""
+        "cta2_link": "shopify://pages/notre-histoire"
       }
     },
     "testimonials": {
