@@ -1,0 +1,121 @@
+{% comment %}
+  Section: Main Collection List
+  Page /collections — affiche toutes les collections
+  Design dark premium cohérent avec Nation Varsity
+{% endcomment %}
+
+{% liquid
+  assign country_gradients = 'maroc:linear-gradient(135deg,#c1272d 0%,#006233 100%)|algerie:linear-gradient(135deg,#006633 0%,#fff 50%,#d52b1e 100%)|cote-divoire:linear-gradient(135deg,#f77f00 0%,#fff 50%,#009e60 100%)|france:linear-gradient(135deg,#002395 0%,#fff 50%,#ed2939 100%)|bresil:linear-gradient(135deg,#009c3b 0%,#ffdf00 50%,#002776 100%)'
+  assign country_emojis = 'maroc:🇲🇦|algerie:🇩🇿|cote-divoire:🇨🇮|france:🇫🇷|bresil:🇧🇷'
+%}
+
+<div id="shopify-section-{{ section.id }}">
+  <section class="fh-collist">
+    <div class="fh-collist-header">
+      <div class="fh-collist-overline">Nation Varsity</div>
+      <h1 class="fh-collist-title">{{ section.settings.title }}</h1>
+      <div class="fh-collist-divider"></div>
+      <p class="fh-collist-subtitle">{{ section.settings.subtitle }}</p>
+    </div>
+
+    <div class="fh-collist-grid">
+      {% for collection in collections %}
+        {% unless collection.handle == 'all' or collection.handle == 'page-d-accueil' or collection.handle == 'frontpage' %}
+          {% assign handle = collection.handle | downcase %}
+          {% assign gradient = 'linear-gradient(135deg,#1a2a3a 0%,#0d1b2a 100%)' %}
+          {% assign emoji = '' %}
+
+          {% for pair in country_gradients %}
+            {% assign parts = pair | split: ':' %}
+            {% if handle contains parts[0] %}
+              {% assign gradient = parts[1] %}
+            {% endif %}
+          {% endfor %}
+
+          {% for pair in country_emojis %}
+            {% assign parts = pair | split: ':' %}
+            {% if handle contains parts[0] %}
+              {% assign emoji = parts[1] %}
+            {% endif %}
+          {% endfor %}
+
+          <a href="{{ collection.url }}" class="fh-collist-card">
+            <div class="fh-collist-card-bg" style="background:{{ gradient }}">
+              {% if collection.image %}
+                {{ collection.image | image_url: width: 600 | image_tag: loading: 'lazy', class: 'fh-collist-img' }}
+              {% endif %}
+            </div>
+            <div class="fh-collist-card-overlay"></div>
+            <div class="fh-collist-card-content">
+              {% if emoji != '' %}
+                <span class="fh-collist-emoji">{{ emoji }}</span>
+              {% endif %}
+              <h2 class="fh-collist-name">{{ collection.title }}</h2>
+              <span class="fh-collist-count">{{ collection.products_count }} {% if collection.products_count == 1 %}produit{% else %}produits{% endif %}</span>
+              <span class="fh-collist-arrow">&rarr;</span>
+            </div>
+          </a>
+        {% endunless %}
+      {% endfor %}
+    </div>
+  </section>
+
+  <style>
+    #shopify-section-{{ section.id }}{background:#0d1b2a}
+    #shopify-section-{{ section.id }} .fh-collist{padding:72px 48px 100px;max-width:1200px;margin:0 auto}
+    #shopify-section-{{ section.id }} .fh-collist-header{text-align:center;margin-bottom:56px}
+    #shopify-section-{{ section.id }} .fh-collist-overline{font-family:'Inter',sans-serif;font-size:11px;letter-spacing:4px;text-transform:uppercase;color:#d4a843;margin-bottom:12px;font-weight:500}
+    #shopify-section-{{ section.id }} .fh-collist-title{font-family:'Bebas Neue',Impact,sans-serif;font-size:56px;letter-spacing:3px;text-transform:uppercase;color:#fff;margin:0}
+    #shopify-section-{{ section.id }} .fh-collist-divider{width:60px;height:3px;background:linear-gradient(90deg,#d4a843,#f0d78c);margin:20px auto;border-radius:2px}
+    #shopify-section-{{ section.id }} .fh-collist-subtitle{font-family:'Inter',sans-serif;font-size:15px;color:rgba(255,255,255,0.5);font-weight:300;margin:0}
+
+    #shopify-section-{{ section.id }} .fh-collist-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:20px}
+    #shopify-section-{{ section.id }} .fh-collist-card{position:relative;border-radius:12px;overflow:hidden;aspect-ratio:3/4;display:flex;align-items:flex-end;text-decoration:none;transition:transform .3s,box-shadow .3s;border:1px solid rgba(212,168,67,0.1)}
+    #shopify-section-{{ section.id }} .fh-collist-card:hover{transform:translateY(-6px);box-shadow:0 16px 40px rgba(0,0,0,0.4)}
+
+    #shopify-section-{{ section.id }} .fh-collist-card-bg{position:absolute;inset:0;z-index:1}
+    #shopify-section-{{ section.id }} .fh-collist-img{width:100%;height:100%;object-fit:cover}
+    #shopify-section-{{ section.id }} .fh-collist-card-overlay{position:absolute;inset:0;z-index:2;background:linear-gradient(0deg,rgba(0,0,0,0.85) 0%,rgba(0,0,0,0.2) 50%,rgba(0,0,0,0.1) 100%)}
+
+    #shopify-section-{{ section.id }} .fh-collist-card-content{position:relative;z-index:3;padding:28px;width:100%}
+    #shopify-section-{{ section.id }} .fh-collist-emoji{font-size:32px;display:block;margin-bottom:8px}
+    #shopify-section-{{ section.id }} .fh-collist-name{font-family:'Bebas Neue',Impact,sans-serif;font-size:28px;letter-spacing:1.5px;text-transform:uppercase;color:#fff;margin:0 0 4px}
+    #shopify-section-{{ section.id }} .fh-collist-count{font-family:'Inter',sans-serif;font-size:12px;color:rgba(255,255,255,0.5);font-weight:300;letter-spacing:0.5px}
+    #shopify-section-{{ section.id }} .fh-collist-arrow{position:absolute;top:28px;right:28px;font-size:24px;color:#d4a843;opacity:0;transition:opacity .3s,transform .3s;transform:translateX(-8px)}
+    #shopify-section-{{ section.id }} .fh-collist-card:hover .fh-collist-arrow{opacity:1;transform:translateX(0)}
+
+    @media(max-width:900px){
+      #shopify-section-{{ section.id }} .fh-collist{padding:40px 16px 64px}
+      #shopify-section-{{ section.id }} .fh-collist-title{font-size:40px}
+      #shopify-section-{{ section.id }} .fh-collist-grid{grid-template-columns:repeat(2,1fr);gap:12px}
+      #shopify-section-{{ section.id }} .fh-collist-card-content{padding:20px}
+      #shopify-section-{{ section.id }} .fh-collist-name{font-size:22px}
+    }
+    @media(max-width:480px){
+      #shopify-section-{{ section.id }} .fh-collist-grid{grid-template-columns:1fr}
+      #shopify-section-{{ section.id }} .fh-collist-card{aspect-ratio:4/3}
+    }
+  </style>
+</div>
+
+{% schema %}
+{
+  "name": "Liste collections",
+  "tag": "section",
+  "class": "fh-collection-list-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Titre",
+      "default": "Nos Collections"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Sous-titre",
+      "default": "5 pays. 5 designs exclusifs. Édition limitée Coupe du Monde 2026."
+    }
+  ]
+}
+{% endschema %}

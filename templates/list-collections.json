@@ -9,43 +9,13 @@
  */
 {
   "sections": {
-    "banner": {
-      "type": "fh-collection-banner",
+    "main": {
+      "type": "main-collection-list",
       "settings": {
-        "bg_color": "#0d1b2a",
-        "accent_color": "#d4a843",
-        "title": "Notre collection",
-        "overline": "Coupe du Monde 2026",
-        "show_description": false
+        "title": "Nos Collections",
+        "subtitle": "5 pays. 5 designs exclusifs. Édition limitée Coupe du Monde 2026."
       }
-    },
-    "showcase": {
-      "type": "fh-jersey-showcase",
-      "settings": {},
-      "blocks": {
-        "m1": { "type": "jersey", "settings": { "asset": "jersey-maroc-home.jpg", "title": "Maroc — Home Zellige", "price": "34,99€", "badge": "NEW", "link": "/collections/maroc" } },
-        "m2": { "type": "jersey", "settings": { "asset": "jersey-maroc-heritage.jpg", "title": "Maroc — Heritage Atlas", "price": "34,99€", "link": "/collections/maroc" } },
-        "m3": { "type": "jersey", "settings": { "asset": "jersey-maroc-black.jpg", "title": "Maroc — Black & Gold", "price": "34,99€", "link": "/collections/maroc" } },
-        "m4": { "type": "jersey", "settings": { "asset": "jersey-maroc-retro.jpg", "title": "Maroc — Retro 70s", "price": "34,99€", "link": "/collections/maroc" } },
-        "a1": { "type": "jersey", "settings": { "asset": "jersey-algerie-home.jpg", "title": "Algérie — Home Arabesque", "price": "34,99€", "badge": "NEW", "link": "/collections/algerie" } },
-        "a2": { "type": "jersey", "settings": { "asset": "jersey-algerie-heritage.jpg", "title": "Algérie — Heritage Casbah", "price": "34,99€", "link": "/collections/algerie" } },
-        "a3": { "type": "jersey", "settings": { "asset": "jersey-algerie-black.jpg", "title": "Algérie — Black & Gold", "price": "34,99€", "link": "/collections/algerie" } },
-        "a4": { "type": "jersey", "settings": { "asset": "jersey-algerie-retro.jpg", "title": "Algérie — Retro 70s", "price": "34,99€", "link": "/collections/algerie" } },
-        "c1": { "type": "jersey", "settings": { "asset": "jersey-ci-home.jpg", "title": "Côte d'Ivoire — Home Kente", "price": "34,99€", "badge": "NEW", "link": "/collections/cote-divoire" } },
-        "c2": { "type": "jersey", "settings": { "asset": "jersey-ci-away.jpg", "title": "Côte d'Ivoire — Away White", "price": "34,99€", "link": "/collections/cote-divoire" } },
-        "c3": { "type": "jersey", "settings": { "asset": "jersey-ci-black.jpg", "title": "Côte d'Ivoire — Black & Gold", "price": "34,99€", "link": "/collections/cote-divoire" } },
-        "c4": { "type": "jersey", "settings": { "asset": "jersey-ci-heritage.jpg", "title": "Côte d'Ivoire — Heritage Elephant", "price": "34,99€", "link": "/collections/cote-divoire" } },
-        "f1": { "type": "jersey", "settings": { "asset": "jersey-france-home.jpg", "title": "France — Home Art Deco", "price": "34,99€", "badge": "NEW", "link": "/collections/france" } },
-        "f2": { "type": "jersey", "settings": { "asset": "jersey-france-heritage.jpg", "title": "France — Heritage Coq", "price": "34,99€", "link": "/collections/france" } },
-        "f3": { "type": "jersey", "settings": { "asset": "jersey-france-black.jpg", "title": "France — Black & Gold", "price": "34,99€", "link": "/collections/france" } },
-        "f4": { "type": "jersey", "settings": { "asset": "jersey-france-retro.jpg", "title": "France — Retro Tricolore", "price": "34,99€", "link": "/collections/france" } },
-        "b1": { "type": "jersey", "settings": { "asset": "jersey-brazil-home.jpg", "title": "Brésil — Home Tropical", "price": "34,99€", "badge": "NEW", "link": "/collections/bresil" } },
-        "b2": { "type": "jersey", "settings": { "asset": "jersey-brazil-heritage.jpg", "title": "Brésil — Heritage Jaguar", "price": "34,99€", "link": "/collections/bresil" } },
-        "b3": { "type": "jersey", "settings": { "asset": "jersey-brazil-black.jpg", "title": "Brésil — Black & Gold", "price": "34,99€", "link": "/collections/bresil" } },
-        "b4": { "type": "jersey", "settings": { "asset": "jersey-brazil-retro.jpg", "title": "Brésil — Retro 70s", "price": "34,99€", "link": "/collections/bresil" } }
-      },
-      "block_order": ["m1","a1","c1","f1","b1","m2","a2","c2","f2","b2","m3","a3","c3","f3","b3","m4","a4","c4","f4","b4"]
     }
   },
-  "order": ["banner", "showcase"]
+  "order": ["main"]
 }
