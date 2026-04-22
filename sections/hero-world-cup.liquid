@@ -55,6 +55,10 @@
               <div class="fh-hero-card fh-hc-{{ forloop.index }}" style="background:{{ block.settings.gradient }}" {{ block.shopify_attributes }}>
                 {% if block.settings.image != blank %}
                   {{ block.settings.image | image_url: width: 900 | image_tag: loading: 'eager', class: 'fh-card-img' }}
+                {% elsif block.settings.image_url != blank %}
+                  <img src="{{ block.settings.image_url }}" alt="{{ block.settings.country_name }}" class="fh-card-img" loading="eager">
+                {% elsif block.settings.asset_filename != blank %}
+                  <img src="{{ block.settings.asset_filename | asset_url }}" alt="{{ block.settings.country_name }}" class="fh-card-img" loading="eager">
                 {% else %}
                   <span class="fh-flag">{{ block.settings.flag_emoji }}</span>
                 {% endif %}
@@ -300,6 +304,18 @@
           "type": "image_picker",
           "id": "image",
           "label": "Image produit (optionnel)"
+        },
+        {
+          "type": "text",
+          "id": "image_url",
+          "label": "URL image produit (alternative)",
+          "info": "Coller l'URL d'une image. Utilisé si aucune image sélectionnée ci-dessus."
+        },
+        {
+          "type": "text",
+          "id": "asset_filename",
+          "label": "Nom fichier asset (ex: jersey-maroc.png)",
+          "info": "Nom du fichier dans le dossier assets/ du thème."
         },
         {
           "type": "text",
