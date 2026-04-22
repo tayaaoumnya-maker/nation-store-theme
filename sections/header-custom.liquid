@@ -31,18 +31,18 @@
 
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
-    #shopify-section-{{ section.id }} .fh-header{display:flex;align-items:center;justify-content:space-between;padding:18px 48px;position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.95);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid rgba(0,0,0,0.06)}
-    #shopify-section-{{ section.id }} .fh-header-logo{font-family:'Bebas Neue',Impact,sans-serif;font-size:32px;letter-spacing:3px;color:#0d1b2a}
+    #shopify-section-{{ section.id }} .fh-header{display:flex;align-items:center;justify-content:space-between;padding:18px 48px;position:sticky;top:0;z-index:100;background:rgba(10,10,10,0.95);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid rgba(255,255,255,0.06)}
+    #shopify-section-{{ section.id }} .fh-header-logo{font-family:'Bebas Neue',Impact,sans-serif;font-size:32px;letter-spacing:3px;color:#fff}
     #shopify-section-{{ section.id }} .fh-header-nav{display:flex;gap:28px}
-    #shopify-section-{{ section.id }} .fh-header-nav a{text-decoration:none;color:#444;font-size:12px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;transition:color .3s;font-family:'Inter',sans-serif}
+    #shopify-section-{{ section.id }} .fh-header-nav a{text-decoration:none;color:rgba(255,255,255,0.7);font-size:12px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;transition:color .3s;font-family:'Inter',sans-serif}
     #shopify-section-{{ section.id }} .fh-header-nav a:hover{color:{{ section.settings.accent_color }}}
     #shopify-section-{{ section.id }} .fh-header-icons{display:flex;gap:18px;align-items:center}
     #shopify-section-{{ section.id }} .fh-header-icons a{text-decoration:none;color:inherit}
-    #shopify-section-{{ section.id }} .fh-header-icons svg{width:20px;height:20px;cursor:pointer;stroke:#444;fill:none;stroke-width:1.5;transition:stroke .3s}
+    #shopify-section-{{ section.id }} .fh-header-icons svg{width:20px;height:20px;cursor:pointer;stroke:rgba(255,255,255,0.7);fill:none;stroke-width:1.5;transition:stroke .3s}
     #shopify-section-{{ section.id }} .fh-header-icons svg:hover{stroke:{{ section.settings.accent_color }}}
     #shopify-section-{{ section.id }} .fh-cart-badge{position:relative}
-    #shopify-section-{{ section.id }} .fh-cart-count{position:absolute;top:-8px;right:-10px;background:#0d1b2a;color:#fff;font-size:9px;width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800}
-    #shopify-section-{{ section.id }} .fh-menu-toggle{display:none;background:none;border:none;cursor:pointer;color:#444}
+    #shopify-section-{{ section.id }} .fh-cart-count{position:absolute;top:-8px;right:-10px;background:#0A0A0A;color:#fff;font-size:9px;width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800}
+    #shopify-section-{{ section.id }} .fh-menu-toggle{display:none;background:none;border:none;cursor:pointer;color:rgba(255,255,255,0.7)}
     @media(max-width:900px){
       #shopify-section-{{ section.id }} .fh-header{padding:14px 20px}
       #shopify-section-{{ section.id }} .fh-header-nav{display:none}
@@ -73,7 +73,7 @@
       "type": "color",
       "id": "accent_color",
       "label": "Couleur accent",
-      "default": "#d4a843"
+      "default": "#C8A84E"
     }
   ],
   "blocks": [
