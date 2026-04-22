@@ -211,7 +211,7 @@
       },
       "block_order": ["q1", "q2", "q3", "q4", "q5", "q6", "q7", "q8"]
     },
-    "footer-v2": {
+    "footer": {
       "type": "footer-custom",
       "settings": {
         "bg_color": "#0d1b2a",
@@ -237,6 +237,6 @@
     "reviews",
     "comparison",
     "product-faq",
-    "footer-v2"
+    "footer"
   ]
 }
