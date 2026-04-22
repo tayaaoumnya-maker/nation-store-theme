@@ -77,7 +77,7 @@
           "type": "nav_link",
           "settings": {
             "label": "Notre histoire",
-            "link": ""
+            "link": "shopify://pages/notre-histoire"
           }
         },
         "nav_3": {
