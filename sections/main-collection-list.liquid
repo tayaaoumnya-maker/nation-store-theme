@@ -1,0 +1,41 @@
+{% comment %}
+  Section: Main Collection List — Minimal test
+{% endcomment %}
+
+<div id="shopify-section-{{ section.id }}" style="padding:60px 48px;max-width:1200px;margin:0 auto;">
+  <h1 style="font-family:sans-serif;font-size:32px;color:#0d1b2a;">Test Collections</h1>
+  <p>Section ID: {{ section.id }}</p>
+  <p>Collections count: {{ collections.size }}</p>
+
+  {% for collection in collections %}
+    <div style="margin:20px 0;padding:16px;border:1px solid #ddd;border-radius:8px;">
+      <h2 style="margin:0;">{{ collection.title }} ({{ collection.handle }})</h2>
+      <p>Produits: {{ collection.products_count }}</p>
+      {% for product in collection.products limit: 2 %}
+        <p style="margin:4px 0;color:#666;">— {{ product.title }} — {{ product.price | money }}</p>
+      {% endfor %}
+    </div>
+  {% endfor %}
+</div>
+
+{% schema %}
+{
+  "name": "Liste collections",
+  "tag": "section",
+  "class": "fh-collection-list-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Titre",
+      "default": "Nos Collections"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Sous-titre",
+      "default": "5 pays. 25 maillots exclusifs. Édition limitée Coupe du Monde 2026."
+    }
+  ]
+}
+{% endschema %}
