@@ -1,174 +1,166 @@
 {% comment %}
   Section: Main Collection
-  Page /collections/[handle] — grille produits + filtres latéraux
-  Inspiré du style Comma Football
+  Page /collections/[handle] — grille produits premium
+  Design cohérent Nation Varsity : fond blanc, accents gold + navy
 {% endcomment %}
 
+{% liquid
+  assign handle = collection.handle | downcase
+  assign gradient = 'linear-gradient(135deg,#1a2a3a 0%,#0d1b2a 100%)'
+  assign emoji = ''
+  assign country_gradients = 'maroc:linear-gradient(180deg,#c1272d,#5a0f14)|algerie:linear-gradient(180deg,#006233,#002614)|cote-divoire:linear-gradient(180deg,#FF8200,#7a3e00)|france:linear-gradient(180deg,#0055A4,#002952)|bresil:linear-gradient(180deg,#009C3B,#004d1e)'
+  assign country_emojis = 'maroc:🇲🇦|algerie:🇩🇿|cote-divoire:🇨🇮|france:🇫🇷|bresil:🇧🇷'
+
+  for pair in country_gradients
+    assign parts = pair | split: ':'
+    if handle contains parts[0]
+      assign gradient = parts[1]
+    endif
+  endfor
+
+  for pair in country_emojis
+    assign parts = pair | split: ':'
+    if handle contains parts[0]
+      assign emoji = parts[1]
+    endif
+  endfor
+%}
+
 <div id="shopify-section-{{ section.id }}">
-  <section class="fh-col">
-    <div class="fh-col-layout">
-      <!-- Sidebar Filters -->
-      <aside class="fh-col-sidebar">
-        <button class="fh-col-filter-toggle" onclick="document.querySelector('.fh-col-sidebar').classList.toggle('fh-col-sidebar--open')">
-          Filtres <span class="fh-col-filter-icon">☰</span>
-        </button>
-
-        {% for filter in collection.filters %}
-          <div class="fh-col-filter-group">
-            <button class="fh-col-filter-title" onclick="this.parentElement.classList.toggle('fh-col-filter-closed')">
-              {{ filter.label }}
-              <svg class="fh-col-chevron" width="12" height="12" viewBox="0 0 12 12"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
-            </button>
-            <div class="fh-col-filter-options">
-              {% for value in filter.values %}
-                {% if filter.type == 'price_range' %}
-                  {% if forloop.first %}
-                    <form class="fh-col-price-form">
-                      <div class="fh-col-price-inputs">
-                        <input type="number" name="filter.v.price.gte" placeholder="Min" value="{{ filter.min_value.value | money_without_currency | strip }}" class="fh-col-price-input">
-                        <span>—</span>
-                        <input type="number" name="filter.v.price.lte" placeholder="Max" value="{{ filter.max_value.value | money_without_currency | strip }}" class="fh-col-price-input">
-                        <span>€</span>
-                      </div>
-                    </form>
-                  {% endif %}
-                {% else %}
-                  <label class="fh-col-filter-option {% if value.active %}fh-col-filter-option--active{% endif %}" {% if value.count == 0 and value.active == false %}style="opacity:0.4"{% endif %}>
-                    <input type="checkbox" {% if value.active %}checked{% endif %} onchange="window.location.href='{{ value.url }}'">
-                    <span class="fh-col-filter-check"></span>
-                    <span class="fh-col-filter-label">{{ value.label }}</span>
-                    <span class="fh-col-filter-count">({{ value.count }})</span>
-                  </label>
-                {% endif %}
-              {% endfor %}
-            </div>
-          </div>
-        {% endfor %}
-      </aside>
-
-      <!-- Product Grid -->
-      <div class="fh-col-main">
-        <div class="fh-col-header">
-          <h1 class="fh-col-title">{{ collection.title }}</h1>
-          <span class="fh-col-count">{{ collection.products_count }} {% if collection.products_count == 1 %}produit{% else %}produits{% endif %}</span>
-        </div>
-
-        {% if collection.description != blank %}
-          <p class="fh-col-desc">{{ collection.description }}</p>
-        {% endif %}
-
-        <div class="fh-col-grid">
-          {% for product in collection.products %}
-            <a href="{{ product.url }}" class="fh-col-product">
-              <div class="fh-col-product-img">
-                {% if product.available == false %}
-                  <span class="fh-col-badge fh-col-badge--sold">Épuisé</span>
-                {% elsif product.compare_at_price > product.price %}
-                  <span class="fh-col-badge fh-col-badge--sale">Promo</span>
-                {% endif %}
-                {% if product.featured_image %}
-                  {{ product.featured_image | image_url: width: 600 | image_tag: loading: 'lazy', class: 'fh-col-img' }}
-                {% else %}
-                  <div class="fh-col-img-placeholder">{{ product.title | slice: 0 }}</div>
-                {% endif %}
-              </div>
-              <div class="fh-col-product-info">
-                <span class="fh-col-product-vendor">{{ product.vendor }}</span>
-                <h3 class="fh-col-product-title">{{ product.title }}</h3>
-                <div class="fh-col-product-price">
-                  {% if product.compare_at_price > product.price %}
-                    <span class="fh-col-price-old">{{ product.compare_at_price | money }}</span>
-                  {% endif %}
-                  <span class="fh-col-price">{{ product.price | money }}</span>
-                </div>
-              </div>
-            </a>
-          {% endfor %}
-        </div>
-
-        {% if collection.products.size == 0 %}
-          <div class="fh-col-empty">
-            <p>Aucun produit dans cette collection pour le moment.</p>
-          </div>
-        {% endif %}
-
-        {% if paginate %}
-          {% if paginate.pages > 1 %}
-            <div class="fh-col-pagination">
-              {{ paginate | default_pagination }}
-            </div>
-          {% endif %}
-        {% endif %}
-      </div>
+  <!-- Collection Hero Banner -->
+  <div class="fh-colp-hero" style="background:{{ gradient }}">
+    <div class="fh-colp-hero-inner">
+      {% if emoji != '' %}
+        <span class="fh-colp-hero-emoji">{{ emoji }}</span>
+      {% endif %}
+      <div class="fh-colp-hero-overline">Nation Varsity</div>
+      <h1 class="fh-colp-hero-title">{{ collection.title }}</h1>
+      {% if collection.description != blank %}
+        <p class="fh-colp-hero-desc">{{ collection.description }}</p>
+      {% endif %}
+      <span class="fh-colp-hero-count">{{ collection.products_count }} {% if collection.products_count == 1 %}produit{% else %}produits{% endif %}</span>
     </div>
+  </div>
+
+  <!-- Product Grid -->
+  <section class="fh-colp">
+    <div class="fh-colp-grid">
+      {% for product in collection.products %}
+        <a href="{{ product.url }}" class="fh-colp-card">
+          <div class="fh-colp-card-img">
+            {% if product.available == false %}
+              <span class="fh-colp-badge fh-colp-badge--sold">Épuisé</span>
+            {% elsif product.compare_at_price > product.price %}
+              <span class="fh-colp-badge fh-colp-badge--sale">Promo</span>
+            {% else %}
+              <span class="fh-colp-badge fh-colp-badge--new">Édition Limitée</span>
+            {% endif %}
+            {% if product.featured_image %}
+              {{ product.featured_image | image_url: width: 700 | image_tag: loading: 'lazy', class: 'fh-colp-img' }}
+            {% else %}
+              <div class="fh-colp-img-placeholder" style="background:{{ gradient }}">
+                <span class="fh-colp-placeholder-emoji">{{ emoji }}</span>
+                <span class="fh-colp-placeholder-name">{{ product.title }}</span>
+              </div>
+            {% endif %}
+          </div>
+          <div class="fh-colp-card-info">
+            <span class="fh-colp-vendor">{{ product.vendor }}</span>
+            <h3 class="fh-colp-name">{{ product.title }}</h3>
+            <div class="fh-colp-pricing">
+              {% if product.compare_at_price > product.price %}
+                <span class="fh-colp-price-old">{{ product.compare_at_price | money }}</span>
+              {% endif %}
+              <span class="fh-colp-price">{{ product.price | money }}</span>
+            </div>
+            <div class="fh-colp-cta">
+              <span class="fh-colp-cta-text">Voir le produit</span>
+              <span class="fh-colp-cta-arrow">&rarr;</span>
+            </div>
+          </div>
+        </a>
+      {% endfor %}
+    </div>
+
+    {% if collection.products.size == 0 %}
+      <div class="fh-colp-empty">
+        <p>Aucun produit dans cette collection pour le moment.</p>
+      </div>
+    {% endif %}
+
+    {% if paginate %}
+      {% if paginate.pages > 1 %}
+        <div class="fh-colp-pagination">
+          {{ paginate | default_pagination }}
+        </div>
+      {% endif %}
+    {% endif %}
   </section>
 
   <style>
     #shopify-section-{{ section.id }}{background:#fff}
-    #shopify-section-{{ section.id }} .fh-col{max-width:1400px;margin:0 auto;padding:32px 48px 80px}
 
-    /* Layout */
-    #shopify-section-{{ section.id }} .fh-col-layout{display:grid;grid-template-columns:240px 1fr;gap:40px}
-
-    /* Header */
-    #shopify-section-{{ section.id }} .fh-col-header{display:flex;align-items:baseline;gap:16px;margin-bottom:8px}
-    #shopify-section-{{ section.id }} .fh-col-title{font-family:'Bebas Neue',Impact,sans-serif;font-size:36px;letter-spacing:2px;text-transform:uppercase;color:#0d1b2a;margin:0}
-    #shopify-section-{{ section.id }} .fh-col-count{font-family:'Inter',sans-serif;font-size:13px;color:#999;font-weight:300}
-    #shopify-section-{{ section.id }} .fh-col-desc{font-family:'Inter',sans-serif;font-size:14px;color:#777;line-height:1.6;margin:0 0 24px;font-weight:300}
-
-    /* Sidebar */
-    #shopify-section-{{ section.id }} .fh-col-sidebar{padding-top:8px}
-    #shopify-section-{{ section.id }} .fh-col-filter-toggle{display:none}
-    #shopify-section-{{ section.id }} .fh-col-filter-group{border-bottom:1px solid #eee;padding:16px 0}
-    #shopify-section-{{ section.id }} .fh-col-filter-title{font-family:'Inter',sans-serif;font-size:14px;font-weight:600;color:#0d1b2a;display:flex;justify-content:space-between;align-items:center;width:100%;background:none;border:none;cursor:pointer;padding:0;text-transform:capitalize}
-    #shopify-section-{{ section.id }} .fh-col-chevron{transition:transform .2s}
-    #shopify-section-{{ section.id }} .fh-col-filter-closed .fh-col-chevron{transform:rotate(-90deg)}
-    #shopify-section-{{ section.id }} .fh-col-filter-closed .fh-col-filter-options{display:none}
-    #shopify-section-{{ section.id }} .fh-col-filter-options{margin-top:12px;display:flex;flex-direction:column;gap:8px}
-    #shopify-section-{{ section.id }} .fh-col-filter-option{display:flex;align-items:center;gap:8px;cursor:pointer;font-family:'Inter',sans-serif;font-size:13px;color:#333}
-    #shopify-section-{{ section.id }} .fh-col-filter-option input{display:none}
-    #shopify-section-{{ section.id }} .fh-col-filter-check{width:16px;height:16px;border:1.5px solid #ccc;border-radius:3px;flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all .15s}
-    #shopify-section-{{ section.id }} .fh-col-filter-option--active .fh-col-filter-check{background:#0d1b2a;border-color:#0d1b2a}
-    #shopify-section-{{ section.id }} .fh-col-filter-option--active .fh-col-filter-check::after{content:'✓';color:#fff;font-size:10px}
-    #shopify-section-{{ section.id }} .fh-col-filter-count{color:#aaa;font-size:12px}
-    #shopify-section-{{ section.id }} .fh-col-price-inputs{display:flex;align-items:center;gap:8px}
-    #shopify-section-{{ section.id }} .fh-col-price-input{width:70px;padding:6px 8px;border:1px solid #ddd;border-radius:4px;font-size:13px;font-family:'Inter',sans-serif}
+    /* Hero Banner */
+    #shopify-section-{{ section.id }} .fh-colp-hero{padding:80px 48px 60px;text-align:center;position:relative;overflow:hidden}
+    #shopify-section-{{ section.id }} .fh-colp-hero::after{content:'';position:absolute;inset:0;background:rgba(0,0,0,0.35)}
+    #shopify-section-{{ section.id }} .fh-colp-hero-inner{position:relative;z-index:2;max-width:700px;margin:0 auto}
+    #shopify-section-{{ section.id }} .fh-colp-hero-emoji{font-size:48px;display:block;margin-bottom:12px}
+    #shopify-section-{{ section.id }} .fh-colp-hero-overline{font-family:'Inter',sans-serif;font-size:11px;letter-spacing:4px;text-transform:uppercase;color:#f0d78c;margin-bottom:12px;font-weight:500}
+    #shopify-section-{{ section.id }} .fh-colp-hero-title{font-family:'Bebas Neue',Impact,sans-serif;font-size:56px;letter-spacing:3px;text-transform:uppercase;color:#fff;margin:0 0 12px}
+    #shopify-section-{{ section.id }} .fh-colp-hero-desc{font-family:'Inter',sans-serif;font-size:15px;color:rgba(255,255,255,0.8);font-weight:300;line-height:1.6;margin:0 0 16px}
+    #shopify-section-{{ section.id }} .fh-colp-hero-count{font-family:'Inter',sans-serif;font-size:13px;color:rgba(255,255,255,0.5);font-weight:300}
 
     /* Product Grid */
-    #shopify-section-{{ section.id }} .fh-col-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:24px}
-    #shopify-section-{{ section.id }} .fh-col-product{text-decoration:none;display:block}
-    #shopify-section-{{ section.id }} .fh-col-product-img{position:relative;aspect-ratio:3/4;background:#1a1a1a;border-radius:4px;overflow:hidden}
-    #shopify-section-{{ section.id }} .fh-col-img{width:100%;height:100%;object-fit:cover;transition:transform .3s}
-    #shopify-section-{{ section.id }} .fh-col-product:hover .fh-col-img{transform:scale(1.05)}
-    #shopify-section-{{ section.id }} .fh-col-img-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:48px;color:#333;font-family:'Bebas Neue',sans-serif}
+    #shopify-section-{{ section.id }} .fh-colp{max-width:1200px;margin:0 auto;padding:48px 48px 80px}
+    #shopify-section-{{ section.id }} .fh-colp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+
+    /* Product Card */
+    #shopify-section-{{ section.id }} .fh-colp-card{text-decoration:none;display:block;border-radius:12px;overflow:hidden;background:#fff;border:1px solid #eee;transition:transform .3s,box-shadow .3s}
+    #shopify-section-{{ section.id }} .fh-colp-card:hover{transform:translateY(-6px);box-shadow:0 16px 40px rgba(0,0,0,0.1)}
+
+    /* Card Image */
+    #shopify-section-{{ section.id }} .fh-colp-card-img{position:relative;aspect-ratio:3/4;background:#0d1b2a;overflow:hidden}
+    #shopify-section-{{ section.id }} .fh-colp-img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
+    #shopify-section-{{ section.id }} .fh-colp-card:hover .fh-colp-img{transform:scale(1.06)}
+    #shopify-section-{{ section.id }} .fh-colp-img-placeholder{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px}
+    #shopify-section-{{ section.id }} .fh-colp-placeholder-emoji{font-size:64px}
+    #shopify-section-{{ section.id }} .fh-colp-placeholder-name{font-family:'Bebas Neue',Impact,sans-serif;font-size:22px;color:rgba(255,255,255,0.7);text-transform:uppercase;letter-spacing:2px}
 
     /* Badge */
-    #shopify-section-{{ section.id }} .fh-col-badge{position:absolute;top:12px;left:12px;z-index:2;font-family:'Inter',sans-serif;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:1px;padding:5px 12px;border-radius:2px}
-    #shopify-section-{{ section.id }} .fh-col-badge--sale{background:#d4a843;color:#fff}
-    #shopify-section-{{ section.id }} .fh-col-badge--sold{background:#666;color:#fff}
+    #shopify-section-{{ section.id }} .fh-colp-badge{position:absolute;top:16px;left:16px;z-index:2;font-family:'Inter',sans-serif;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:1.5px;padding:6px 14px;border-radius:4px}
+    #shopify-section-{{ section.id }} .fh-colp-badge--new{background:#d4a843;color:#fff}
+    #shopify-section-{{ section.id }} .fh-colp-badge--sale{background:#d4a843;color:#fff}
+    #shopify-section-{{ section.id }} .fh-colp-badge--sold{background:rgba(0,0,0,0.6);color:rgba(255,255,255,0.8);backdrop-filter:blur(4px)}
 
-    /* Product Info */
-    #shopify-section-{{ section.id }} .fh-col-product-info{padding:12px 0}
-    #shopify-section-{{ section.id }} .fh-col-product-vendor{font-family:'Inter',sans-serif;font-size:12px;color:#999;font-weight:300;display:block;margin-bottom:4px}
-    #shopify-section-{{ section.id }} .fh-col-product-title{font-family:'Inter',sans-serif;font-size:13px;font-weight:600;color:#0d1b2a;text-transform:uppercase;margin:0 0 6px;line-height:1.4;letter-spacing:0.3px}
-    #shopify-section-{{ section.id }} .fh-col-product-price{font-family:'Inter',sans-serif;font-size:14px;color:#0d1b2a;display:flex;align-items:center;gap:8px}
-    #shopify-section-{{ section.id }} .fh-col-price-old{text-decoration:line-through;color:#aaa;font-size:13px}
+    /* Card Info */
+    #shopify-section-{{ section.id }} .fh-colp-card-info{padding:20px 24px 24px}
+    #shopify-section-{{ section.id }} .fh-colp-vendor{font-family:'Inter',sans-serif;font-size:11px;color:#999;font-weight:400;text-transform:uppercase;letter-spacing:1px;display:block;margin-bottom:6px}
+    #shopify-section-{{ section.id }} .fh-colp-name{font-family:'Bebas Neue',Impact,sans-serif;font-size:22px;letter-spacing:1px;text-transform:uppercase;color:#0d1b2a;margin:0 0 10px;line-height:1.2}
+    #shopify-section-{{ section.id }} .fh-colp-pricing{display:flex;align-items:center;gap:10px;margin-bottom:16px}
+    #shopify-section-{{ section.id }} .fh-colp-price{font-family:'Inter',sans-serif;font-size:18px;font-weight:700;color:#0d1b2a}
+    #shopify-section-{{ section.id }} .fh-colp-price-old{font-family:'Inter',sans-serif;font-size:14px;text-decoration:line-through;color:#aaa}
+
+    /* CTA */
+    #shopify-section-{{ section.id }} .fh-colp-cta{display:flex;align-items:center;gap:8px;padding-top:16px;border-top:1px solid #eee}
+    #shopify-section-{{ section.id }} .fh-colp-cta-text{font-family:'Inter',sans-serif;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:#d4a843}
+    #shopify-section-{{ section.id }} .fh-colp-cta-arrow{color:#d4a843;font-size:14px;transition:transform .3s}
+    #shopify-section-{{ section.id }} .fh-colp-card:hover .fh-colp-cta-arrow{transform:translateX(4px)}
 
     /* Empty */
-    #shopify-section-{{ section.id }} .fh-col-empty{text-align:center;padding:60px 0;font-family:'Inter',sans-serif;color:#999}
+    #shopify-section-{{ section.id }} .fh-colp-empty{text-align:center;padding:80px 0;font-family:'Inter',sans-serif;color:#999;font-size:15px}
 
     /* Responsive */
-    @media(max-width:1024px){
-      #shopify-section-{{ section.id }} .fh-col-grid{grid-template-columns:repeat(3,1fr)}
+    @media(max-width:900px){
+      #shopify-section-{{ section.id }} .fh-colp-hero{padding:48px 20px 40px}
+      #shopify-section-{{ section.id }} .fh-colp-hero-title{font-size:40px}
+      #shopify-section-{{ section.id }} .fh-colp{padding:32px 16px 60px}
+      #shopify-section-{{ section.id }} .fh-colp-grid{grid-template-columns:repeat(2,1fr);gap:16px}
+      #shopify-section-{{ section.id }} .fh-colp-card-info{padding:16px}
+      #shopify-section-{{ section.id }} .fh-colp-name{font-size:18px}
     }
-    @media(max-width:768px){
-      #shopify-section-{{ section.id }} .fh-col{padding:20px 16px 60px}
-      #shopify-section-{{ section.id }} .fh-col-layout{grid-template-columns:1fr;gap:0}
-      #shopify-section-{{ section.id }} .fh-col-sidebar{position:fixed;top:0;left:-100%;width:280px;height:100vh;background:#fff;z-index:1000;padding:20px;overflow-y:auto;transition:left .3s;box-shadow:2px 0 20px rgba(0,0,0,0.15)}
-      #shopify-section-{{ section.id }} .fh-col-sidebar--open{left:0}
-      #shopify-section-{{ section.id }} .fh-col-filter-toggle{display:flex;align-items:center;justify-content:space-between;width:100%;padding:10px 0;margin-bottom:16px;background:none;border:none;border-bottom:1px solid #0d1b2a;font-family:'Inter',sans-serif;font-size:14px;font-weight:600;color:#0d1b2a;cursor:pointer;text-transform:uppercase;letter-spacing:1px}
-      #shopify-section-{{ section.id }} .fh-col-grid{grid-template-columns:repeat(2,1fr);gap:12px}
-      #shopify-section-{{ section.id }} .fh-col-title{font-size:28px}
+    @media(max-width:480px){
+      #shopify-section-{{ section.id }} .fh-colp-hero-title{font-size:32px}
+      #shopify-section-{{ section.id }} .fh-colp-grid{grid-template-columns:1fr;max-width:400px;margin:0 auto}
     }
   </style>
 </div>
