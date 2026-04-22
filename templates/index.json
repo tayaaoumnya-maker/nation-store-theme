@@ -70,28 +70,28 @@
           "type": "nav_link",
           "settings": {
             "label": "Collections",
-            "link": ""
+            "link": "shopify://collections"
           }
         },
         "nav_2": {
           "type": "nav_link",
           "settings": {
             "label": "Notre histoire",
-            "link": ""
+            "link": "shopify://pages/notre-histoire"
           }
         },
         "nav_3": {
           "type": "nav_link",
           "settings": {
             "label": "FAQ",
-            "link": ""
+            "link": "shopify://pages/faq"
           }
         },
         "nav_4": {
           "type": "nav_link",
           "settings": {
             "label": "Nos avis",
-            "link": ""
+            "link": "shopify://pages/avis"
           }
         }
       },
