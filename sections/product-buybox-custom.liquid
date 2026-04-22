@@ -23,14 +23,22 @@
           {% else %}
             <span class="fh-flag">{{ section.settings.flag_emoji }}</span>
           {% endif %}
+          {% if section.settings.video_url != blank %}
+            <video class="fh-main-video" id="fh-main-product-video" src="{{ section.settings.video_url }}" playsinline loop muted autoplay style="display:none;width:100%;height:100%;object-fit:cover;border-radius:20px;"></video>
+          {% endif %}
         </div>
       </div>
       <div class="fh-gallery-thumbs">
         {% for image in product.images %}
-          <div class="fh-gallery-thumb{% if forloop.first %} active{% endif %}" data-img-src="{{ image | image_url: width: 900 }}">
+          <div class="fh-gallery-thumb{% if forloop.first %} active{% endif %}" data-img-src="{{ image | image_url: width: 900 }}" data-type="image">
             {{ image | image_url: width: 160 | image_tag: loading: 'lazy' }}
           </div>
         {% endfor %}
+        {% if section.settings.video_url != blank %}
+          <div class="fh-gallery-thumb fh-thumb-video" data-type="video" data-video-src="{{ section.settings.video_url }}">
+            <span class="fh-thumb-play">▶</span>
+          </div>
+        {% endif %}
       </div>
     </div>
 
@@ -144,6 +152,8 @@
     #shopify-section-{{ section.id }} .fh-gallery-thumb img{width:100%;height:100%;object-fit:cover}
     #shopify-section-{{ section.id }} .fh-gallery-thumb:hover{border-color:#777}
     #shopify-section-{{ section.id }} .fh-gallery-thumb.active{border-color:#d4a843;box-shadow:0 0 12px rgba(13,27,42,0.12)}
+    #shopify-section-{{ section.id }} .fh-thumb-video{background:#0d1b2a;display:flex;align-items:center;justify-content:center}
+    #shopify-section-{{ section.id }} .fh-thumb-play{color:#d4a843;font-size:24px;filter:drop-shadow(0 2px 4px rgba(0,0,0,0.3))}
     #shopify-section-{{ section.id }} .fh-buybox-info{flex:1;min-width:340px;position:relative;z-index:1}
     #shopify-section-{{ section.id }} .fh-breadcrumb{font-size:12px;color:#777;margin-bottom:20px;font-family:'Inter',sans-serif}
     #shopify-section-{{ section.id }} .fh-breadcrumb a{color:#777;text-decoration:none;transition:color .3s}
@@ -197,15 +207,21 @@
   <script>
     (function(){
       var section = document.getElementById('shopify-section-{{ section.id }}');
-      /* Thumbnail click */
+      /* Thumbnail click — image + video support */
+      var mainImg = section.querySelector('#fh-main-product-img');
+      var mainVideo = section.querySelector('#fh-main-product-video');
       section.querySelectorAll('.fh-gallery-thumb').forEach(function(thumb){
         thumb.addEventListener('click', function(){
           section.querySelectorAll('.fh-gallery-thumb').forEach(function(t){t.classList.remove('active')});
           this.classList.add('active');
-          var src = this.dataset.imgSrc;
-          if(src){
-            var mainImg = section.querySelector('#fh-main-product-img');
-            if(mainImg) mainImg.src = src;
+          var type = this.dataset.type;
+          if(type === 'video' && mainVideo){
+            if(mainImg) mainImg.style.display = 'none';
+            mainVideo.style.display = 'block';
+            mainVideo.play();
+          } else {
+            if(mainVideo){ mainVideo.style.display = 'none'; mainVideo.pause(); }
+            if(mainImg){ mainImg.style.display = 'block'; mainImg.src = this.dataset.imgSrc; }
           }
         });
       });
@@ -300,6 +316,12 @@
       "id": "show_express",
       "label": "Bouton achat express",
       "default": true
+    },
+    {
+      "type": "text",
+      "id": "video_url",
+      "label": "URL vidéo produit (slow motion)",
+      "info": "Coller l'URL de la vidéo MP4 uploadée dans Shopify Files"
     }
   ],
   "blocks": [
