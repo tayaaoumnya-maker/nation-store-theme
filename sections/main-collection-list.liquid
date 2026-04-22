@@ -1,21 +1,200 @@
 {% comment %}
-  Section: Main Collection List — Minimal test
+  Section: Main Collection List — Tous les maillots groupés par pays
+  Design premium Nation Varsity : fond blanc, accents gold + navy
 {% endcomment %}
 
-<div id="shopify-section-{{ section.id }}" style="padding:60px 48px;max-width:1200px;margin:0 auto;">
-  <h1 style="font-family:sans-serif;font-size:32px;color:#0d1b2a;">Test Collections</h1>
-  <p>Section ID: {{ section.id }}</p>
-  <p>Collections count: {{ collections.size }}</p>
+{% assign country_handles = 'maroc,algerie,cote-divoire,france,bresil' | split: ',' %}
+{% assign country_names = 'Maroc,Algérie,Côte d&apos;Ivoire,France,Brésil' | split: ',' %}
+{% assign country_teams = 'Atlas Lions,Les Fennecs,Les Éléphants,Les Bleus,Seleção' | split: ',' %}
+{% assign country_emojis = '🇲🇦,🇩🇿,🇨🇮,🇫🇷,🇧🇷' | split: ',' %}
+{% assign country_gradient_cards = 'linear-gradient(180deg|#c1272d|#5a0f14);linear-gradient(180deg|#006233|#002614);linear-gradient(180deg|#FF8200|#7a3e00);linear-gradient(180deg|#0055A4|#002952);linear-gradient(180deg|#009C3B|#004d1e)' | split: ';' %}
 
-  {% for collection in collections %}
-    <div style="margin:20px 0;padding:16px;border:1px solid #ddd;border-radius:8px;">
-      <h2 style="margin:0;">{{ collection.title }} ({{ collection.handle }})</h2>
-      <p>Produits: {{ collection.products_count }}</p>
-      {% for product in collection.products limit: 2 %}
-        <p style="margin:4px 0;color:#666;">— {{ product.title }} — {{ product.price | money }}</p>
-      {% endfor %}
+<div id="shopify-section-{{ section.id }}">
+  <!-- Hero -->
+  <div class="fh-cl-hero">
+    <div class="fh-cl-hero-inner">
+      <div class="fh-cl-hero-overline">Nation Varsity</div>
+      <h1 class="fh-cl-hero-title">{{ section.settings.title }}</h1>
+      <div class="fh-cl-hero-divider"></div>
+      <p class="fh-cl-hero-subtitle">{{ section.settings.subtitle }}</p>
     </div>
+  </div>
+
+  <!-- Country Navigation -->
+  <nav class="fh-cl-nav">
+    {% for handle in country_handles %}
+      <a href="#country-{{ handle }}" class="fh-cl-nav-item">
+        <span class="fh-cl-nav-emoji">{{ country_emojis[forloop.index0] }}</span>
+        <span class="fh-cl-nav-name">{{ country_names[forloop.index0] }}</span>
+      </a>
+    {% endfor %}
+  </nav>
+
+  <!-- Country Sections -->
+  {% for handle in country_handles %}
+    {% assign col = collections[handle] %}
+    {% assign idx = forloop.index0 %}
+    {% assign raw_grad = country_gradient_cards[idx] %}
+    {% assign grad = raw_grad | replace: '|', ',' %}
+    {% if col %}
+      <section class="fh-cl-country" id="country-{{ handle }}">
+        <div class="fh-cl-country-header">
+          <div class="fh-cl-country-flag" style="background:{{ grad }}">
+            <span>{{ country_emojis[idx] }}</span>
+          </div>
+          <div class="fh-cl-country-info">
+            <span class="fh-cl-country-team">{{ country_teams[idx] }}</span>
+            <h2 class="fh-cl-country-name">{{ country_names[idx] }}</h2>
+            <span class="fh-cl-country-count">{{ col.products_count }} {% if col.products_count == 1 %}maillot{% else %}maillots{% endif %}</span>
+          </div>
+        </div>
+
+        <div class="fh-cl-grid">
+          {% for product in col.products %}
+            <a href="{{ product.url }}" class="fh-cl-card">
+              <div class="fh-cl-card-img" style="background:{{ grad }}">
+                {% if product.available == false %}
+                  <span class="fh-cl-badge fh-cl-badge--sold">Épuisé</span>
+                {% elsif product.compare_at_price > product.price %}
+                  <span class="fh-cl-badge fh-cl-badge--sale">Promo</span>
+                {% else %}
+                  <span class="fh-cl-badge fh-cl-badge--new">Édition Limitée</span>
+                {% endif %}
+                {% if product.featured_image %}
+                  {{ product.featured_image | image_url: width: 600 | image_tag: loading: 'lazy', class: 'fh-cl-img' }}
+                {% else %}
+                  <div class="fh-cl-placeholder">
+                    <span class="fh-cl-placeholder-emoji">{{ country_emojis[idx] }}</span>
+                    <span class="fh-cl-placeholder-type">
+                      {% if product.title contains 'Away' %}AWAY
+                      {% elsif product.title contains 'Third' %}THIRD
+                      {% elsif product.title contains 'Retro' %}RETRO
+                      {% elsif product.title contains 'Training' %}TRAINING
+                      {% elsif product.title contains 'Home' %}HOME
+                      {% else %}JERSEY
+                      {% endif %}
+                    </span>
+                  </div>
+                {% endif %}
+              </div>
+              <div class="fh-cl-card-info">
+                <span class="fh-cl-vendor">{{ product.vendor }}</span>
+                <h3 class="fh-cl-card-title">{{ product.title }}</h3>
+                <div class="fh-cl-pricing">
+                  {% if product.compare_at_price > product.price %}
+                    <span class="fh-cl-price-old">{{ product.compare_at_price | money }}</span>
+                  {% endif %}
+                  <span class="fh-cl-price">{{ product.price | money }}</span>
+                </div>
+                <div class="fh-cl-sizes">
+                  {% for variant in product.variants %}
+                    <span class="fh-cl-size {% unless variant.available %}fh-cl-size--out{% endunless %}">{{ variant.title }}</span>
+                  {% endfor %}
+                </div>
+              </div>
+            </a>
+          {% endfor %}
+        </div>
+      </section>
+    {% endif %}
   {% endfor %}
+
+  <style>
+    #shopify-section-{{ section.id }}{background:#fff}
+
+    /* Hero */
+    #shopify-section-{{ section.id }} .fh-cl-hero{background:#0d1b2a;padding:80px 48px 60px;text-align:center}
+    #shopify-section-{{ section.id }} .fh-cl-hero-inner{max-width:700px;margin:0 auto}
+    #shopify-section-{{ section.id }} .fh-cl-hero-overline{font-family:'Inter',sans-serif;font-size:11px;letter-spacing:4px;text-transform:uppercase;color:#d4a843;margin-bottom:12px;font-weight:500}
+    #shopify-section-{{ section.id }} .fh-cl-hero-title{font-family:'Bebas Neue',Impact,sans-serif;font-size:60px;letter-spacing:3px;text-transform:uppercase;color:#fff;margin:0 0 20px}
+    #shopify-section-{{ section.id }} .fh-cl-hero-divider{width:60px;height:3px;background:linear-gradient(90deg,#d4a843,#f0d78c);margin:0 auto 20px;border-radius:2px}
+    #shopify-section-{{ section.id }} .fh-cl-hero-subtitle{font-family:'Inter',sans-serif;font-size:15px;color:rgba(255,255,255,0.6);font-weight:300;margin:0;line-height:1.6}
+
+    /* Navigation */
+    #shopify-section-{{ section.id }} .fh-cl-nav{display:flex;justify-content:center;gap:8px;padding:20px 48px;background:#f8f8f8;border-bottom:1px solid #eee;position:sticky;top:0;z-index:100}
+    #shopify-section-{{ section.id }} .fh-cl-nav-item{display:flex;align-items:center;gap:8px;padding:10px 20px;border-radius:50px;text-decoration:none;font-family:'Inter',sans-serif;font-size:13px;font-weight:600;color:#0d1b2a;background:#fff;border:1px solid #e0e0e0;transition:all .2s}
+    #shopify-section-{{ section.id }} .fh-cl-nav-item:hover{background:#0d1b2a;color:#fff;border-color:#0d1b2a}
+    #shopify-section-{{ section.id }} .fh-cl-nav-emoji{font-size:18px}
+    #shopify-section-{{ section.id }} .fh-cl-nav-name{text-transform:uppercase;letter-spacing:1px}
+
+    /* Country Section */
+    #shopify-section-{{ section.id }} .fh-cl-country{max-width:1200px;margin:0 auto;padding:56px 48px 40px}
+    #shopify-section-{{ section.id }} .fh-cl-country + .fh-cl-country{border-top:1px solid #eee;margin-top:0}
+    #shopify-section-{{ section.id }} .fh-cl-country-header{display:flex;align-items:center;gap:20px;margin-bottom:32px}
+    #shopify-section-{{ section.id }} .fh-cl-country-flag{width:64px;height:64px;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:32px;flex-shrink:0}
+    #shopify-section-{{ section.id }} .fh-cl-country-team{font-family:'Inter',sans-serif;font-size:12px;color:#d4a843;font-weight:600;text-transform:uppercase;letter-spacing:2px;display:block;margin-bottom:2px}
+    #shopify-section-{{ section.id }} .fh-cl-country-name{font-family:'Bebas Neue',Impact,sans-serif;font-size:40px;letter-spacing:2px;text-transform:uppercase;color:#0d1b2a;margin:0;line-height:1}
+    #shopify-section-{{ section.id }} .fh-cl-country-count{font-family:'Inter',sans-serif;font-size:13px;color:#999;font-weight:300;display:block;margin-top:4px}
+
+    /* Product Grid */
+    #shopify-section-{{ section.id }} .fh-cl-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:20px}
+
+    /* Product Card */
+    #shopify-section-{{ section.id }} .fh-cl-card{text-decoration:none;display:block;border-radius:12px;overflow:hidden;background:#fff;border:1px solid #eee;transition:transform .3s,box-shadow .3s}
+    #shopify-section-{{ section.id }} .fh-cl-card:hover{transform:translateY(-6px);box-shadow:0 16px 40px rgba(0,0,0,0.1)}
+
+    /* Card Image */
+    #shopify-section-{{ section.id }} .fh-cl-card-img{position:relative;aspect-ratio:3/4;overflow:hidden}
+    #shopify-section-{{ section.id }} .fh-cl-img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
+    #shopify-section-{{ section.id }} .fh-cl-card:hover .fh-cl-img{transform:scale(1.06)}
+    #shopify-section-{{ section.id }} .fh-cl-placeholder{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px}
+    #shopify-section-{{ section.id }} .fh-cl-placeholder-emoji{font-size:48px}
+    #shopify-section-{{ section.id }} .fh-cl-placeholder-type{font-family:'Bebas Neue',Impact,sans-serif;font-size:20px;color:rgba(255,255,255,0.7);letter-spacing:3px}
+
+    /* Badge */
+    #shopify-section-{{ section.id }} .fh-cl-badge{position:absolute;top:12px;left:12px;z-index:2;font-family:'Inter',sans-serif;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;padding:5px 10px;border-radius:4px}
+    #shopify-section-{{ section.id }} .fh-cl-badge--new{background:#d4a843;color:#fff}
+    #shopify-section-{{ section.id }} .fh-cl-badge--sale{background:#d4a843;color:#fff}
+    #shopify-section-{{ section.id }} .fh-cl-badge--sold{background:rgba(0,0,0,0.6);color:rgba(255,255,255,0.8);backdrop-filter:blur(4px)}
+
+    /* Card Info */
+    #shopify-section-{{ section.id }} .fh-cl-card-info{padding:14px 16px 16px}
+    #shopify-section-{{ section.id }} .fh-cl-vendor{font-family:'Inter',sans-serif;font-size:10px;color:#999;font-weight:400;text-transform:uppercase;letter-spacing:1px;display:block;margin-bottom:4px}
+    #shopify-section-{{ section.id }} .fh-cl-card-title{font-family:'Bebas Neue',Impact,sans-serif;font-size:16px;letter-spacing:0.5px;text-transform:uppercase;color:#0d1b2a;margin:0 0 8px;line-height:1.2}
+    #shopify-section-{{ section.id }} .fh-cl-pricing{display:flex;align-items:center;gap:8px;margin-bottom:10px}
+    #shopify-section-{{ section.id }} .fh-cl-price{font-family:'Inter',sans-serif;font-size:16px;font-weight:700;color:#0d1b2a}
+    #shopify-section-{{ section.id }} .fh-cl-price-old{font-family:'Inter',sans-serif;font-size:13px;text-decoration:line-through;color:#aaa}
+
+    /* Sizes */
+    #shopify-section-{{ section.id }} .fh-cl-sizes{display:flex;gap:4px;flex-wrap:wrap}
+    #shopify-section-{{ section.id }} .fh-cl-size{font-family:'Inter',sans-serif;font-size:10px;padding:3px 8px;border:1px solid #ddd;border-radius:3px;color:#555;font-weight:500}
+    #shopify-section-{{ section.id }} .fh-cl-size--out{opacity:0.3;text-decoration:line-through}
+
+    /* Responsive */
+    @media(max-width:1100px){
+      #shopify-section-{{ section.id }} .fh-cl-grid{grid-template-columns:repeat(3,1fr)}
+    }
+    @media(max-width:768px){
+      #shopify-section-{{ section.id }} .fh-cl-hero{padding:48px 20px 40px}
+      #shopify-section-{{ section.id }} .fh-cl-hero-title{font-size:40px}
+      #shopify-section-{{ section.id }} .fh-cl-nav{gap:6px;padding:12px 16px;flex-wrap:wrap}
+      #shopify-section-{{ section.id }} .fh-cl-nav-item{padding:8px 14px;font-size:12px}
+      #shopify-section-{{ section.id }} .fh-cl-nav-emoji{font-size:14px}
+      #shopify-section-{{ section.id }} .fh-cl-country{padding:32px 16px 24px}
+      #shopify-section-{{ section.id }} .fh-cl-country-name{font-size:30px}
+      #shopify-section-{{ section.id }} .fh-cl-country-flag{width:48px;height:48px;font-size:24px;border-radius:12px}
+      #shopify-section-{{ section.id }} .fh-cl-grid{grid-template-columns:repeat(2,1fr);gap:12px}
+      #shopify-section-{{ section.id }} .fh-cl-card-title{font-size:14px}
+    }
+    @media(max-width:480px){
+      #shopify-section-{{ section.id }} .fh-cl-nav-name{display:none}
+      #shopify-section-{{ section.id }} .fh-cl-nav-item{padding:10px 14px}
+      #shopify-section-{{ section.id }} .fh-cl-nav-emoji{font-size:20px}
+    }
+  </style>
+
+  <script>
+    document.querySelectorAll('#shopify-section-{{ section.id }} .fh-cl-nav-item').forEach(function(link) {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        var target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          var navHeight = document.querySelector('#shopify-section-{{ section.id }} .fh-cl-nav').offsetHeight;
+          window.scrollTo({ top: target.offsetTop - navHeight - 10, behavior: 'smooth' });
+        }
+      });
+    });
+  </script>
 </div>
 
 {% schema %}
